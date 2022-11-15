@@ -6,6 +6,8 @@ import './style/style.scss';
 // Local dependencies
 import "./index.css";
 import App from "./App";
+import { setUpStore } from "./redux/Store";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,7 +15,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <Provider store={setUpStore()}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
