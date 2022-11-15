@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-
+import './style/style.scss';
 // Local dependencies
 import "./index.css";
 import App from "./App";
