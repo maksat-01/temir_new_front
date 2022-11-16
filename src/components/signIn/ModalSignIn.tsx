@@ -1,12 +1,21 @@
-import React from "react";
-
-// import "./style.scss";
-
+import axios from "axios";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import API, { API_ADDRESS } from "../api/Api";
+import { getIdUserParams } from "../helper";
 interface IModalSignIn {
   setModal: any;
 }
 
 export default function ModalSignIn({ setModal }: IModalSignIn) {
+  const {
+    register,
+    setError,
+    formState: { errors },
+  } = useForm();
+  const [forgot, setForgot] = useState("");
+
+  console.log(getIdUserParams());
   const closeModal = (e: any) => {
     e.stopPropagation();
     setModal(false);
@@ -15,6 +24,23 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
   const openModal = (e: any) => {
     e.stopPropagation();
     setModal(true);
+  };
+
+  const postEmail = async (e: any) => {
+    e.preventDefault();
+
+    API(`/{апи даяр эмес экен жон эле}/`, {
+      method: "POST",
+      data: forgot,
+    })
+      .then((res) => {
+        alert("SUCC");
+        console.log(res);
+      })
+      .catch((error) => {
+        alert("ERROR");
+        console.log(error);
+      });
   };
 
   return (
@@ -34,19 +60,23 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
           >
             Close
           </p>
-          <input
-            type="password"
-            placeholder="Enter password"
-            className="w-full py-[16px] pl-[14px] mb-[10px] rounded-[5px]"
-          />
-          <p className="text-[#00F0FF] text-[15px] mb-[46px]">
-            Forgot password ?
-          </p>
-          <div className="flex justify-center">
-            <button className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[65px] ">
-              Next
-            </button>
-          </div>
+          <form onSubmit={postEmail}>
+            <input
+              type="email"
+              placeholder="Enter email"
+              {...register("password", { required: true })}
+              onChange={(e) => setForgot(e.target.value)}
+              className="w-full py-[16px] pl-[14px] mb-[10px] rounded-[5px]"
+            />
+            <p className="text-[#00F0FF] text-[15px] mb-[46px]">
+              Forgot password ?
+            </p>
+            <div className="flex justify-center">
+              <button className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[65px] ">
+                Next
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
