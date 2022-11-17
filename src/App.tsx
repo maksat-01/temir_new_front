@@ -3,7 +3,7 @@ import SignIn from "./components/signIn/SignIn";
 import Interface from "./pages/interface/Interface";
 import Header from "./components/header/index";
 import Home from "./pages/home/home";
-import Products from "./pages/products/products";
+import Products from "./components/products/products";
 import About from "./pages/about/about";
 import Contact from "./pages/contact/contact";
 import Basket from "./pages/basket/basket";
