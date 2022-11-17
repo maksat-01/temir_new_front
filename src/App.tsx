@@ -7,6 +7,9 @@ import Products from "./pages/products/products";
 import About from "./pages/about/about";
 import Contact from "./pages/contact/contact";
 import Basket from "./pages/basket/basket";
+import Media from "./components/media/Media";
+import MediaCardImage from "./components/media/MediaCardImage";
+import MediaCardVideos from "./components/media/MediaCardVideo";
 
 function App() {
   return (
@@ -20,6 +23,14 @@ function App() {
         <Route path="/basket" element={<Basket />} />
         <Route path="/interface" element={<Interface />} />
         <Route path="/signin/:id" element={<SignIn />} />
+        <Route
+          path="/image"
+          element={<Media children={<MediaCardImage />} />}
+        />
+        <Route
+          path="/video"
+          element={<Media children={<MediaCardVideos />} />}
+        />
       </Routes>
     </>
   );

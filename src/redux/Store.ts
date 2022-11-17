@@ -1,7 +1,12 @@
 /* External dependencies */
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import ReducerImage from "../components/media/reducer/ReducerImage";
+import ReducerVideo from "../components/media/reducer/ReducerVideo";
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  ReducerImage,
+  ReducerVideo,
+});
 
 export const setUpStore = () => {
   return configureStore({
