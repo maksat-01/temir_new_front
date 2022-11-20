@@ -3,6 +3,7 @@ import HomeHero from "./homeHero";
 import SmartWay from './SmartWay';
 import QrCode from './QrCode';
 import ThreeNumber from './ThreeNumber';
+import Contact from "./Contact";
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             <SmartWay/>
             <QrCode/>
             <ThreeNumber/>
+            <Contact/>
         </>
     );
 };
