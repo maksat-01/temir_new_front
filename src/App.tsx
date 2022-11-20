@@ -5,7 +5,7 @@ import Header from "./components/header/index";
 import Home from "./pages/home/home";
 import Products from "./components/products/products";
 import About from "./pages/about/about";
-import Contact from "./pages/contact/contact";
+import Contact from "./components/contact/contact";
 import Basket from "./pages/basket/basket";
 import Media from "./components/media/Media";
 import MediaCardImage from "./components/media/MediaCardImage";
