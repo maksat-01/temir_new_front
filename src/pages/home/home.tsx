@@ -6,12 +6,14 @@ import ThreeNumber from './ThreeNumber';
 import MallEmirate from './MallEmirate';
 import Contact from "./Contact";
 import Footer from "./Footer";
+import Faq from "./Faq";
 
 const Home = () => {
     return (
         <>
             <HomeHero/>
             <SmartWay/>
+            <Faq/>
             <QrCode/>
             <ThreeNumber/>
             <Contact/>
