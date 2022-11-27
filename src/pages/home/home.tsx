@@ -18,7 +18,6 @@ const Home = () => {
             <ThreeNumber/>
             <Contact/>
             <MallEmirate/>
-            <Footer/>
         </>
     );
 };
