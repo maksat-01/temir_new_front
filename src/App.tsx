@@ -14,6 +14,7 @@ import Company from "./components/compony/Company";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
 import Footer from "./pages/home/Footer";
 import MediaAdmin from "./components/adminMedia/MediaAdmin";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/checkout" element={<CheckoutPage/>} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

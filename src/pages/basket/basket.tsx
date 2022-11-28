@@ -34,7 +34,7 @@ const Basket: FC = () => {
     navigate('/products')
   }
   const proceedCheckout = () => {
-    navigate('/')
+    navigate('/checkout')
   }
   return (
     <section>
