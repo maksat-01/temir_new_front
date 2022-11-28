@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react'
+import AboutCards from './AboutCards'
+import AboutTemirStore from './AboutTemirStore'
 
-const About = () => {
-    return (
-        <div>
-            <h1 className='text-3xl text-white'>about page</h1>
-        </div>
-    );
-};
+const About: FC = () => {
+  return (
+    <>
+      <AboutTemirStore />
+      <AboutCards />
+    </>
+  )
+}
 
-export default About;
+export default About
