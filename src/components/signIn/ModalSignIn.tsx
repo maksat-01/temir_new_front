@@ -10,10 +10,9 @@ interface IModalSignIn {
 export default function ModalSignIn({ setModal }: IModalSignIn) {
   const {
     register,
-    setError,
     formState: { errors },
   } = useForm();
-  const [forgot, setForgot] = useState("");
+  const [email, setEmail] = useState("");
 
   console.log(getIdUserParams());
   const closeModal = (e: any) => {
@@ -28,11 +27,7 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
 
   const postEmail = async (e: any) => {
     e.preventDefault();
-
-    API(`/{апи даяр эмес экен жон эле}/`, {
-      method: "POST",
-      data: forgot,
-    })
+    API.post(`/password_reset/`, email)
       .then((res) => {
         alert("SUCC");
         console.log(res);
@@ -65,14 +60,14 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
               type="email"
               placeholder="Enter email"
               {...register("password", { required: true })}
-              onChange={(e) => setForgot(e.target.value)}
-              className="w-full py-[16px] pl-[14px] mb-[10px] rounded-[5px]"
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full py-[16px] pl-[14px] mb-[46px] rounded-[5px] text-black"
             />
-            <p className="text-[#00F0FF] text-[15px] mb-[46px]">
-              Forgot password ?
-            </p>
             <div className="flex justify-center">
-              <button className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[65px] ">
+              <button
+                type="submit"
+                className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[65px] "
+              >
                 Next
               </button>
             </div>
