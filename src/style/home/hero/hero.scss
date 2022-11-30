@@ -1,8 +1,92 @@
-@import "../../variables";
+@import '../../variables';
 
-#hero {
-  .hero {
-    font-family: $t;
+.hero {
+  .temir_text {
+    animation: card 1s ease-in;
+  }
+  .text-li-1 {
+    animation: text_li_1 1.2s ease-in;
+  }
+  .text-li-2 {
+    animation: text_li_2 1.2s ease-in;
+  }
+  .temir-cart {
+    animation: temir_card 10s ease-in infinite;
   }
 }
 
+@keyframes temir_card {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(100px);
+  }
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+    z-index: 1;
+  }
+  40% {
+    transform: translateY(140px) scale(0.2);
+    opacity: 0;
+    z-index: -1;
+  }
+  50% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+    z-index: 1;
+  }
+  95% {
+    transform: translateY(180px) scale(0) rotate(-360deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes card {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  55% {
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes text_li_1 {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  45% {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes text_li_2 {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  45% {
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+  }
+}

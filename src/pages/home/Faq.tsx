@@ -43,11 +43,9 @@ const Faq = () => {
         setScroll(window.scrollY)
     })
 
-
     return (
-        <section id="faq">
-            <div className="container">
-                {/*ml-[150px] mt-[100px] w-[100%]*/}
+        <section id="faq" className="overflow-hidden">
+            <div className="container mx-auto">
                 <div className="faq flex items-start justify-between  relative py-10 max-md-[320px]:flex-wrap ">
                     <div className="">
                         <h1 className="font-bold text-7xl tracking-tight mb-14">How it works</h1>
@@ -189,7 +187,6 @@ const Faq = () => {
 
                         </div>
                         <div className="">
-                            {/*{scroll}*/}
                             <img src={iphone} alt="img" className="absolute right-[-152px] top-40"
                                  data-aos="fade-down"
                                  data-aos-easing="linear"
@@ -202,7 +199,6 @@ const Faq = () => {
                     </div>
 
                 </div>
-                {/*{scroll}*/}
             </div>
         </section>
     );
