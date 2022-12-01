@@ -10,6 +10,7 @@ import ReducerCompanyDetails from "../components/compony/reducer/ReducerCompanyD
 import ReducerMediaImage from "../components/adminMedia/reducer/ReducerMediaImage";
 import ReducerMediaVideo from "../components/adminMedia/reducer/ReucerMediaVideo";
 import ReducerAdminProduct from "../components/adminProduct/reducer/ReducerAdminProduct";
+import contactUsSlice from '../pages/home/reducerContactUs/contactUsSlice';
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   ReducerMediaImage,
   ReducerMediaVideo,
   ReducerAdminProduct,
+  contactUsSlice,
 });
 
 export const setUpStore = () => {

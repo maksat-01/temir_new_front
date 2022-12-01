@@ -13,6 +13,119 @@
   .temir-cart {
     animation: temir_card 10s ease-in infinite;
   }
+  .ekran-phone {
+    animation: phone-ekran 10s ease-in infinite;
+  }
+  .ekran {
+    animation: _ekran 10s ease-in infinite;
+  }
+  .cards_back {
+    animation: black_cards 10s ease-in infinite;
+  }
+  .iphoneBack {
+    animation: back_iphone 10s ease-in infinite;
+  }
+}
+
+@keyframes back_iphone {
+  from {
+    transform: translateX(0);
+    z-index: 3;
+  }
+  30% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateY(-60px);
+  }
+  56% {
+    transform: translateX(-55%) translateY(-60px);
+  }
+  75% {
+    transform: translateX(-55%) translateY(-60px);
+  }
+  85% {
+    transform: translateY(-60px);
+  }
+  to {
+    transform: translate(0);
+    z-index: 3;
+  }
+}
+
+@keyframes black_cards {
+  from {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(0);
+  }
+  35% {
+    transform: translateY(-60px);
+    opacity: 0;
+    z-index: -1;
+  }
+  45% {
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(65%) translateY(-60px);
+    opacity: 1;
+    z-index: 2;
+  }
+  75% {
+    transform: translateX(65%) translateY(-60px);
+    opacity: 1;
+    z-index: 2;
+  }
+  85% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0);
+    opacity: 0;
+    z-index: -2;
+  }
+}
+
+@keyframes _ekran {
+  from {
+    z-index: -2;
+    opacity: 0;
+  }
+  30% {
+    z-index: 0;
+    opacity: 1;
+  }
+  95% {
+    z-index: 0;
+  }
+  to {
+    z-index: -2;
+  }
+}
+
+@keyframes phone-ekran {
+  from {
+    z-index: 0;
+    opacity: 1;
+  }
+  60% {
+    z-index: -2;
+  }
+  70% {
+    opacity: 0;
+    z-index: -2;
+  }
+  95% {
+    opacity: 0;
+    z-index: -2;
+  }
+  to {
+    z-index: 0;
+  }
 }
 
 @keyframes temir_card {
@@ -22,11 +135,12 @@
   }
   20% {
     transform: translateY(100px);
+    z-index: 4;
   }
   30% {
     transform: translateY(0);
     opacity: 1;
-    z-index: 1;
+    z-index: 4;
   }
   40% {
     transform: translateY(140px) scale(0.2);
@@ -41,11 +155,11 @@
   }
   90% {
     opacity: 0;
-    z-index: 1;
+    z-index: 4;
   }
   95% {
     transform: translateY(180px) scale(0) rotate(-360deg);
-    opacity: 1;
+    opacity: 4;
   }
   to {
     transform: translateY(0) scale(1);
