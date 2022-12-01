@@ -7,6 +7,7 @@ import ReducerProduct from "../components/products/reducer/ReducerProduct";
 import ReducerContact from "../components/contact/reducer/ReducerContact";
 import ReducerCompany from "../components/compony/reducer/ReducerCompany";
 import ReducerCompanyDetails from "../components/compony/reducer/ReducerCompanyDetails";
+import ReducerBasket from "../pages/basket/ReducerBasket/BasketSlice";
 import ReducerMediaImage from "../components/adminMedia/reducer/ReducerMediaImage";
 import ReducerMediaVideo from "../components/adminMedia/reducer/ReucerMediaVideo";
 import ReducerAdminProduct from "../components/adminProduct/reducer/ReducerAdminProduct";
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   ReducerContact,
   ReducerCompany,
   ReducerCompanyDetails,
+  ReducerBasket,
   ReducerMediaImage,
   ReducerMediaVideo,
   ReducerAdminProduct,
