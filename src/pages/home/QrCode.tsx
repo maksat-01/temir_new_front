@@ -27,7 +27,7 @@ const QrCode: FC = () => {
           <p className="text-[rgba(255,255,255,0.5)] text-center">or</p>
           <button
             onClick={navLink}
-            className="bg-transparent text-white font-normal font-[Jura] text-[21.89px] border-white border-[2px] rounded py-1 px-3 my-3"
+            className="bg-transparent text-white font-normal font-[Jura] text-[21.89px] border-white border-[2px] rounded py-1 px-3 my-3 hover:scale-125 transition"
           >
             Go over
           </button>

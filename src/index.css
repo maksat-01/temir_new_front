@@ -4,6 +4,7 @@
 
 
 body,html {
+  height: 100%;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
@@ -24,4 +25,8 @@ code {
 
 a,a:hover {
   text-decoration: none;
+}
+
+#root{
+    height: 100%;
 }

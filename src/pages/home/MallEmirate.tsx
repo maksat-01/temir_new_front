@@ -17,8 +17,11 @@ const MallEmirate: FC = () => {
   const navProducts = () => {
     navigate('/products')
   }
+  const navContacts =()=>{
+    navigate('/contact')
+  }
   const cardCenter =
-    'w-[100vw] h-[100vh] transition absolute top-0 overflow-hidden flex flex-col justify-center'
+    'w-[100vw] h-[100vh] ease-in transition absolute top-0 overflow-hidden flex flex-col justify-center'
   const cardItemBlur =
     'lg:w-[50%] max-lg:w-[60%] md:w-[70%] max-md:w-[80%] max-sm:w-[90%] h-[553px] max-sm:h-[500px] transition backdrop-blur-md rounded-t-[40px] px-4 rounded-b-[40px] rounded-l-none shadow-[7px_9px_9px_rgba(0,0,0,0.55)] bg-[rgba(48,48,48,0.02) flex items-center flex-col justify-center'
   const cardInfoBlur =
@@ -73,7 +76,10 @@ const MallEmirate: FC = () => {
             </p>
           </div>
           <div className="px-5 py-10 flex justify-between max-md:py-1 max-md:px-0 max-md:justify-center max-md:flex-col max-md:items-center">
-            <button className="text-white whitespace-nowrap px-20 py-2  max-xl:px-10 max-lg:px-5 max-md:px-4 max-md:py-1 max-md:m-2 border rounded-lg font-[Jura] text-[20px] shadow-[-11px_0px_20px_rgba(0,0,0,0.29)]">
+            <button
+              onClick={navContacts}
+              className="text-white whitespace-nowrap px-20 py-2  max-xl:px-10 max-lg:px-5 max-md:px-4 max-md:py-1 max-md:m-2 border rounded-lg font-[Jura] text-[20px] shadow-[-11px_0px_20px_rgba(0,0,0,0.29)]"
+            >
               Get directions
             </button>
             <button

@@ -39,14 +39,14 @@ const Footer = () => {
                     <div className="flex items-center content-center">
                         {
                             menuLeft.map(el => (
-                                <Link to={"/"} className="px-8 uppercase text-sm tracking-tight">{el.title}</Link>
+                                <Link to={"/"} className="px-8 uppercase text-sm tracking-tight max-sm:hidden">{el.title}</Link>
 
                             ))
                         }
-                        <h1 className="px-12 font-normal text-3xl">TEMIR LLC</h1>
+                        <h1 className="px-12 font-normal text-3xl max-md:px-3">TEMIR LLC</h1>
                         {
                             menuRight.map(el => (
-                                <Link to={"/"} className="px-8 uppercase text-sm tracking-tight">{el.title}</Link>
+                                <Link to={"/"} className="px-8 uppercase text-sm tracking-tight max-sm:hidden">{el.title}</Link>
                             ))
                         }
                     </div>

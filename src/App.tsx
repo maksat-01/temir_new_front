@@ -12,7 +12,10 @@ import MediaCardImage from "./components/media/MediaCardImage";
 import MediaCardVideos from "./components/media/MediaCardVideo";
 import Company from "./components/compony/Company";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
+import Footer from "./pages/home/Footer";
 import MediaAdmin from "./components/adminMedia/MediaAdmin";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
+import AdminProduct from "./components/adminProduct/AdminProduct";
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
         {/* <Route
@@ -58,6 +62,7 @@ function App() {
           element={<Media children={<MediaCardVideos />} />}
         />
       </Routes>
+      <Footer />
     </>
   );
 }

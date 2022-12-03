@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -8,6 +9,7 @@ import CardPhoto from '../../assets/img/Cardhome.svg'
 import TrincetPhoto from '../../assets/img/Trincets.svg'
 
 const SmartWay = () => {
+  const navigate = useNavigate()
   const classesImages =
     'w-full xl:h-[320px] lg:h-[240px] max-lg:h-[240px] bg-[#363638] rounded-[6.78px] relative overflow-hidden shadow-[-5.42558px_-4.06919px_16.2768px_#181818,0px_18.3113px_16.9549px_rgba(0,0,0,0.29)]'
   const cardDescription =
@@ -41,17 +43,19 @@ const SmartWay = () => {
         <div className="w-full flex md:justify-between flex-wrap mt-8 max-md:justify-center">
           <div
             data-aos="fade-right"
-            data-aos-duration="2000"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
             className={cardClass}
           >
-            <div className={`${classesImages} `}>
+            <div className={`${classesImages}`}>
               <img src={TrincetPhoto} alt="" className="w-full" />
             </div>
             <p className={cardDescription}>KEYCHAINS</p>
           </div>
           <div
             data-aos="zoom-in"
-            data-aos-duration="2000"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
             className={cardClass}
           >
             <div className={`${classesImages} flex justify-end items-end`}>
@@ -61,7 +65,8 @@ const SmartWay = () => {
           </div>
           <div
             data-aos="fade-left"
-            data-aos-duration="2000"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
             className={cardClass}
           >
             <div
@@ -73,7 +78,10 @@ const SmartWay = () => {
           </div>
         </div>
         <div className="flex justify-center items-center my-3 py-10">
-          <button className="bg-[#0B0B0B] shadow-[-12.8629px_-10.5242px_24.5564px_rgba(72,72,72,0.25),7.01613px_8.18548px_24.5564px_#000000] text-white font-[Jura] text-[28px] rounded-[5.84px] font-normal py-2 px-10">
+          <button
+            className="bg-[#0B0B0B] shadow-[-12.8629px_-10.5242px_24.5564px_rgba(72,72,72,0.25),7.01613px_8.18548px_24.5564px_#000000] text-white font-[Jura] text-[28px] rounded-[5.84px] font-normal py-2 px-10 hover:scale-110 transition duration-500 ease-in-out"
+            onClick={() => navigate('/products')}
+          >
             Order
           </button>
         </div>

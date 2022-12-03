@@ -1,9 +1,7 @@
-@import "../variables";
+@import '../variables';
 
-#header {
-  .navbar {
-    a {
-      font-family: $j;
-    }
+.menu {
+  .active {
+    text-decoration: underline;
   }
 }
