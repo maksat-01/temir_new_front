@@ -12,7 +12,7 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
     register,
     formState: { errors },
   } = useForm();
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState({ email: "" });
 
   console.log(getIdUserParams());
   const closeModal = (e: any) => {
@@ -27,7 +27,7 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
 
   const postEmail = async (e: any) => {
     e.preventDefault();
-    API.post(`/password_reset/`, email)
+    API.post(`password_reset/`, email.email)
       .then((res) => {
         alert("SUCC");
         console.log(res);
@@ -55,23 +55,24 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
           >
             Close
           </p>
-          <form onSubmit={postEmail}>
-            <input
-              type="email"
-              placeholder="Enter email"
-              {...register("password", { required: true })}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full py-[16px] pl-[14px] mb-[46px] rounded-[5px] text-black"
-            />
-            <div className="flex justify-center">
-              <button
-                type="submit"
-                className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[65px] "
-              >
-                Next
-              </button>
-            </div>
-          </form>
+          {/* <form onSubmit={postEmail}> */}
+          <input
+            type="email"
+            placeholder="Enter email"
+            // {...register("email", { required: true })}
+            onChange={(e) => setEmail({ email: e.target.value })}
+            className="w-full py-[16px] pl-[14px] mb-[46px] rounded-[5px] text-black"
+          />
+          <div className="flex justify-center">
+            <button
+              // type="submit"
+              onClick={postEmail}
+              className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[65px] "
+            >
+              Next
+            </button>
+          </div>
+          {/* </form> */}
         </div>
       </div>
     </div>

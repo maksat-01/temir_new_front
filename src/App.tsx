@@ -5,7 +5,6 @@ import Header from "./components/header/index";
 import Home from "./pages/home/home";
 import ProductPage from "./pages/productPage/productPage";
 import About from "./pages/about/about";
-import Contact from "./components/contact/contact";
 import Basket from "./pages/basket/basket";
 import Media from "./components/media/Media";
 import MediaCardImage from "./components/media/MediaCardImage";
@@ -13,11 +12,42 @@ import MediaCardVideos from "./components/media/MediaCardVideo";
 import Company from "./components/compony/Company";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
 import Footer from "./pages/home/Footer";
-import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 import AdminProduct from "./components/adminProduct/AdminProduct";
+import HeaderAdmin from "./components/ui/HeaderAdmin";
+import ContactAdmin from "./components/adminContact/PhoneNumbersAdmin";
+import AdminEmail from "./components/adminEmail/AdminEmail";
+import AdminFollows from "./components/adminFollowMe/AdminFollow";
+import AdminSocial from "./components/adminSocial/AdminSocial";
+import Contact from "./pages/home/Contact";
 
 function App() {
+  const listContact = [
+    {
+      dropdown: [
+        {
+          name: "Contact phone",
+          link: "/contact-phone",
+        },
+        {
+          name: "Connect",
+          link: "/connect",
+        },
+        {
+          name: "E-mails",
+          link: "/emailPage",
+        },
+        {
+          name: "Follow me",
+          link: "/follow",
+        },
+        {
+          name: "Social",
+          link: "/social",
+        },
+      ],
+    },
+  ];
   return (
     <>
       {/* <Header /> */}
@@ -51,6 +81,47 @@ function App() {
             <Interface>
               <Company />
             </Interface>
+          }
+        />
+        <Route path="/company" element={<Company />} />
+        <Route
+          path="/contact-phone"
+          element={
+            <HeaderAdmin
+              title="contact"
+              arrayList={listContact}
+              children={<ContactAdmin />}
+            />
+          }
+        />
+        <Route
+          path="/emailPage"
+          element={
+            <HeaderAdmin
+              title="Contact E-mails"
+              arrayList={listContact}
+              children={<AdminEmail />}
+            />
+          }
+        />
+        <Route
+          path="/social"
+          element={
+            <HeaderAdmin
+              title="Social"
+              arrayList={listContact}
+              children={<AdminSocial />}
+            />
+          }
+        />
+        <Route
+          path="/follow"
+          element={
+            <HeaderAdmin
+              title="Follow me"
+              arrayList={listContact}
+              children={<AdminFollows />}
+            />
           }
         />
         <Route
