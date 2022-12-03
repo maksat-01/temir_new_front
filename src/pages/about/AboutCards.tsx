@@ -36,10 +36,10 @@ const AboutCards: FC = () => {
   const classesText =
     'font-[Arial] lg:text-[28px] max-lg:text-[24px] max-md:text-[30px] max-[375px]:text-[24px] font-[700] uppercase'
   return (
-    <section className="bg-[#1E1E1E] py-10">
+    <section className="bg-[#1E1E1E]">
       <div className="lg:container mx-auto max-lg:w-full">
         <div className="bg-black py-2">
-          <div className="flex justify-center flex-wrap py-10">
+          <div className="flex justify-center flex-wrap py-10 md:py-0">
             {cards.map((el) => (
               <div
                 key={el.id}

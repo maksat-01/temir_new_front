@@ -1,7 +1,11 @@
 @import '../variables';
+@import './media.scss';
 
-.menu {
+#header {
   .active {
-    text-decoration: underline;
+    .nav_page {
+      text-decoration: underline;
+      text-underline-position: under;
+    }
   }
 }

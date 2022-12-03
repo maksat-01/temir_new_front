@@ -1,0 +1,29 @@
+@media (min-width: 840px) {
+  #header {
+    .menu {
+      justify-content: space-evenly;
+    }
+    .basket {
+      display: block;
+    }
+    .burger-menu {
+      display: none;
+    }
+  }
+}
+@media (max-width: 840px) {
+  #header {
+    .menu {
+      justify-content: start;
+      .nav_menu {
+        display: none;
+      }
+    }
+    .basket {
+      display: none;
+    }
+    .burger-menu {
+      display: block;
+    }
+  }
+}
