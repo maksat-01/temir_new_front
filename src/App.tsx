@@ -17,17 +17,38 @@ import MediaAdmin from "./components/adminMedia/MediaAdmin";
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route
+          path="/contact"
+          element={
+            <Interface>
+              <Contact />
+            </Interface>
+          }
+        /> */}
         <Route path="/basket" element={<Basket />} />
-        <Route path="/interface" element={<Interface />} />
+        <Route
+          path="/user/:id"
+          element={
+            <Interface>
+              <Contact />
+            </Interface>
+          }
+        />
         <Route path="/signin/:id" element={<SignIn />} />
-        <Route path="/company" element={<Company />} />
+        <Route
+          path="/company"
+          element={
+            <Interface>
+              <Company />
+            </Interface>
+          }
+        />
         <Route
           path="/image"
           element={<Media children={<MediaCardImage />} />}

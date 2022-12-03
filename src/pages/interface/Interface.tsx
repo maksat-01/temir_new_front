@@ -31,10 +31,10 @@ const navs = [
   },
 ];
 
-export default function Interface() {
+export default function Interface({ children }: any) {
   return (
-    <div className="flex justify-center relative overflow-hidden">
-      <div className="max-w-lg w-full h-[100vh] bg-black">
+    <div className="flex justify-center relative ">
+      <div className="max-w-lg w-full min-h-[100vh] bg-black">
         <div
           className="w-full h-[287px] relative flex justify-center items-center"
           style={{
@@ -79,6 +79,7 @@ export default function Interface() {
                 </div>
               ))}
             </div>
+            {children}
           </div>
         </div>
       </div>
