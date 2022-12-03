@@ -1,9 +1,23 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+interface IStateContacts {
+  error: string
+  isLoading: boolean
+  contactUs: IContactUs
+}
+
+interface IContactUs{
+    id: number
+    email: string
+    full_name: string
+    message: string
+}
+
 export const initialState = {
   error: '',
   isLoading: false,
   contactUs: {},
-}
+} as IStateContacts
 
 export const contactUsSlice = createSlice({
   name: 'contactUs',
@@ -12,7 +26,7 @@ export const contactUsSlice = createSlice({
     ContactUsFetching(state) {
       state.isLoading = true
     },
-    ContactUsSuccess(state, action: PayloadAction<any>) {
+    ContactUsSuccess(state, action: PayloadAction<IContactUs>) {
       state.isLoading = false
       state.contactUs = action.payload
     },

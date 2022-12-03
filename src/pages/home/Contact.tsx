@@ -15,11 +15,13 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Inputs>()
   const dispatch = useAppDispatch()
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     dispatch(fetchContactUs(data))
+    reset()
   }
   const classesText =
     'font-light text-sm pb-1.5 tracking-wide font-[Jura] text-[14px]'

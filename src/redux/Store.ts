@@ -14,6 +14,12 @@ import ReducerAdminProduct from "../components/adminProduct/reducer/ReducerAdmin
 import contactUsSlice from "../pages/home/reducerContactUs/contactUsSlice";
 // import getUser from "../pages/interface/getUser/redux/reducer"
 import getUser from "./../pages/interface/getUser/redux/reducer";
+import PhoneNumbersReducer from "../components/adminContact/reducer/ReducerPhoneNumbersAdmin";
+import EmailReducer from "../components/adminEmail/reducer/ReducerAdminEmail";
+import SocialsReducer from "../components/adminSocial/reducer/ReducerSocials";
+import SocialReducer from "../components/adminSocial/reducer/ReduceSocialId";
+import productSlice from '../pages/productPage/reducer/productSlice';
+import productDetailSlice from '../pages/productDetail/reducer/productDetailSlice';
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -28,6 +34,12 @@ const rootReducer = combineReducers({
   ReducerAdminProduct,
   contactUsSlice,
   getUser,
+  PhoneNumbersReducer,
+  EmailReducer,
+  SocialsReducer,
+  SocialReducer,
+  productSlice,
+  productDetailSlice,
 });
 
 export const setUpStore = () => {
