@@ -38,22 +38,22 @@ const Footer = () => {
                 <div className="footer flex items-center content-center flex-col py-24">
                     <div className="flex items-center content-center">
                         {
-                            menuLeft.map(el => (
-                                <Link to={"/"} className="px-8 uppercase text-sm tracking-tight max-sm:hidden">{el.title}</Link>
+                            menuLeft.map((el, idx) => (
+                                <Link to={"/"} key={idx} className="px-8 uppercase text-sm tracking-tight max-sm:hidden">{el.title}</Link>
 
                             ))
                         }
                         <h1 className="px-12 font-normal text-3xl max-md:px-3">TEMIR LLC</h1>
                         {
-                            menuRight.map(el => (
-                                <Link to={"/"} className="px-8 uppercase text-sm tracking-tight max-sm:hidden">{el.title}</Link>
+                            menuRight.map((el,idx) => (
+                                <Link to={"/"} key={idx} className="px-8 uppercase text-sm tracking-tight max-sm:hidden">{el.title}</Link>
                             ))
                         }
                     </div>
                     <div className="py-5">
                         {
-                            des.map(el => (
-                                <div>
+                            des.map((el, idx) => (
+                                <div key={idx}>
                                     <p className="w-72 text-gray-500 text-center pb-0.5 text-xl uppercase tracking-tight">{el.subtitle}</p>
                                     <p className="w-72 text-gray-500 leading-8 text-center  text-xl uppercase tracking-tight">{el.subtitle2}</p>
                                 </div>

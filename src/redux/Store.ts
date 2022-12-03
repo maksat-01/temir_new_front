@@ -12,6 +12,8 @@ import ReducerMediaImage from "../components/adminMedia/reducer/ReducerMediaImag
 import ReducerMediaVideo from "../components/adminMedia/reducer/ReucerMediaVideo";
 import ReducerAdminProduct from "../components/adminProduct/reducer/ReducerAdminProduct";
 import contactUsSlice from '../pages/home/reducerContactUs/contactUsSlice';
+import productSlice from '../pages/productPage/reducer/productSlice';
+import productDetailSlice from '../pages/productDetail/reducer/productDetailSlice';
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -25,6 +27,8 @@ const rootReducer = combineReducers({
   ReducerMediaVideo,
   ReducerAdminProduct,
   contactUsSlice,
+  productSlice,
+  productDetailSlice,
 });
 
 export const setUpStore = () => {
