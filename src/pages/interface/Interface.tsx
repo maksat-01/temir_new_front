@@ -1,8 +1,13 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import CompanyIcon from "../../assets/svg/CompanyIcon";
 import ContactsIcon from "../../assets/svg/ContactsIcon";
 import MediaIcon from "../../assets/svg/MediaIcon";
 import QrCodeIcon from "../../assets/svg/QrCodeIcon";
 import SecondaryLogo from "../../assets/svg/SecondaryLogo";
+import { useAppDispatch } from "../../hooks";
+import { getUser } from "./getUser/redux/reducer";
 
 const navs = [
   {
@@ -32,6 +37,24 @@ const navs = [
 ];
 
 export default function Interface({ children }: any) {
+  const { id } = useParams();
+  const [user, setUser] = useState(null);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // dispatch(getUser.actions.getUser);
+    axios
+      .get(`http://64.227.177.107:8000/usser/${id}`)
+      .then(({ data }) => {
+        console.log("user", data);
+        setUser(data);
+        dispatch(getUser.actions.getUserSucceseded(data));
+      })
+      .catch((error) => {
+        dispatch(getUser.actions.getUserError(error));
+      });
+  }, []);
+
   return (
     <div className="flex justify-center relative ">
       <div className="max-w-lg w-full min-h-[100vh] bg-black">
@@ -72,11 +95,13 @@ export default function Interface({ children }: any) {
             >
               Software engneer
             </h4>
-            <div className="">
+            <div className="flex gap-2">
               {navs.map((el, index) => (
-                <div className="w-[100px] h-[100px] rounded-full flex justify-center items-center bg-red-500 my-5">
-                  {el.icon}
-                </div>
+                <a href="">
+                  <div className="w-[70px] h-[70px] rounded-full flex justify-center items-center border-gray-400 cursor-pointer border-2 my-5">
+                    {el.icon}
+                  </div>
+                </a>
               ))}
             </div>
             {children}

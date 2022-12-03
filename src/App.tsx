@@ -53,16 +53,26 @@ function App() {
             </Interface>
           }
         />
-        <Route
+
+        
+        {/* <Route
           path="/image"
           element={<Media children={<MediaCardImage />} />}
-        />
+        /> */}
+
         <Route
+          path="/user/:id/media"
+          element={<Media children={<MediaCardImage />} />}
+        />
+
+        {/* <Route
           path="/video"
           element={<Media children={<MediaCardVideos />} />}
-        />
+        /> */}
+
+        
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

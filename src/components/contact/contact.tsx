@@ -9,9 +9,10 @@ import { getActionCall } from "./reducer/AcctionCall";
 
 const Contact = () => {
   const dispatch = useAppDispatch();
-  const { bankAcc, bankCart, email, phone } = useAppSelector(
-    (state) => state.ReducerContact
-  );
+  // const { bankAcc, bankCart, email, phone } = useAppSelector(
+  //   (state) => state.ReducerContact
+  // );
+  const { user } = useAppSelector((state) => state.getUser);
 
   useEffect(() => {
     dispatch(getActionBankAccount());
@@ -21,11 +22,11 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="max-w-[419px] mx-auto px-[22px]">
-      <Accordion title="Bank cart" array={bankCart} />
-      <Accordion title="E-amil" array={email} />
-      <Accordion title="Bank details" array={bankAcc} />
-      <Accordion title="Call" array={phone} />
+    <div className="max-w-[600px] w-full  mx-auto px-[5px]">
+      <Accordion title="Bank cart" array={user.user_email} />
+      <Accordion title="E-amil" array={user.user_email} />
+      <Accordion title="Bank details" array={user.user_email} />
+      <Accordion title="Call" array={user.user_phone} />
     </div>
   );
 };
