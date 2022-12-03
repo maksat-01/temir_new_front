@@ -19,7 +19,8 @@ import ContactAdmin from "./components/adminContact/PhoneNumbersAdmin";
 import AdminEmail from "./components/adminEmail/AdminEmail";
 import AdminFollows from "./components/adminFollowMe/AdminFollow";
 import AdminSocial from "./components/adminSocial/AdminSocial";
-import Contact from "./pages/home/Contact";
+import Contact from "./components/contact/contact";
+// import Contact from "./pages/home/Contact";
 
 function App() {
   const listContact = [
