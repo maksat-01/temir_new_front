@@ -31,7 +31,6 @@ class Icon extends React.Component<{ id: any, open: any }> {
 
 const Faq = () => {
     const [open, setOpen] = useState(0);
-    const [scroll, setScroll] = useState(0);
     const handleOpen = ({value}: { value: any }) => {
         setOpen(open === value ? 0 : value);
     };
@@ -39,19 +38,16 @@ const Faq = () => {
         AOS.init()
     }, [])
 
-    window.addEventListener("scroll", () => {
-        setScroll(window.scrollY)
-    })
 
 
     return (
-        <section id="faq">
+        <section id="faq" className='overflow-hidden'>
             <div className="container">
                 {/*ml-[150px] mt-[100px] w-[100%]*/}
                 <h1 className="font-bold text-7xl tracking-tight mb-14 max-md:text-6xl max-[391px]:text-[40px] max-[391px]:pb-20">How it works</h1>
                 <div className="flex items-start justify-between relative py-10 flex-wrap ">
                     <div className="max-[391px]:block max-[834px]:flex max-[834px]:flex-row-reverse max-[834px]:items-start max-[834px]:justify-between max-[834px]:w-[100%]">
-                        <div className="flex items-center max-[391px]:w-[30%]  max-[391px]:flex-col items-start max-[390px]:w-[23%] max-[834px]:flex-col max-[834px]:mt-32 max-lg:w-[50%]">
+                        <div className="flex max-[391px]:w-[30%]  max-[391px]:flex-col items-start max-[390px]:w-[23%] max-[834px]:flex-col max-[834px]:mt-32 max-lg:w-[50%]">
                             <div className="flex items-center justify-center flex-col mr-16 max-[391px]:mr-6 max-[391px]:mr-0] max-[391px]:flex max-[391px]:justify-center max-[391px]:mb-5 max-lg:w-[70%] max-[834px]:mb-5">
                                 <img src={faqLogo1} alt="img"/>
                                 <h5 className="mt-3.5 max-[391px]:text-[10px] max-lg:text-[13px]">Tap your card</h5>

@@ -1,0 +1,30 @@
+#about {
+  .about {
+    &__cards {
+      transition: 0.4s all;
+      &:hover {
+        width: 70%;
+        position: relative;
+        .desc {
+          z-index: 1;
+          opacity: 1;
+        }
+        .image {
+          width: 45%;
+          img {
+            width: 100%;
+          }
+        }
+        h2 {
+          position: absolute;
+          font-size: calc(16px + 36 * (100vw / 1360));
+          top: 0;
+          right: 2%;
+        }
+        h3 {
+          font-size: calc(16px + 36 * (100vw / 1360));
+        }
+      }
+    }
+  }
+}

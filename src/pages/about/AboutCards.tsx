@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 //local
+import '../../style/about/about.scss'
 import SmartCard from '../../assets/img/smartCardAbout.svg'
 import SmartTags from '../../assets/img/smartCardsAbout.svg'
 import SmartKeychain from '../../assets/img/smartKeychainAbout.svg'
@@ -36,26 +37,33 @@ const AboutCards: FC = () => {
   const classesText =
     'font-[Arial] lg:text-[28px] max-lg:text-[24px] max-md:text-[30px] max-[375px]:text-[24px] font-[700] uppercase'
   return (
-    <section className="bg-[#1E1E1E]">
+    <section id="about" className="bg-[#1E1E1E] lg:py-16">
       <div className="lg:container mx-auto max-lg:w-full">
         <div className="bg-black py-2">
-          <div className="flex justify-center flex-wrap py-10 md:py-0">
+          <div className="about flex justify-center py-6 px-20">
             {cards.map((el) => (
               <div
                 key={el.id}
                 className={`${
                   el.id === 2 ? 'bg-[#1D1D1D]' : 'bg-[#C6C6C6]'
-                } w-[28%] max-xl:w-[30%] flex flex-col p-3 max-lg:p-2 max-md:w-[40%] max-sm:w-[60%] max-[480px]:w-[70%] max-[375px]:w-[80%] max-md:my-4`}
+                } about__cards w-[28%] h-[500px] max-xl:h-[470px] max-lg:h-[450px] cursor-pointer relative overflow-hidden max-xl:w-[30%] flex flex-col p-3 max-lg:p-2 max-md:w-[40%] max-sm:w-[60%] max-[480px]:w-[70%] max-[375px]:w-[80%] max-md:my-4`}
               >
-                <div className="bg-[#363638] md:mb-28">
+                <div className="bg-[#363638] image md:mb-28">
                   <img src={el.image} alt="Smart_card" className="w-full" />
                 </div>
+                <p
+                  className={`desc ${
+                    el.id === 2 ? 'text-[#C6C6C6]' : 'text-[#1D1D1D]'
+                  } w-[290px] max-xl:w-[220px] z-[-10] opacity-0 font-[Arial] text-[16px] font-normal absolute top-20 right-3 text-justify`}
+                >
+                  {el.desciption}
+                </p>
                 <div
                   className={`${
                     el.id === 2 ? 'text-[#C6C6C6]' : 'text-[#1D1D1D]'
                   } ${classesText} flex items-center max-md:py-6`}
                 >
-                  <h2>{el.code}</h2>
+                  <h2 className="code">{el.code}</h2>
                   <span className="lg:hidden text-[20px] cursor-pointer lowercase h-[25px] mx-5 leading-[20px] flex relative active:opacity-50 transition">
                     more
                     <HiOutlineArrowNarrowRight className="text-[25px] ml-2" />

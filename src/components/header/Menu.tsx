@@ -52,7 +52,7 @@ const Menu: FC<IProps> = ({ setBurgerMenu, burgerMenu }) => {
       className={`absolute top-0 left-0 z-[1300] transition-[0.4s] ease-in-out ${
         burgerMenu
           ? 'translate-y-0 rounded-none'
-          : 'translate-y-[-150%] rounded-[50%]'
+          : 'translate-y-[-250%] rounded-[50%]'
       }`}
     >
       <div
