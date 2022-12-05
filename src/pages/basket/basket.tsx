@@ -7,27 +7,13 @@ import BasketCard from './BasketCard'
 import BasketEmpty from './BasketEmpty'
 import BasketTotal from './BasketTotal'
 import BaskTitle from './BaskTitle'
+import {useAppSelector} from "../../hooks";
+import {ReducerBasket} from "./ReducerBasket/BasketSlice";
 
 const Basket: FC = () => {
   const navigate = useNavigate()
-  const basket: any[] = [
-    {
-      id: 1,
-      image: TemirBlack,
-      name: 'Premium Smart card',
-      view: 'Gold Brushed',
-      price: 200,
-      quantity: 1,
-    },
-    {
-      id: 2,
-      image: TemirBlack,
-      name: 'Premium Smart card',
-      view: 'Gold Brushed',
-      price: 200,
-      quantity: 1,
-    },
-  ]
+  const {basket} = useAppSelector(s => s.ReducerBasket)
+
   const ClassesBtn =
     'font-[Jura] text-[30px] bg-[#0B0B0B] shadow-[-10.93px_-8.94274px_20.8664px_rgba(72,72,72,0.25),5.96183px_6.95546px_20.8664px_#000000] rounded-[5px] py-2 px-8 hover:scale-110 hover:bg-transparent transition duration-500 ease-in-out'
   const returnProduct = () => {
@@ -49,7 +35,7 @@ const Basket: FC = () => {
               <div className="before:content-[''] absolute border border-white rounded-sm top-0 left-0 right-0"></div>
               <div>
                 {basket.length ? (
-                  basket.map((el) => <BasketCard el={el} key={el.id} />)
+                  basket.map((el:any, idx:number) => <BasketCard el={el} key={idx} idx={idx} />)
                 ) : (
                   <BasketEmpty />
                 )}
