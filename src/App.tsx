@@ -26,7 +26,7 @@ import Contact from "./pages/home/Contact";
 import AdminCompanyInformation from "./components/adminCompanyInformation/AdminCompanyInformation";
 import AddedAdminCompany from "./components/adminCompanyInformation/AddedAdminCompany";
 import MenuListAdmin from "./components/ui/MenuListAdmin";
-import Contact from "./components/contact/contact";
+// import Contact from "./components/contact/contact";
 // import Contact from "./pages/home/Contact";
 
 function App() {
@@ -165,9 +165,7 @@ function App() {
             />
           }
         />
-          path="/image"
-          element={<Media children={<MediaCardImage />} />}
-        />
+          
 
         <Route
           path="/user/:id/media"
