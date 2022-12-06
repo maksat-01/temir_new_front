@@ -7,7 +7,7 @@ interface FollowTypes {
   title: string;
   user: string;
   url: string;
-  social: string;
+  messenger: string;
 }
 
 interface FollowState {

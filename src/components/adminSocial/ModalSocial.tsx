@@ -18,7 +18,10 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
   const [active, setActive] = useState(false);
   const [nameSocial, setNameSocial] = useState({ id: "", label: "" });
   const [socials, setSocials] = useState("");
-  const [socialCategory, setSocailCategory] = useState([]);
+  const [socialCategory, setSocailCategory] = useState([
+    { name: "instagram" },
+    { name: "facebook" },
+  ]);
   const [descSocail, setDescSocail] = useState("");
 
   const showMessenger = (
@@ -27,15 +30,15 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
   ) => {
     switch (items.label) {
       case "whatsapp":
-        return setSocials(`https://wa.me/${event?.target?.value}`);
-      case "telegram":
-        return setSocials(`https://ta.me/${event?.target?.value}/`);
+        return setSocials(`https://www.instagram/${event?.target?.value}`);
+      case "facebook":
+        return setSocials(`https://www.facebook/${event?.target?.value}/`);
       default:
         return setSocials(`${event?.target?.value}`);
     }
   };
 
-  const postMessenger = () => {
+  const postSocial = () => {
     API.post("social/", {
       user: getIdUserParams(),
       title: descSocail,
@@ -58,17 +61,6 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
       });
   };
 
-  useEffect(() => {
-    API.get("social-category/")
-      .then((response) => {
-        setSocailCategory(response.data.results);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Error");
-      });
-  }, []);
-
   return (
     <div
       className={`modal ${
@@ -77,7 +69,7 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
     >
       <div className="max-w-[500px] mx-auto relative">
         <div className="w-[100%] flex justify-between items-center pb-[25px]">
-          <p className="text-[24px]">Add messenger</p>
+          <p className="text-[24px]">Add social</p>
           <p className="font-[400]" onClick={() => setModal(false)}>
             Close
           </p>
@@ -86,7 +78,7 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
           <div className="font-medium text-black">
             <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[17px]">
               <label className="pl-[16px] text-[12px] text-[#6750A4]">
-                Messenger name:
+                Social name:
               </label>
               <input
                 type="text"
@@ -129,7 +121,7 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
         </div>
         <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[17px]">
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
-            Messenger title:
+            Social title:
           </label>
           <input
             type="text"
@@ -153,7 +145,7 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
         </div>
         <div className="w-full flex justify-center">
           <button
-            onClick={postMessenger}
+            onClick={postSocial}
             className="bg-white text-black rounded-[50px] px-[35px] py-[10px]"
           >
             Add

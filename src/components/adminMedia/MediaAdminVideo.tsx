@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/youtube";
+import { useNavigate } from "react-router-dom";
 import APlusSvg from "../../assets/svg/AplusSvg";
 
 import { useAppDispatch, useAppSelector } from "../../hooks";
@@ -10,6 +11,7 @@ import ModalUpdateImage from "./modal/ModalUpdateImage";
 import { getActionMediaVideo } from "./reducer/ActionMediaVideo";
 
 export default function MediaAdminVideo() {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { video } = useAppSelector((state) => state.ReducerVideo);
   const [update, setUpdate] = useState(false);
@@ -35,6 +37,10 @@ export default function MediaAdminVideo() {
 
   return (
     <div className="max-w-[400px] mx-auto">
+      <div>
+        <p onClick={() => navigate("/admin-video")}>Video</p>
+        <p onClick={() => navigate("/admin-photo")}>Photo</p>
+      </div>
       <div
         className={`flex justify-center items-end relative  ${
           video.length <= 1 && "min-h-[70vh]"
