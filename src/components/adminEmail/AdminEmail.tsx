@@ -47,7 +47,7 @@ export default function AdminEmail() {
     <div className="mt-[38px]">
       <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[17px]">
         <label className="pl-[16px] text-[12px] text-[#6750A4]">
-          Work phone:
+          Work E-mail:
         </label>
         <input
           type="text"
@@ -57,10 +57,9 @@ export default function AdminEmail() {
           onChange={(e) => console.log(e.target.value)}
         />
       </div>
-
       <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[33px]">
         <label className="pl-[16px] text-[12px] text-[#6750A4]">
-          Personal phone:
+          Personal E-mail:
         </label>
         <input
           type="text"
@@ -70,12 +69,10 @@ export default function AdminEmail() {
           onChange={(e) => console.log(e.target.value)}
         />
       </div>
-
       <p className="text-center pb-[18px]">Add Additional E-mail</p>
-
       <div className="text-black py-[8px] bg-[#E7E0EC] rounded-t-[4px] flex flex-col items-center">
         <label className="pl-[16px] text-[12px] text-[#6750A4]">
-          Phone title:
+          E-mail title:
         </label>
         <input
           type="text"
@@ -87,7 +84,7 @@ export default function AdminEmail() {
         />
       </div>
       <div className="text-black py-[8px] bg-[#E7E0EC] rounded-b-[4px] mb-[33px] flex flex-col items-center">
-        <label className="text-[12px] text-[#6750A4] ">Phone:</label>
+        <label className="text-[12px] text-[#6750A4] ">E-mail:</label>
         <input
           type="text"
           value={number.email}

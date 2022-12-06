@@ -7,7 +7,7 @@ interface CompanyDetailsTypes {
   activity?: string;
   description?: string;
   visit_website_url?: string;
-  adress_url?: string;
+  address_url?: string;
   is_main?: boolean;
   image?: string;
 }
@@ -15,13 +15,13 @@ interface CompanyDetailsTypes {
 interface CompanyDetailsState {
   details: CompanyDetailsTypes;
   error: string;
-  isLoading: boolean;
+  isLoading?: boolean;
 }
 
 export const initialState: CompanyDetailsState = {
   error: "",
-  isLoading: false,
   details: {},
+  isLoading: false,
 };
 
 export const CompanyDetailsReducer = createSlice({

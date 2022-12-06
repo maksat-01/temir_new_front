@@ -1,7 +1,6 @@
 import { Key, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../hooks";
 
+import { useAppDispatch } from "../../hooks";
 import API from "../api/Api";
 import { getIdUserParams } from "../helper";
 import { getActionFollows } from "./reducer/ActionFollows";
@@ -18,7 +17,10 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
   const [active, setActive] = useState(false);
   const [nameMessenger, setNameMessenger] = useState({ id: "", label: "" });
   const [messengers, setMessengers] = useState("");
-  const [socialCategory, setSocailCategory] = useState([]);
+  const [messangerCategory, setMessengerCategory] = useState([
+    { name: "whatsapp" },
+    { name: "telegram" },
+  ]);
   const [descMessenger, setDescMessenger] = useState("");
 
   const showMessenger = (
@@ -27,18 +29,18 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
   ) => {
     switch (items.label) {
       case "whatsapp":
-        return setMessengers(`https://whatsapp/${event?.target?.value}`);
-      case "instagram":
         return setMessengers(
-          `https://www.instagram.com/${event?.target?.value}/`
+          `https://www.whatsapp.com/${event?.target?.value}`
         );
+      case "instagram":
+        return setMessengers(`https://t.ma/${event?.target?.value}/`);
       default:
         return setMessengers(`${event?.target?.value}`);
     }
   };
 
   const postMessenger = () => {
-    API.post("social/", {
+    API.post("messanger/", {
       user: getIdUserParams(),
       title: descMessenger,
       url: messengers,
@@ -60,16 +62,7 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
       });
   };
 
-  useEffect(() => {
-    API.get("social-category/")
-      .then((response) => {
-        setSocailCategory(response.data.results);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Error");
-      });
-  }, []);
+  console.log(messengers, "ME");
 
   return (
     <div
@@ -110,7 +103,7 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
               style={{ display: active ? "block" : "none" }}
               className={`bg-white overflow-y-auto max-h-60 mt-[-17px] absolute w-[100%]`}
             >
-              {socialCategory?.map(
+              {messangerCategory?.map(
                 (item: any, index: Key | null | undefined) => (
                   <li
                     onClick={() =>

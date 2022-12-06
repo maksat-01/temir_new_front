@@ -1,46 +1,49 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface CompanyTypes {
+interface CompanyAdminTypes {
   id: string;
   user: string;
   name: string;
   activity: string;
   description: string;
+  title: string;
   visit_website_url: string;
   address_url: string;
-  is_main: boolean;
-  image: string;
+  is_main: string;
 }
 
-interface CompanyState {
-  company: CompanyTypes[];
+interface CompanyAdminState {
+  company: CompanyAdminTypes;
   error: string;
   isLoading: boolean;
 }
 
-export const initialState: CompanyState = {
+export const initialState: CompanyAdminState = {
   error: "",
   isLoading: false,
-  company: [],
-};
+  company: {},
+} as CompanyAdminState;
 
-export const CompanyReducer = createSlice({
+export const CompanyAdminInformationReducer = createSlice({
   name: "Company",
   initialState,
   reducers: {
-    CompanyFetching(state) {
+    CompanyAdminInformationFetching(state) {
       state.isLoading = true;
     },
-    CompanySuccess(state, action: PayloadAction<CompanyTypes[]>) {
+    CompanyAdminInformationSuccess(
+      state,
+      action: PayloadAction<CompanyAdminTypes>
+    ) {
       state.isLoading = false;
       state.error = "";
       state.company = action.payload;
     },
-    CompanyError(state, action: PayloadAction<any>) {
+    CompanyAdminInformationError(state, action: PayloadAction<any>) {
       state.isLoading = false;
       state.error = action.payload;
     },
   },
 });
 
-export default CompanyReducer.reducer;
+export default CompanyAdminInformationReducer.reducer;

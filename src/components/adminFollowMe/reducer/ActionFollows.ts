@@ -5,7 +5,7 @@ import { FollowsReducer } from "./ReducerFollows";
 export const getActionFollows = () => async (dispatch: AppDispatch) => {
   try {
     dispatch(FollowsReducer.actions.FollowsFetching);
-    const response = await API(`social/`);
+    const response = await API(`messanger/`);
     dispatch(FollowsReducer.actions.FollowsSuccess(response.data.results));
   } catch (e: any) {
     dispatch(FollowsReducer.actions.FollowsError(e.massage));

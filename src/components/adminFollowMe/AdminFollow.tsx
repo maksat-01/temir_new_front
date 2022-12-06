@@ -15,14 +15,14 @@ export default function AdminFollows() {
   const [modal, setModal] = useState(false);
   const [modalChange, setModalChange] = useState(false);
   const [messengerId, setMessengerId] = useState("");
-  const { socials } = useAppSelector((state) => state.SocialsReducer);
+  const { folows } = useAppSelector((state) => state.ReducerFollows);
 
   useEffect(() => {
     dispatch(getActionFollows());
   }, []);
 
   const deletedPost = (id: any) => {
-    API.delete(`social/${id}`)
+    API.delete(`messanger/${id}`)
       .then(() => {
         dispatch(getActionFollows());
       })
@@ -31,9 +31,11 @@ export default function AdminFollows() {
       });
   };
 
+  console.log(folows, "F");
+
   return (
     <div className="mt-[31px] relative">
-      {socials.map((items) => (
+      {folows.map((items) => (
         <div key={items.id} className="flex justify-between">
           <div className="text-black py-[8px] w-full bg-[#E7E0EC] mb-[22px] rounded-[4px] flex flex-col">
             <label className="pl-[16px] text-[12px] text-[#6750A4]">

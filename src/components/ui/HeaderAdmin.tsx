@@ -1,3 +1,4 @@
+import DropDownCompany from "./DropDowmCompany";
 import DropDown from "./DropDown";
 interface IListMenu {
   dropdown: any;
@@ -6,12 +7,14 @@ interface IHeaderAdmin {
   children?: JSX.Element;
   title: string;
   arrayList?: IListMenu[];
+  listCompany?: boolean;
 }
 
 export default function HeaderAdmin({
   children,
   title,
   arrayList,
+  listCompany,
 }: IHeaderAdmin) {
   return (
     <div>
@@ -22,6 +25,7 @@ export default function HeaderAdmin({
             {arrayList?.map((item, index: any) => (
               <DropDown items={item.dropdown} key={index} />
             ))}
+            {listCompany && <DropDownCompany />}
           </div>
         </div>
       </div>

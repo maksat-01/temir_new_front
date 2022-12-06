@@ -19,16 +19,16 @@ export default function ModalChangeMessnger({
   postId,
 }: IModalApp) {
   const dispatch = useAppDispatch();
-  const { socialId } = useAppSelector((state) => state.SocialReducer);
+  const { folow } = useAppSelector((state) => state.ReducerFollow);
   const [update, setUpdate] = useState({
-    title: `${socialId.title}`,
+    title: `${folow.title}`,
     id: postId,
     user: getIdUserParams(),
-    url: `${socialId.url}`,
+    url: `${folow.url}`,
   });
 
   const updatePost = () => {
-    API.patch(`social/${postId}`, update)
+    API.patch(`messanger/${postId}`, update)
       .then((res) => {
         alert("Success");
         dispatch(getActionFollow(postId));
@@ -65,7 +65,7 @@ export default function ModalChangeMessnger({
             </label>
             <input
               type="text"
-              defaultValue={socialId.title}
+              defaultValue={folow.title}
               placeholder="Enter your nickname..."
               style={{ resize: "none" }}
               className={`bg-transparent overflow-x-auto w-[100%] pl-[16px] max-h-auto`}
@@ -78,7 +78,7 @@ export default function ModalChangeMessnger({
             </label>
             <input
               type="text"
-              defaultValue={socialId.url}
+              defaultValue={folow.url}
               placeholder="Enter your nickname..."
               style={{ resize: "none" }}
               className={`bg-transparent overflow-x-auto w-[100%] pl-[16px] max-h-auto`}
