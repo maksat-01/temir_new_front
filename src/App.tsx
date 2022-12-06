@@ -84,9 +84,6 @@ function App() {
             </Interface>
           }
         />
-
-        
-        {/* <Route
         <Route path="/company" element={<Company />} />
         <Route
           path="/contact-phone"
@@ -131,7 +128,7 @@ function App() {
         <Route
           path="/image"
           element={<Media children={<MediaCardImage />} />}
-        /> */}
+        />
 
         <Route
           path="/user/:id/media"
