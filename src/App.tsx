@@ -22,12 +22,11 @@ import ContactAdmin from "./components/adminContact/PhoneNumbersAdmin";
 import AdminEmail from "./components/adminEmail/AdminEmail";
 import AdminFollows from "./components/adminFollowMe/AdminFollow";
 import AdminSocial from "./components/adminSocial/AdminSocial";
-import Contact from "./pages/home/Contact";
 import AdminCompanyInformation from "./components/adminCompanyInformation/AdminCompanyInformation";
 import AddedAdminCompany from "./components/adminCompanyInformation/AddedAdminCompany";
 import MenuListAdmin from "./components/ui/MenuListAdmin";
 import Contact from "./components/contact/contact";
-// import Contact from "./pages/home/Contact";
+import AdminBanks from "./components/adminBanks/AdminBanks";
 
 function App() {
   const listContact = [
@@ -70,14 +69,6 @@ function App() {
           path="/video"
           element={<Media children={<MediaCardVideos />} />}
         />
-        {/* <Route
-          path="/contact"
-          element={
-            <Interface>
-              <Contact />
-            </Interface>
-          }
-        /> */}
         <Route path="/basket" element={<Basket />} />
         <Route
           path="/user/:id"
@@ -96,13 +87,8 @@ function App() {
           }
         />
         <Route path="/signin/:id" element={<SignIn />} />
-       
-        {/* <Route
-        <Route path="/company" element={<Company />} />
-        {/* //// admin /// */}
         <Route path="/" element={<MediaAdminImage />} />
         <Route path="/" element={<MediaAdminVideo />} />
-
         <Route
           path="/contact-phone"
           element={
@@ -143,7 +129,6 @@ function App() {
             />
           }
         />
-
         {/* /// Product /// */}
         <Route
           path="/company-information/:id"
@@ -168,18 +153,21 @@ function App() {
           path="/image"
           element={<Media children={<MediaCardImage />} />}
         />
-
         <Route
           path="/user/:id/media"
           element={<Media children={<MediaCardImage />} />}
         />
-
-        {/* <Route
-          path="/video"
-          element={<Media children={<MediaCardVideos />} />}
-        /> */}
+        <Route
+          path="/bank-details"
+          element={
+            <HeaderAdmin
+              title="Bank details/cards"
+              listCompany
+              children={<AdminBanks />}
+            />
+          }
+        />
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 }

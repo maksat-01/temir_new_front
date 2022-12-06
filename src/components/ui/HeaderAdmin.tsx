@@ -29,7 +29,7 @@ export default function HeaderAdmin({
           </div>
         </div>
       </div>
-      <div className="max-w-[450px] mx-auto">{children}</div>
+      <div className="max-w-[500px] mx-auto">{children}</div>
     </div>
   );
 }
