@@ -11,15 +11,8 @@ import {
 } from "../helper";
 import "./style.scss";
 
-interface DropdownProps {
-  activeClass?: any;
-  items?: any;
-  onClick?: () => void;
-}
-
-export default function DropDownCompany(props: DropdownProps) {
+export default function DropDownCompany() {
   const dispatch = useAppDispatch();
-  const { activeClass, items, onClick } = props;
   const [active, setActive] = useState(false);
   const navigate = useNavigate();
   const { company } = useAppSelector((state) => state.ReducerCompany);
@@ -54,6 +47,16 @@ export default function DropDownCompany(props: DropdownProps) {
         style={{ display: active ? "block" : "none" }}
         className={`z-[100] bg-white mt-2 overflow-y-auto max-h-60 absolute w-[100%] rounded-[4px]`}
       >
+        <li
+          className="p-2 text-sm text-black cursor-pointer"
+          onClick={() => {
+            navigate(`/bank-details`);
+            setActive(false);
+          }}
+        >
+          Bank details/cards
+        </li>
+
         {filterCompanyList?.map((item: any, index: Key | null | undefined) => (
           <li
             onClick={() => {

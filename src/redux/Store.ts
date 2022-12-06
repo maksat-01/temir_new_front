@@ -18,15 +18,12 @@ import PhoneNumbersReducer from "../components/adminContact/reducer/ReducerPhone
 import EmailReducer from "../components/adminEmail/reducer/ReducerAdminEmail";
 import SocialsReducer from "../components/adminSocial/reducer/ReducerSocials";
 import SocialReducer from "../components/adminSocial/reducer/ReduceSocialId";
-import contactUsSlice from "../pages/home/reducerContactUs/contactUsSlice";
-import productSlice from "../pages/productPage/reducer/productSlice";
-import productDetailSlice from "../pages/productDetail/reducer/productDetailSlice";
 import ReducerCompanies from "../components/adminCompanyInformation/reducer/ReducerCompanies";
 import ReducerCompanyInformation from "../components/adminCompanyInformation/reducer/ReducerCompanyInformation";
 import ReducerFollow from "../components/adminFollowMe/reducer/ReducerFollow";
 import ReducerFollows from "../components/adminFollowMe/reducer/ReducerFollows";
-import productSlice from '../pages/productPage/reducer/productSlice';
-import productDetailSlice from '../pages/productDetail/reducer/productDetailSlice';
+import productSlice from "../pages/productPage/reducer/productSlice";
+import productDetailSlice from "../pages/productDetail/reducer/productDetailSlice";
 
 const rootReducer = combineReducers({
   ReducerImage,
