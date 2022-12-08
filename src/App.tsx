@@ -89,10 +89,8 @@ function App() {
           }
         />
         <Route path="/signin/:id" element={<SignIn />} />
-        <Route path="/" element={<MediaAdminImage />} />
-        <Route path="/" element={<MediaAdminVideo />} />
         <Route
-          path="/contact-phone"
+          path="/admin-contacts"
           element={
             <HeaderAdmin
               title="Contact phones"
@@ -152,7 +150,6 @@ function App() {
             />
           }
         />
-          
 
         <Route
           path="/user/:id/media"
