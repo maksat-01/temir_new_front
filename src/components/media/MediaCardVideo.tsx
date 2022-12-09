@@ -12,7 +12,7 @@ export default function MediaCardVideos() {
   }, []);
 
   return (
-    <div className="max-w-[400px]">
+    <div className="max-w-[500px]">
       {video.map((items, index) => (
         <div key={index} className="mb-[33px]">
           <ReactPlayer

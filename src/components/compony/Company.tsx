@@ -18,7 +18,7 @@ export default function Company() {
   const defaultPage = company[0];
 
   return (
-    <div className="max-w-[419px] mx-auto px-[22px]">
+    <div className="max-w-[500px] mx-auto px-[22px]">
       <div className="w-full mt-[20px] flex flex-col mb-[33px]">
         <div className="flex justify-evenly mb-[40px]">
           {company.map((items, index) => (

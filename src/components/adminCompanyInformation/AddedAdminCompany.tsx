@@ -59,8 +59,8 @@ export default function AddedAdminCompany() {
   }, []);
 
   return (
-    <div>
-      <div className="max-w-[419px] mx-auto px-[22px] mt-[38px]">
+    <div className="container mx-auto pb-[80px]">
+      <div className="max-w-[500px] mx-auto px-[22px] mt-[38px]">
         <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
             Theme to product:

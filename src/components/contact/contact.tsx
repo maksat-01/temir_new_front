@@ -22,7 +22,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <div className="max-w-[600px] w-full  mx-auto px-[5px]">
+    <div className="max-w-[500px] w-full  mx-auto px-[5px]">
       <Accordion title="Bank cart" array={user.user_email} />
       <Accordion title="E-amil" array={user.user_email} />
       <Accordion title="Bank details" array={user.user_email} />

@@ -30,13 +30,13 @@ export default function MediaAdminImage() {
   };
 
   return (
-    <div className="max-w-[450px] mx-auto">
+    <div className="max-w-[500px] mx-auto pb-[77px]">
       <div
         className={`flex justify-center items-end relative ${
           photos.length > 0 && "min-h-[70vh]"
         }`}
       >
-        <div className="max-w-[400px]">
+        <div className="max-w-[500px]">
           {photos.map((items, index) => (
             <div key={index} className="mb-[33px] px-[20px]">
               <img

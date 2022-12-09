@@ -15,7 +15,7 @@ export default function Media({ children }: IMedia) {
   };
 
   return (
-    <div className="max-w-[419px] mx-auto px-[22px]">
+    <div className="max-w-[500px] mx-auto px-[22px]">
       <div className="w-full mt-[20px] flex justify-evenly text-[#BEBEBE] mb-[33px]">
         <NavLink
           to="/image"

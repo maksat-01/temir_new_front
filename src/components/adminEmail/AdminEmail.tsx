@@ -129,8 +129,6 @@ export default function AdminEmail() {
     (el) => el.title.toLocaleLowerCase() === "personal email"
   );
 
-  const examination = email[0].email.slice(-10);
-
   return (
     <div className="container mx-auto pt-[38px] pb-[37px]">
       <div className="flex">

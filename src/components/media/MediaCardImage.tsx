@@ -11,7 +11,7 @@ export default function MediaCardImage() {
   }, []);
 
   return (
-    <div className="max-w-[400px]">
+    <div className="max-w-500px]">
       {photos.map((items, index) => (
         <div key={index} className="mb-[33px]">
           <img

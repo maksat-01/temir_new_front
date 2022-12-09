@@ -111,7 +111,7 @@ export default function ModalUpdateImage({
     <div
       className={`update ${
         modal ? "active" : ""
-      } max-w-[750px] mx-auto flex flex-col bg-[#151515] p-[10px]`}
+      } max-w-[500px] mx-auto flex flex-col bg-[#151515] p-[10px]`}
     >
       <div className="w-[100%] flex justify-between items-center pb-[25px]">
         <p className="text-[24px]">

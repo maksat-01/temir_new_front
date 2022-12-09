@@ -88,12 +88,8 @@ export default function AdminProduct() {
   }, []);
 
   return (
-    <div>
-      <div className="bg-[#262627] mb-[28px]">
-        <p className="text-center pt-[70px] pb-[38px]">Product</p>
-      </div>
-
-      <div className="max-w-[419px] mx-auto px-[22px]">
+    <div className="pt-[28px] pb-[57px]">
+      <div className="max-w-[500px] mx-auto px-[22px]">
         <div
           className="py=[20px] bg-[#28282A] h-[222px] rounded-[16px] mb-[13px] flex flex-col justify-center items-center"
           onClick={() => ref.current?.click()}

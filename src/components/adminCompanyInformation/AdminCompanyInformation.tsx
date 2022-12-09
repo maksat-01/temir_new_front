@@ -68,7 +68,7 @@ export default function AdminCompanyInformation() {
 
   return (
     <div>
-      <div className="max-w-[419px] mx-auto px-[22px] mt-[38px]">
+      <div className="max-w-[500px] mx-auto pt-[22px] mt-[38px] pb-[75px]">
         <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
             Theme to product:
@@ -161,21 +161,27 @@ export default function AdminCompanyInformation() {
             })
           }
         />
-        <div className="flex justify-end">
-          <button
-            onClick={() => setActive(!active)}
-            style={{ background: "rgba(208, 188, 255, 0.08)" }}
-            className="px-[20px]  text-[14px] py-[10px] border-[1px] border-[#D0BCFF] text-[#D0BCFF] font-[500] rounded-[50px]"
-          >
-            change
-          </button>
-          <button
-            onClick={changeToServer}
-            style={{ background: "rgba(208, 188, 255, 0.08)" }}
-            className="px-[20px]  text-[14px] py-[10px] border-[1px] border-[#D0BCFF] text-[#D0BCFF] font-[500] rounded-[50px]"
-          >
-            save
-          </button>
+        <div className="flex justify-end ">
+          {active && (
+            <button
+              onClick={() => setActive(!active)}
+              style={{ background: "rgba(208, 188, 255, 0.08)" }}
+              className="px-[20px]  text-[14px] py-[10px] border-[1px] border-[#D0BCFF] text-[#D0BCFF] font-[500] rounded-[50px]"
+            >
+              change
+            </button>
+          )}
+          {!active && (
+            <button
+              onClick={(e) => {
+                changeToServer(e);
+                setActive(true);
+              }}
+              className="px-[20px] bg-white text-[14px] py-[10px] border-[1px] text-black font-[500] rounded-[50px]"
+            >
+              save
+            </button>
+          )}
         </div>
       </div>
     </div>

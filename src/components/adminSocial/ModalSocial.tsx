@@ -29,7 +29,7 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
     event?: React.ChangeEvent<HTMLInputElement>
   ) => {
     switch (items.label) {
-      case "whatsapp":
+      case "instagram":
         return setSocials(`https://www.instagram/${event?.target?.value}`);
       case "facebook":
         return setSocials(`https://www.facebook/${event?.target?.value}/`);
@@ -65,7 +65,7 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
     <div
       className={`modal ${
         modal ? "active" : ""
-      } max-w-[750px] mx-auto flex flex-col bg-[#151515] p-[10px]`}
+      } max-w-[500px] mx-auto flex flex-col bg-[#151515] p-[10px]`}
     >
       <div className="max-w-[500px] mx-auto relative">
         <div className="w-[100%] flex justify-between items-center pb-[25px]">
