@@ -57,10 +57,10 @@ function App() {
   ];
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<AdminProduct />} />
+        <Route path="/products" element={<ProductPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />

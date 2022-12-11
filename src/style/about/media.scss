@@ -1,10 +1,20 @@
-@media (min-width: 840px) {
+@media (max-width: 940px) {
+  #about {
+    .about {
+      &__cards {
+        height: 440px;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
   #about {
     .about {
       &__cards {
         transition: 0.4s all;
         &:hover {
-          width: 70%;   
+          width: 70%;
           position: relative;
           .desc {
             z-index: 1;
@@ -31,6 +41,102 @@
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 768px) {
+  #about {
+    .about {
+      &__cards {
+        height: 550px;
+        transition: 0.4s all;
+        .desc {
+          z-index: -10;
+          opacity: 0;
+        }
+        &:hover {
+          width: 80%;
+          height: 480px;
+          .more {
+            opacity: 0;
+          }
+          .desc {
+            z-index: 1;
+            opacity: 1;
+            position: sticky;
+            width: 100%;
+            margin-top: 10px;
+          }
+          .image {
+            width: 50%;
+            margin: 0 auto;
+          }
+          h3 {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
 
+@media (max-width: 640px) {
+  #about {
+    .about {
+      &__cards {
+        h3 {
+          width: 100%;
+        }
+        &:hover {
+          .image {
+            width: 60%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  #about {
+    .about {
+      &__cards {
+        height: 460px;
+        &:hover {
+          width: 90%;
+          height: 500%;
+          .image {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 440px) {
+  #about {
+    .about {
+      &__cards {
+        height: 400px;
+      }
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  #about {
+    .about {
+      &__cards {
+        height: 370px;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  #about {
+    .about {
+      &__cards {
+        height: 340px;
+      }
+    }
+  }
 }

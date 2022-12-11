@@ -1,10 +1,16 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+interface IState {
+  basket: any[]
+  error: string
+  isLoading: boolean
+}
 
 export const initialState = {
   basket: JSON.parse(localStorage.getItem('basket') as any) || [],
   error: '',
-  isLoading: false
-} as any
+  isLoading: false,
+} as IState
 
 export const ReducerBasket = createSlice({
   name: 'basket',
@@ -24,27 +30,33 @@ export const ReducerBasket = createSlice({
       state.error = action.payload
     },
 
-    basketDelete(state, action: PayloadAction<any>){
+    basketDelete(state, action: PayloadAction<any>) {
       let basket = JSON.parse(localStorage.getItem('basket') as any) || []
-      basket = basket.filter((el: any,idx:number) => idx !== action.payload)
+      basket = basket.filter((el: any, idx: number) => idx !== action.payload)
       state.basket = basket
       localStorage.setItem('basket', JSON.stringify(basket) as any)
     },
 
-    PlusTheNumber(state, action: PayloadAction<any>){
+    PlusTheNumber(state, action: PayloadAction<any>) {
       let basket = JSON.parse(localStorage.getItem('basket') as any) || []
-      basket = basket.map((el:any, idx:number) => idx === action.payload ? {...el, quantity: el.quantity + 1} : el)
+      basket = basket.map((el: any, idx: number) =>
+        idx === action.payload ? { ...el, quantity: el.quantity + 1 } : el
+      )
       state.basket = [...basket]
       localStorage.setItem('basket', JSON.stringify(basket) as any)
     },
 
-    MinusTheNumber(state, action: PayloadAction<any>){
+    MinusTheNumber(state, action: PayloadAction<any>) {
       let basket = JSON.parse(localStorage.getItem('basket') as any) || []
-      basket = basket.map((el:any, idx:number) => idx === action.payload ? {...el, quantity: el.quantity > 1? el.quantity - 1 : el.quantity} : el)
+      basket = basket.map((el: any, idx: number) =>
+        idx === action.payload
+          ? { ...el, quantity: el.quantity > 1 ? el.quantity - 1 : el.quantity }
+          : el
+      )
       state.basket = [...basket]
       localStorage.setItem('basket', JSON.stringify(basket) as any)
-    }
-  }
+    },
+  },
 })
 
 export default ReducerBasket.reducer

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { BsWhatsapp } from 'react-icons/bs'
 
-const WhatsappInfo = () => {
+const WhatsappInfo: FC = () => {
   // similar classes
   const classesDesc =
     'font-[Jura] font-normal text-[26px] max-md:text-[24px] text-justify'

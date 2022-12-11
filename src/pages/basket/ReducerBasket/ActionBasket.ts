@@ -17,6 +17,13 @@ export const reduceTheQuantity = (idx: any) =>async (dispatch: AppDispatch) => {
   await  dispatch(ReducerBasket.actions.MinusTheNumber(idx))
 }
 
+export const getTotal = (arr: any) => {
+  let result = 0
+  for (const el of arr) {
+    result += el.price * el.quantity
+  }
+  return result
+}
 
 
 

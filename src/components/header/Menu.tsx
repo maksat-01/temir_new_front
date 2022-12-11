@@ -37,7 +37,7 @@ const Menu: FC<IProps> = ({ setBurgerMenu, burgerMenu }) => {
   }
   const handleScroll = () => {
     const currentScrollPos = window.scrollY
-    if (currentScrollPos > 70) {
+    if (currentScrollPos > 1) {
       setBurgerMenu(false)
       setPrevScrollPos(prevScrollPos)
     }
