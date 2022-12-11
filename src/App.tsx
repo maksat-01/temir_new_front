@@ -175,13 +175,12 @@ function App() {
             <HeaderLisProducts title="Products" children={<AdminProduct />} />
           }
         />
-<<<<<<< HEAD
         <Route
           path="/addcompany/"
           element={
             <HeaderAdmin
               title="Add company"
-              listCompany
+              // listCompany
               children={<AddedAdminCompany />}
             />
           }
@@ -210,17 +209,15 @@ function App() {
           path="/video"
           element={<Media children={<MediaCardVideos />} />}
         />
-        <Route
+        {/* <Route
           path="/bank-details"
-=======
 
         <Route
           path="/admin-media"
->>>>>>> 41d5512534b299d79a2bfbc80ac58dcf2fd7f24c
           element={
             <HeaderLisProducts title="Products" children={<MediaAdmin />} />
           }
-        />
+        /> */}
       </Routes>
     </>
   );
