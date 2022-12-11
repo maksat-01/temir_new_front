@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import MediaAdminImage from "./MediaAdminImage";
+import MediaAdminVideo from "./MediaAdminVideo";
 
 interface IMediaAdmin {
-  children: JSX.Element;
+  children?: JSX.Element;
 }
 
-export default function Media({ children }: IMediaAdmin) {
+export default function MediaAdmin({ children }: IMediaAdmin) {
   let activeStyle = {
     textDecoration: "underline",
     textUnderlineOffset: "11px",
@@ -12,26 +15,54 @@ export default function Media({ children }: IMediaAdmin) {
     color: "white",
   };
 
+  const [currentTab, setCurrentTab] = useState<any>(0);
+
+  const tab = [
+    {
+      id: 1,
+      tabTable: "Photo",
+      tabContent: <MediaAdminImage />,
+    },
+    {
+      id: 2,
+      tabTable: "Video",
+      tabContent: <MediaAdminVideo />,
+    },
+  ];
+
+  const handleClick = (e: any) => {
+    setCurrentTab(e.target?.id);
+  };
+
+  useEffect(() => {
+    setCurrentTab("1");
+  }, []);
+
   return (
-    <div className="max-w-[419px] mx-auto bg-[#151515] relative">
+    <div className="max-w-[500px] mx-auto bg-[#151515] relative">
       <div className="bg-[#262627]">
-        <p className="text-center pt-[50px] font-[600]">Follow me</p>
-        <div className="w-full mt-[20px] flex justify-evenly text-[#BEBEBE] mb-[33px] pb-[10px]">
-          <NavLink
-            to="/admin/image"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Photos
-          </NavLink>
-          <NavLink
-            to="/admin/video"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            Videos
-          </NavLink>
+        <div className="flex justify-evenly bg-[#262627] mb-[31px] pb-[20px]">
+          {tab.map((tab, index) => (
+            <button
+              key={index}
+              id={`${tab.id}`}
+              disabled={currentTab === `${tab.id}`}
+              onClick={handleClick}
+            >
+              {tab.tabTable}
+            </button>
+          ))}
         </div>
       </div>
-      {children}
+      <div className="max-w-[500px]">
+        <div>
+          {tab.map((tab, index) => (
+            <div key={index}>
+              {currentTab === `${tab.id}` && <div>{tab.tabContent}</div>}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

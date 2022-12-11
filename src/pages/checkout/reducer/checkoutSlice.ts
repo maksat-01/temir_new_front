@@ -6,7 +6,7 @@ interface IState {
   isLoading: boolean
 }
 
-interface ICheckout {
+export interface ICheckout {
   first_name: string
   last_name: string
   company_name: string

@@ -8,10 +8,8 @@ import API from "../api/Api";
 import { getActionVideo } from "../media/reducer/ActionVideo";
 import ModalAdminImage from "./modal/ModalAdminImage";
 import ModalUpdateImage from "./modal/ModalUpdateImage";
-import { getActionMediaVideo } from "./reducer/ActionMediaVideo";
 
 export default function MediaAdminVideo() {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { video } = useAppSelector((state) => state.ReducerVideo);
   const [update, setUpdate] = useState(false);
@@ -33,14 +31,8 @@ export default function MediaAdminVideo() {
     dispatch(getActionVideo());
   }, []);
 
-  console.log(video);
-
   return (
-    <div className="max-w-[400px] mx-auto">
-      <div>
-        <p onClick={() => navigate("/admin-video")}>Video</p>
-        <p onClick={() => navigate("/admin-photo")}>Photo</p>
-      </div>
+    <div className="max-w-[500px] mx-auto pb-[77px]">
       <div
         className={`flex justify-center items-end relative  ${
           video.length <= 1 && "min-h-[70vh]"

@@ -69,7 +69,7 @@ const HomeHero = () => {
                     />
                     <div className="absolute top-0 left-0 bottom-0 right-0 w-[190px] max-md:w-[160px] max-sm:w-[120px] h-[110px] max-md:h-[90px] max-sm:h-[80px] flex justify-center items-center">
                       <h2 className="uppercase text-[18px] max-sm:text-[16px] font-[Arial] text-[#d1d1d1] font-[700] tracking-widest">
-                        TEMIR
+                        {el.id < 3 && 'TEMIR'}
                       </h2>
                     </div>
                   </div>

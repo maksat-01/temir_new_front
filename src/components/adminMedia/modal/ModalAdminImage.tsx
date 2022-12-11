@@ -71,7 +71,7 @@ export default function ModalAdminImage({
     <div
       className={`modal ${
         modal ? "active" : ""
-      } max-w-[750px] mx-auto flex flex-col bg-[#151515] p-[10px]`}
+      } max-w-[500px] mx-auto flex flex-col bg-[#151515] p-[10px]`}
     >
       <div className="w-[100%] flex justify-between items-center pb-[25px]">
         <p className="text-[24px]">
@@ -102,7 +102,7 @@ export default function ModalAdminImage({
       {video && (
         <div className="w-full text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
-            YouTube video link:
+            Theme to photo:
           </label>
           <input
             type="text"
@@ -125,7 +125,7 @@ export default function ModalAdminImage({
       )}
       <div className="w-full text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
         <label className="pl-[16px] text-[12px] text-[#6750A4]">
-          {(video && "Theme to video:") || (image && "Theme to photo:")}:
+          {(video && " YouTube video link::") || (image && "Theme to photo:")}:
         </label>
         <input
           type="text"
@@ -133,7 +133,7 @@ export default function ModalAdminImage({
           placeholder="URL"
           onChange={(e) => {
             image && setTitle(e.target.value);
-            video && setDataVideo({ ...dataVideo, title: e.target.value });
+            video && setDataVideo({ ...dataVideo, url: e.target.value });
           }}
         />
       </div>

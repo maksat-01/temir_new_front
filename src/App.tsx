@@ -24,11 +24,13 @@ import AdminFollows from "./components/adminFollowMe/AdminFollow";
 import AdminSocial from "./components/adminSocial/AdminSocial";
 import AdminCompanyInformation from "./components/adminCompanyInformation/AdminCompanyInformation";
 import AddedAdminCompany from "./components/adminCompanyInformation/AddedAdminCompany";
-import MenuListAdmin from "./components/ui/MenuListAdmin";
+import MenuListAdmin from "./components/ui/HeaderListProducts";
 // import Contact from "./components/contact/contact";
 // import Contact from "./pages/home/Contact";
 import Contact from "./components/contact/contact";
 import AdminBanks from "./components/adminBanks/AdminBanks";
+import HeaderLisProducts from "./components/ui/HeaderListProducts";
+import MediaAdmin from "./components/adminMedia/MediaAdmin";
 
 function App() {
   const listContact = [
@@ -55,7 +57,6 @@ function App() {
   ];
   return (
     <>
-      <MenuListAdmin />
       {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -86,10 +87,48 @@ function App() {
           }
         />
         <Route path="/signin/:id" element={<SignIn />} />
-        <Route path="/" element={<MediaAdminImage />} />
-        <Route path="/" element={<MediaAdminVideo />} />
+
+        {/* /// Product /// */}
         <Route
-          path="/contact-phone"
+          path="/company-information/:id"
+          element={
+            <HeaderLisProducts
+              title="Company information"
+              listActive
+              children={<AdminCompanyInformation />}
+            />
+          }
+        />
+        <Route
+          path="/addcompany/"
+          element={
+            <HeaderLisProducts
+            listActive
+              title="Add company"
+              children={<AddedAdminCompany />}
+            />
+          }
+        />
+
+        <Route
+          path="/user/:id/media"
+          element={<Media children={<MediaCardImage />} />}
+        />
+        <Route
+          path="/bank-details"
+          element={
+            <HeaderLisProducts
+            listActive
+              title="Bank details/cards"
+              children={<AdminBanks />}
+            />
+          }
+        />
+
+        {/* //Contact */}
+
+        <Route
+          path="/admin-contacts"
           element={
             <HeaderAdmin
               title="Contact phones"
@@ -128,17 +167,15 @@ function App() {
             />
           }
         />
-        {/* /// Product /// */}
+
+        {/* Product */}
         <Route
-          path="/company-information/:id"
+          path="/admin-product"
           element={
-            <HeaderAdmin
-              title="Company information"
-              listCompany
-              children={<AdminCompanyInformation />}
-            />
+            <HeaderLisProducts title="Products" children={<AdminProduct />} />
           }
         />
+<<<<<<< HEAD
         <Route
           path="/addcompany/"
           element={
@@ -175,12 +212,13 @@ function App() {
         />
         <Route
           path="/bank-details"
+=======
+
+        <Route
+          path="/admin-media"
+>>>>>>> 41d5512534b299d79a2bfbc80ac58dcf2fd7f24c
           element={
-            <HeaderAdmin
-              title="Bank details/cards"
-              listCompany
-              children={<AdminBanks />}
-            />
+            <HeaderLisProducts title="Products" children={<MediaAdmin />} />
           }
         />
       </Routes>

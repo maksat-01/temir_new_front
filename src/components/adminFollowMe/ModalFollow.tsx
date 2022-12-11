@@ -32,7 +32,7 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
         return setMessengers(
           `https://www.whatsapp.com/${event?.target?.value}`
         );
-      case "instagram":
+      case "telegram":
         return setMessengers(`https://t.ma/${event?.target?.value}/`);
       default:
         return setMessengers(`${event?.target?.value}`);

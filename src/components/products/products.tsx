@@ -9,7 +9,7 @@ const Products = () => {
     dispatch(getActionProduct());
   }, []);
   return (
-    <div className="max-w-[419px] mx-auto px-[22px]">
+    <div className="max-w-[500px] mx-auto px-[22px]">
       {product.map((items, index) => (
         <div className="mb-[33px]" key={index}>
           <img
