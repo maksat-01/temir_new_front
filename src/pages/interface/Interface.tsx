@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CompanyIcon from "../../assets/svg/CompanyIcon";
 import ContactsIcon from "../../assets/svg/ContactsIcon";
 import MediaIcon from "../../assets/svg/MediaIcon";
@@ -13,22 +13,27 @@ const navs = [
   {
     title: "contacts",
     icon: <ContactsIcon />,
+    link: "",
   },
   {
     title: "media",
     icon: <MediaIcon />,
+    link: "media",
   },
   {
     title: "company",
     icon: <CompanyIcon />,
+    link: "company",
   },
   {
     title: "qr code",
     icon: <QrCodeIcon />,
+    link: "company",
   },
   {
     title: "temir",
     icon: <SecondaryLogo width={34} height={36} />,
+    link: "company",
   },
 ];
 
@@ -36,6 +41,8 @@ export default function Interface({ children }: any) {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.getUser);
+  const navigate = useNavigate();
+  const [url, setUrl] = useState("");
 
   useEffect(() => {
     // dispatch(getUser.actions.getUser);
@@ -48,6 +55,10 @@ export default function Interface({ children }: any) {
         dispatch(getUser.actions.getUserError(error));
       });
   }, []);
+
+  useEffect(() => {
+    setUrl(window.location.pathname);
+  }, [window.location.pathname]);
 
   const [isActive, setActive] = useState(false);
   const [isTabs, setTabs] = useState(navs);
@@ -71,18 +82,21 @@ export default function Interface({ children }: any) {
         <div
           className="w-full h-[287px] relative flex justify-center items-center"
           style={{
-            background: `url(https://3dnews.ru/assets/external/illustrations/2022/07/20/1070539/0.jpg) no-repeat center/cover`,
+            background: `url(https://png.pngtree.com/thumb_back/fh260/background/20211031/pngtree-abstract-bg-image_914283.png) no-repeat center/cover`,
           }}
         >
-          <div className="absolute top-11 right-8 cursor-pointer">
-            <SecondaryLogo />
-          </div>
+          <Link to={`/user/${id}/signin`}>
+            <div className="absolute top-11 right-8 cursor-pointer">
+              <SecondaryLogo />
+            </div>
+          </Link>
+
           <div
             className="w-[145px] h-[145px] bg-black rounded-full flex justify-center items-center mt-20"
             style={{ border: "5px soild #FFFFFF" }}
           >
             <img
-              src="https://pbs.twimg.com/profile_images/1222646977332174849/xWcD6t_Q_400x400.jpg"
+              src="https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png"
               alt=""
               className="w-[120px] h-[120px] bg-white rounded-full"
             />
@@ -111,177 +125,182 @@ export default function Interface({ children }: any) {
                 display: isActive ? "flex" : "flex",
               }}
             >
-              {isTabs.map((el, index) => (
-                <div
-                  className="w-[70px] h-[70px] rounded-full flex justify-center items-center border-gray-400 bg-black border-2 my-5  "
-                  style={{
-                    width:
-                      index < 1 && index >= 0
-                        ? `${index === selectedTabs.index ? "110px" : "70px"}`
-                        : index > 0 && index < 2
-                        ? `90px`
-                        : index === 2
-                        ? `${
-                            index === selectedTabs.index + 2 && selectedTabs
-                              ? "70px"
-                              : "110px"
-                          }`
-                        : index > 2 && index < 4
-                        ? `${
-                            index === selectedTabs.index + 3 && selectedTabs
-                              ? "70px"
-                              : "90px"
-                          }`
-                        : index > 3 && index <= 4
-                        ? `${
-                            index === selectedTabs.index + 4 && selectedTabs
-                              ? "90px"
-                              : "70px"
-                          }`
-                        : "",
-                    height:
-                      index < 1 && index >= 0
-                        ? `${index === selectedTabs.index ? "110px" : "70px"}`
-                        : index > 0 && index < 2
-                        ? `90px`
-                        : index === 2
-                        ? `${
-                            index === selectedTabs.index + 2 && selectedTabs
-                              ? "70px"
-                              : "110px"
-                          }`
-                        : index > 2 && index < 4
-                        ? `${
-                            index === selectedTabs.index + 3 && selectedTabs
-                              ? "70px"
-                              : "90px"
-                          }`
-                        : index > 3 && index <= 4
-                        ? `${
-                            index === selectedTabs.index + 4 && selectedTabs
-                              ? "90px"
-                              : "70px"
-                          }`
-                        : "",
-                    zIndex:
-                      index < 1 && index >= 0
-                        ? `${index === selectedTabs.index ? "999" : "555"}`
-                        : index > 0 && index < 2
-                        ? `${
-                            index === selectedTabs.index && selectedTabs
-                              ? "777"
-                              : "777"
-                          }`
-                        : index === 2
-                        ? `999`
-                        : index > 2 && index < 4
-                        ? `777`
-                        : index > 3 && index < 4
-                        ? `555`
-                        : "",
+              {!(url.slice(url.length - 6, url.length) === "signin") &&
+                isTabs.map((el, index) => (
+                  <div
+                    className="w-[70px] h-[70px] rounded-full flex justify-center items-center border-gray-400 bg-black border-2 my-5  "
+                    style={{
+                      width:
+                        index < 1 && index >= 0
+                          ? `${index === selectedTabs.index ? "110px" : "70px"}`
+                          : index > 0 && index < 2
+                          ? `90px`
+                          : index === 2
+                          ? `${
+                              index === selectedTabs.index + 2 && selectedTabs
+                                ? "70px"
+                                : "110px"
+                            }`
+                          : index > 2 && index < 4
+                          ? `${
+                              index === selectedTabs.index + 3 && selectedTabs
+                                ? "70px"
+                                : "90px"
+                            }`
+                          : index > 3 && index <= 4
+                          ? `${
+                              index === selectedTabs.index + 4 && selectedTabs
+                                ? "90px"
+                                : "70px"
+                            }`
+                          : "",
+                      height:
+                        index < 1 && index >= 0
+                          ? `${index === selectedTabs.index ? "110px" : "70px"}`
+                          : index > 0 && index < 2
+                          ? `90px`
+                          : index === 2
+                          ? `${
+                              index === selectedTabs.index + 2 && selectedTabs
+                                ? "70px"
+                                : "110px"
+                            }`
+                          : index > 2 && index < 4
+                          ? `${
+                              index === selectedTabs.index + 3 && selectedTabs
+                                ? "70px"
+                                : "90px"
+                            }`
+                          : index > 3 && index <= 4
+                          ? `${
+                              index === selectedTabs.index + 4 && selectedTabs
+                                ? "90px"
+                                : "70px"
+                            }`
+                          : "",
+                      zIndex:
+                        index < 1 && index >= 0
+                          ? `${index === selectedTabs.index ? "999" : "555"}`
+                          : index > 0 && index < 2
+                          ? `${
+                              index === selectedTabs.index && selectedTabs
+                                ? "777"
+                                : "777"
+                            }`
+                          : index === 2
+                          ? `999`
+                          : index > 2 && index < 4
+                          ? `777`
+                          : index > 3 && index < 4
+                          ? `555`
+                          : "",
 
-                    margin:
-                      index < 1 && index >= 0
-                        ? `0 0 0 ${
-                            isActive
-                              ? `${
-                                  index === selectedTabs.index && selectedTabs
-                                    ? "0"
-                                    : "-380px"
-                                }`
-                              : "-130px"
-                          }`
-                        : index > 0 && index < 2
-                        ? `0 0 0 ${
-                            isActive
-                              ? `${
-                                  index === selectedTabs.index + 1 &&
-                                  selectedTabs
-                                    ? "210px"
-                                    : "-210px"
-                                }`
-                              : "-70px"
-                          }`
-                        : index === 2
-                        ? `${
-                            index === selectedTabs.index + 2 && selectedTabs
-                              ? "0 0 0 380px"
-                              : "0"
-                          }`
-                        : index > 2 && index < 4
-                        ? `0 ${
-                            isActive
-                              ? `${
-                                  index === selectedTabs.index + 3 &&
-                                  selectedTabs
-                                    ? "380px"
-                                    : "-210px"
-                                }`
-                              : "-70px"
-                          } 0 0`
-                        : index > 3 && index < 5
-                        ? `0 ${
-                            isActive
-                              ? `${
-                                  index === selectedTabs.index + 4 &&
-                                  selectedTabs
-                                    ? "210px"
-                                    : "-380px"
-                                }`
-                              : "-130px"
-                          } 0 0`
-                        : "",
-                    position: "absolute",
-                    transition: isActive && selectedTabs.edit ? "0.4s" : "0.4s  ",
-                  }}
-                  onClick={() => {
-                    !isActive && setActive(true);
-                    if (index === 0 && isActive) {
-                      const arr = isTabs.slice(0, 3);
-                      const arr2 = isTabs.slice(3, 5);
-                      console.log(arr);
-                      console.log(arr2);
+                      margin:
+                        index < 1 && index >= 0
+                          ? `0 0 0 ${
+                              isActive
+                                ? `${
+                                    index === selectedTabs.index && selectedTabs
+                                      ? "0"
+                                      : "-380px"
+                                  }`
+                                : "-130px"
+                            }`
+                          : index > 0 && index < 2
+                          ? `0 0 0 ${
+                              isActive
+                                ? `${
+                                    index === selectedTabs.index + 1 &&
+                                    selectedTabs
+                                      ? "210px"
+                                      : "-210px"
+                                  }`
+                                : "-70px"
+                            }`
+                          : index === 2
+                          ? `${
+                              index === selectedTabs.index + 2 && selectedTabs
+                                ? "0 0 0 380px"
+                                : "0"
+                            }`
+                          : index > 2 && index < 4
+                          ? `0 ${
+                              isActive
+                                ? `${
+                                    index === selectedTabs.index + 3 &&
+                                    selectedTabs
+                                      ? "380px"
+                                      : "-210px"
+                                  }`
+                                : "-70px"
+                            } 0 0`
+                          : index > 3 && index < 5
+                          ? `0 ${
+                              isActive
+                                ? `${
+                                    index === selectedTabs.index + 4 &&
+                                    selectedTabs
+                                      ? "210px"
+                                      : "-380px"
+                                  }`
+                                : "-130px"
+                            } 0 0`
+                          : "",
+                      position: "absolute",
+                      transition:
+                        isActive && selectedTabs.edit ? "0.4s" : "0.4s  ",
+                    }}
+                    onClick={() => {
+                      !isActive && setActive(true);
+                      if (index === 0 && isActive) {
+                        const arr = isTabs.slice(0, 3);
+                        const arr2 = isTabs.slice(3, 5);
+                        console.log(arr);
+                        console.log(arr2);
 
-                     
-                      setTimeout(() => {
-                        setActive(false);
+                        setTimeout(() => {
+                          setActive(false);
 
+                          setTabs([...arr2, ...arr]);
+
+                          setSelectedTabs({
+                            index: 2,
+                            tab: el,
+                            edit: false,
+                          });
+                        }, 600);
+                        console.log();
+                        navigate(`/user/${id}/${el.link}`);
+                      }
+                      if (index === 1 && isActive) {
+                        const arr = isTabs.slice(0, 4);
+                        const arr2 = isTabs.slice(4, 5);
                         setTabs([...arr2, ...arr]);
-
-                        setSelectedTabs({
-                          index: 2,
-                          tab: el,
-                          edit: false,
-                        });
-                      }, 600);
-                      console.log();
-                    }
-                    if (index === 1 && isActive) {
-                      const arr = isTabs.slice(0, 4);
-                      const arr2 = isTabs.slice(4, 5);
-                      setTabs([...arr2, ...arr]);
-                      setActive(false);
-                    }
-                    if (index === 2 && isActive) {
-                      setActive(false);
-                    }
-                    if (index === 3 && isActive) {
-                      const arr = isTabs.slice(1, 5);
-                      const arr2 = isTabs.slice(0, 1);
-                      setTabs([...arr, ...arr2]);
-                      setActive(false);
-                    }
-                    if (index === 4 && isActive) {
-                      const arr = isTabs.slice(2, 5);
-                      const arr2 = isTabs.slice(0, 2);
-                      setTabs([...arr, ...arr2]);
-                      setActive(false);
-                    }
-                  }}
-                >
-                  {el.icon}
-                </div>
-              ))}
+                        setActive(false);
+                        navigate(`/user/${id}/${el.link}`);
+                      }
+                      if (index === 2 && isActive) {
+                        setActive(false);
+                      }
+                      if (index === 3 && isActive) {
+                        const arr = isTabs.slice(1, 5);
+                        const arr2 = isTabs.slice(0, 1);
+                        setTabs([...arr, ...arr2]);
+                        setActive(false);
+                        navigate(`/user/${id}/${el.link}`);
+                      }
+                      if (index === 4 && isActive) {
+                        const arr = isTabs.slice(2, 5);
+                        const arr2 = isTabs.slice(0, 2);
+                        setTabs([...arr, ...arr2]);
+                        setActive(false);
+                        navigate(`/user/${id}/${el.link}`);
+                      }
+                    }}
+                  >
+                    {el.icon}
+                  </div>
+                ))}
             </div>
             <div className="pt-[100px]">{children}</div>
           </div>
