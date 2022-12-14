@@ -6,20 +6,35 @@ import AddPhotoSvg from "../../assets/svg/AddPhotoSvg";
 import API from "../api/Api";
 import { getActionProductAdmin } from "./reducer/ActionAdminProduct";
 import { getIdUserParams } from "../helper";
+import { useForm } from "react-hook-form";
 
 export default function AdminProduct() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
   const dispatch = useAppDispatch();
   const { product } = useAppSelector((state) => state.ReducerProduct);
+  const [postDataProduct, setPostDataProduct] = useState({
+    user: getIdUserParams(),
+    title: "",
+    description: "",
+    image: "",
+  });
   const [updateImage, setUpdateImage] = useState("");
   const [titleUpdate, setTitleUpdate] = useState("");
   const [descUpdate, setDescUpdate] = useState("");
   const [productId, setProductId] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
   const [active, setActive] = useState(true);
   const [btnDefinition, setBtnDefinition] = useState("");
+  const [validate, setValidate] = useState({
+    title: false,
+    description: false,
+    image: false,
+  });
 
   const deletePost = (post: any) => {
     console.log(post.id);
@@ -37,7 +52,7 @@ export default function AdminProduct() {
     if (event.target.files && event.target.files[0]) {
       const i = event.target.files[0];
       setUpdateImage(i);
-      setImage(i);
+      setPostDataProduct({ ...postDataProduct, image: i });
     }
   };
 
@@ -65,22 +80,42 @@ export default function AdminProduct() {
   const postToServer = async (e: any) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("user", getIdUserParams());
-    formData.append("description", description);
-    formData.append("title", title);
+    formData.append("user", postDataProduct.user);
+    formData.append("description", postDataProduct.description);
+    formData.append("title", postDataProduct.title);
     updateImage?.length === 0
       ? console.log("error")
-      : formData.append("image", image);
+      : formData.append("image", postDataProduct.image);
 
-    await API.post(`product/`, formData)
-      .then(() => {
-        alert("success");
-        dispatch(getActionProduct());
-        dispatch(getActionProductAdmin(productId));
-      })
-      .catch(() => {
-        alert("Error");
-      });
+    if (
+      !postDataProduct.title &&
+      !postDataProduct.description &&
+      !postDataProduct.image
+    ) {
+      setValidate({ ...validate, description: true, image: true, title: true });
+    } else if (!postDataProduct.title && !postDataProduct.description) {
+      setValidate({ ...validate, description: true, title: true });
+    } else if (!postDataProduct.title) {
+      setValidate({ ...validate, title: true });
+    } else if (!postDataProduct.description) {
+      setValidate({ ...validate, description: true });
+    } else if (!postDataProduct.image) {
+      setValidate({ ...validate, image: true });
+    } else {
+      await API.post(`product/`, formData)
+        .then(() => {
+          alert("success");
+          dispatch(getActionProduct());
+          dispatch(getActionProductAdmin(productId));
+        })
+        .catch((e) => {
+          alert("Error");
+        });
+    }
+  };
+
+  const inputChange = (e: any) => {
+    setPostDataProduct({ ...postDataProduct, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
@@ -91,10 +126,13 @@ export default function AdminProduct() {
     <div className="pt-[28px] pb-[57px]">
       <div className="max-w-[500px] mx-auto px-[22px]">
         <div
-          className="py=[20px] bg-[#28282A] h-[222px] rounded-[16px] mb-[13px] flex flex-col justify-center items-center"
+          className={`py=[20px] bg-[#28282A] h-[222px] rounded-[16px] mb-[13px] flex flex-col justify-center items-center ${
+            validate.image && "border border-[#FF0000]"
+          }`}
           onClick={() => ref.current?.click()}
         >
           <input
+            name="image"
             id="file-upload"
             onChange={(e) => uploadToClient(e)}
             accept="image/png, image/gif, image/jpeg"
@@ -112,10 +150,17 @@ export default function AdminProduct() {
           <input
             type="text"
             placeholder="Enter your text..."
-            value={title}
+            {...register("title", { required: true })}
+            value={postDataProduct.title}
+            name="title"
             className="bg-transparent w-[100%] pl-[16px]"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => inputChange(e)}
           />
+          {validate?.title && (
+            <p className="text-red-500 text-[12px] pl-[16px]">
+              required fields
+            </p>
+          )}
         </div>
         <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[28px]">
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
@@ -123,18 +168,22 @@ export default function AdminProduct() {
           </label>
           <textarea
             placeholder="Enter your text..."
-            value={description}
-            style={{ resize: "none" }}
+            {...register("description", { required: true })}
+            value={postDataProduct.description}
+            name="description"
             className={`bg-transparent w-[100%] pl-[16px] max-h-auto`}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => inputChange(e)}
           ></textarea>
+          {validate?.description && (
+            <p className="text-red-500 text-[12px] pl-[16px]">
+              required fields
+            </p>
+          )}
         </div>
-        <div className="flex justify-center mb-[74px]">
+        <div className="flex justify-center mb-[74px] ">
           <button
             onClick={(e: any) => {
               postToServer(e);
-              setTitle("");
-              setDescription("");
             }}
             className="px-[45px] text-[14px] py-[10px] bg-white text-black font-[500] rounded-[50px]"
           >
@@ -179,7 +228,7 @@ export default function AdminProduct() {
               </label>
               <textarea
                 disabled={active || btnDefinition !== items.id}
-                defaultValue={items.title}
+                defaultValue={items.description}
                 placeholder="Enter your text..."
                 style={{ resize: "none" }}
                 className={`bg-transparent w-[100%] pl-[16px] max-h-auto`}

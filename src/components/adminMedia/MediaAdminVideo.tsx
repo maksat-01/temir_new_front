@@ -6,7 +6,7 @@ import APlusSvg from "../../assets/svg/AplusSvg";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import API from "../api/Api";
 import { getActionVideo } from "../media/reducer/ActionVideo";
-import ModalAdminImage from "./modal/ModalAdminImage";
+import ModalAdminImage from "./modal/ModalAdminVideo";
 import ModalUpdateImage from "./modal/ModalUpdateImage";
 
 export default function MediaAdminVideo() {

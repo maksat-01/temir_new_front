@@ -13,15 +13,15 @@ interface ISignIn {
 }
 
 export default function SignIn() {
+  const {
+    register,
+    formState: { errors },
+  } = useForm<ISignIn>();
   const { id } = useParams();
   const navigation = useNavigate();
   const [modal, setModal] = useState<boolean>(false);
   const [errorValidate, setErrorValidate] = useState<boolean>(false);
   const [auth, setAuth] = useState({ password: "", id: id });
-  const {
-    register,
-    formState: { errors },
-  } = useForm<ISignIn>();
   const sigIn = (e: any) => {
     e.preventDefault();
 
@@ -31,13 +31,14 @@ export default function SignIn() {
         console.log(res);
         localStorage.setItem("accessToken", res.data.access);
         localStorage.setItem("refreshToken", res.data.refresh);
-        navigation("/");
+        navigation("/addcompany");
       })
       .catch((error) => {
         console.log(error);
         setErrorValidate(true);
       });
   };
+
   paramsUserId(id);
 
   return (

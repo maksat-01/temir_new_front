@@ -62,8 +62,6 @@ export default function ModalMessenger({ modal, setModal }: IModalApp) {
       });
   };
 
-  console.log(messengers, "ME");
-
   return (
     <div
       className={`modal ${
