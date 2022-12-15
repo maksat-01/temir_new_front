@@ -22,14 +22,19 @@ export default function ModalChangeMessnger({
   const dispatch = useAppDispatch();
   const { socialId } = useAppSelector((state) => state.SocialReducer);
   const [update, setUpdate] = useState({
-    title: `${socialId.title}`,
+    title: "",
     id: postId,
     user: getIdUserParams(),
-    url: `${socialId.url}`,
+    url: "",
   });
 
   const updatePost = () => {
-    API.patch(`social/${postId}`, update)
+    API.patch(`social/${postId}`, {
+      title: update.title ? update.title : socialId.title,
+      id: update.id ? update.id : socialId.title,
+      user: update.user ? update.user : socialId.user,
+      url: update.url ? update.url : socialId.url,
+    })
       .then((res) => {
         alert("Success");
         dispatch(getActionSocailId(postId));

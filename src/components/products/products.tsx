@@ -4,13 +4,13 @@ import { getActionProduct } from "./reducer/ActionProduct";
 
 const Products = () => {
   const dispatch = useAppDispatch();
-  const { product } = useAppSelector((state) => state.ReducerProduct);
+  const { products } = useAppSelector((state) => state.ReducerProduct);
   useEffect(() => {
     dispatch(getActionProduct());
   }, []);
   return (
     <div className="max-w-[500px] mx-auto px-[22px]">
-      {product.map((items, index) => (
+      {products.map((items, index) => (
         <div className="mb-[33px]" key={index}>
           <img
             src={items.image}

@@ -49,7 +49,7 @@ export default function HeaderLisProducts({
         </div>
       </div>
       {children}
-      <div className="px-7 py-2.5 mx-auto flex justify-between fixed bottom-0 left-0 right-0 rounded border-slate-800 bg-[#1D1D1F]">
+      <div className="py-2.5 mx-auto flex justify-between fixed bottom-0 left-0 right-0 rounded border-slate-800 bg-[#1D1D1F]">
         <div className="max-w-[500px] container mx-auto flex justify-between">
           {menuList.map((items, index) => (
             <NavLink

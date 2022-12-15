@@ -50,7 +50,7 @@ export default function SignIn() {
           {...register("password", { required: true })}
           name="password"
           onChange={(e) => setAuth({ ...auth, password: e.target.value })}
-          className={`w-full py-[16px] text-black pl-[14px] mb-[10px] rounded-[5px] ${
+          className={`w-full py-[16px] text-black pl-[14px] mb-[10px] rounded-[5px] mt-[150px] ${
             errorValidate && "border-2 border-rose-500"
           } `}
         />

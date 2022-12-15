@@ -57,7 +57,7 @@ function App() {
   ];
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
@@ -103,7 +103,7 @@ function App() {
           path="/addcompany/"
           element={
             <HeaderLisProducts
-            listActive
+              listActive
               title="Add company"
               children={<AddedAdminCompany />}
             />
@@ -118,7 +118,7 @@ function App() {
           path="/bank-details"
           element={
             <HeaderLisProducts
-            listActive
+              listActive
               title="Bank details/cards"
               children={<AdminBanks />}
             />
@@ -204,20 +204,17 @@ function App() {
           }
         />
 
-
         <Route
           path="/video"
           element={<Media children={<MediaCardVideos />} />}
         />
-        {/* <Route
-          path="/bank-details"
 
         <Route
           path="/admin-media"
           element={
             <HeaderLisProducts title="Products" children={<MediaAdmin />} />
           }
-        /> */}
+        />
       </Routes>
     </>
   );

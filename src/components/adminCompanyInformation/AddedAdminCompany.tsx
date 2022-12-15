@@ -19,11 +19,7 @@ interface ICompanyAdd {
 }
 
 export default function AddedAdminCompany() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const dispatch = useAppDispatch();
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [createImage, setCreateImage] = useState<any>();
@@ -131,12 +127,10 @@ export default function AddedAdminCompany() {
     dispatch(getActionCompany());
   }, []);
 
-  console.log(createImage, "Cr");
-
   return (
     <div className="container mx-auto pb-[80px]">
       <form onSubmit={handleSubmit(changeToServer)}>
-        <div className="max-w-[500px] mx-auto px-[22px] mt-[38px]">
+        <div className="max-w-[500px] mx-auto mt-[38px]">
           <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
             <label className="pl-[16px] text-[12px] text-[#6750A4]">
               Theme to product:

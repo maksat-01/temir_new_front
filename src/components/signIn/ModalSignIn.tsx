@@ -1,7 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import API, { API_ADDRESS } from "../api/Api";
+import API from "../api/Api";
 import { getIdUserParams } from "../helper";
 interface IModalSignIn {
   setModal: any;
@@ -9,7 +8,6 @@ interface IModalSignIn {
 
 export default function ModalSignIn({ setModal }: IModalSignIn) {
   const {
-    register,
     formState: { errors },
   } = useForm();
   const [email, setEmail] = useState({ email: "" });
@@ -27,7 +25,7 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
 
   const postEmail = async (e: any) => {
     e.preventDefault();
-    API.post(`password_reset/`, email.email)
+    API.post(`password_reset/`, email)
       .then((res) => {
         alert("SUCC");
         console.log(res);

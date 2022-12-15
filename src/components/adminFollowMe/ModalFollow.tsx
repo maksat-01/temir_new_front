@@ -1,4 +1,4 @@
-import { Key, useEffect, useState } from "react";
+import { Key, useState } from "react";
 
 import { useAppDispatch } from "../../hooks";
 import API from "../api/Api";

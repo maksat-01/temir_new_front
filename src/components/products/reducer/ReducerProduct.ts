@@ -11,7 +11,7 @@ interface ImageTypes {
 }
 
 interface PhotosState {
-  product: ImageTypes[];
+  products: ImageTypes[];
   error: string;
   isLoading: boolean;
 }
@@ -19,7 +19,7 @@ interface PhotosState {
 export const initialState: PhotosState = {
   error: "",
   isLoading: false,
-  product: [],
+  products: [],
 } as PhotosState;
 
 export const ProductReducer = createSlice({
@@ -32,7 +32,7 @@ export const ProductReducer = createSlice({
     ProductSuccess(state, action: PayloadAction<ImageTypes[]>) {
       state.isLoading = false;
       state.error = "";
-      state.product = action.payload;
+      state.products = action.payload;
     },
     ProductError(state, action: PayloadAction<any>) {
       state.isLoading = false;

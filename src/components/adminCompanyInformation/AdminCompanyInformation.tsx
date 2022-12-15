@@ -13,18 +13,16 @@ export default function AdminCompanyInformation() {
   const dispatch = useAppDispatch();
   const [active, setActive] = useState(true);
   const ref = useRef() as React.MutableRefObject<HTMLInputElement>;
-  const { isLoading, details } = useAppSelector(
-    (state) => state.ReducerCompanyDetails
-  );
+  const { details } = useAppSelector((state) => state.ReducerCompanyDetails);
   const [changeData, setChangeData] = useState<any>({
     id: id,
-    image: `${details?.image}`,
+    image: "",
     user: getIdUserParams(),
-    name: `${details?.name}`,
-    activity: `${details?.activity}`,
-    description: `${details?.description}`,
-    visit_website_url: `${details?.visit_website_url}`,
-    address_url: `${details?.address_url}`,
+    name: "",
+    activity: "",
+    description: "",
+    visit_website_url: "",
+    address_url: "",
     is_main: false,
   });
 
@@ -38,16 +36,31 @@ export default function AdminCompanyInformation() {
   const changeToServer = async (e: any) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("user", changeData.user);
-    formData.append("activity", changeData.activity);
-    formData.append("description", changeData.description);
-    formData.append("visit_website_url", changeData.visit_website_url);
-    formData.append("address_url", changeData.address_url);
-    formData.append("is_main", changeData.is_main);
+    formData.append("user", changeData.user ? changeData.user : details.user);
+    formData.append(
+      "activity",
+      changeData.activity ? changeData.activity : details.activity
+    );
+    formData.append(
+      "description",
+      changeData.description ? changeData.description : details.description
+    );
+    formData.append(
+      "visit_website_url",
+      changeData.visit_website_url
+        ? changeData.visit_website_url
+        : details.visit_website_url
+    );
+    formData.append(
+      "address_url",
+      changeData.address_url ? changeData.address_url : details.address_url
+    );
+    formData.append(
+      "is_main",
+      changeData.is_main ? changeData.is_main : details.is_main
+    );
 
-    changeData.image?.length === 0
-      ? console.log("error")
-      : formData.append("image", changeData.image);
+    changeData.image && formData.append("image", changeData.image);
 
     await API.patch(`company/${details.id}`, formData)
       .then(() => {
@@ -123,7 +136,7 @@ export default function AdminCompanyInformation() {
           <input
             type="text"
             disabled={active}
-            value={details.visit_website_url}
+            defaultValue={details.visit_website_url}
             placeholder="Enter your text..."
             className="bg-transparent w-[100%] pl-[16px]"
             onChange={(e) =>
@@ -141,7 +154,7 @@ export default function AdminCompanyInformation() {
           <input
             type="text"
             disabled={active}
-            value={details.address_url}
+            defaultValue={details.address_url}
             placeholder="Enter your text..."
             className="bg-transparent w-[100%] pl-[16px]"
             onChange={(e) =>

@@ -21,14 +21,19 @@ export default function ModalChangeMessnger({
   const dispatch = useAppDispatch();
   const { folow } = useAppSelector((state) => state.ReducerFollow);
   const [update, setUpdate] = useState({
-    title: `${folow.title}`,
+    title: ``,
     id: postId,
     user: getIdUserParams(),
-    url: `${folow.url}`,
+    url: ``,
   });
 
   const updatePost = () => {
-    API.patch(`messanger/${postId}`, update)
+    API.patch(`messanger/${postId}`, {
+      title: update.title ? update.title : folow.title,
+      id: update.id ? update.id : folow.title,
+      user: update.user ? update.user : folow.user,
+      url: update.url ? update.url : folow.url,
+    })
       .then((res) => {
         alert("Success");
         dispatch(getActionFollow(postId));
@@ -44,6 +49,8 @@ export default function ModalChangeMessnger({
     dispatch(getActionFollows());
     dispatch(getActionFollow(postId));
   }, [postId]);
+
+  console.log(folow);
 
   return (
     <div>
@@ -65,7 +72,7 @@ export default function ModalChangeMessnger({
             </label>
             <input
               type="text"
-              defaultValue={folow.title}
+              defaultValue={folow?.title}
               placeholder="Enter your nickname..."
               style={{ resize: "none" }}
               className={`bg-transparent overflow-x-auto w-[100%] pl-[16px] max-h-auto`}
@@ -78,7 +85,7 @@ export default function ModalChangeMessnger({
             </label>
             <input
               type="text"
-              defaultValue={folow.url}
+              defaultValue={folow?.url}
               placeholder="Enter your nickname..."
               style={{ resize: "none" }}
               className={`bg-transparent overflow-x-auto w-[100%] pl-[16px] max-h-auto`}
