@@ -4,6 +4,7 @@ import AdminCompanyIcon from "../../assets/svg/AdminCompanyIcon";
 import ProductAdminIcon from "../../assets/svg/ProductAdminIcon";
 import AdminContactIcon from "../../assets/svg/AdminContactIcon";
 import DropDownCompany from "./DropDowmCompany";
+import "./style.scss";
 
 interface IHeaderAdmin {
   children?: JSX.Element;
@@ -16,6 +17,10 @@ export default function HeaderLisProducts({
   title,
   listActive,
 }: IHeaderAdmin) {
+  let activeStyle = {
+    color: "white",
+  };
+
   const menuList = [
     {
       svg: <AdminContactIcon />,
@@ -38,6 +43,7 @@ export default function HeaderLisProducts({
       link: "/addcompany",
     },
   ];
+
   return (
     <div className=" min-h-screen mx-auto">
       <div className="bg-[#262627] pb-[38px] pt-[73px]">
@@ -54,17 +60,14 @@ export default function HeaderLisProducts({
           {menuList.map((items, index) => (
             <NavLink
               to={items.link}
+              style={({ isActive }) =>
+                isActive ? activeStyle : { color: "#575757" }
+              }
               key={index}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "end",
-                alignItems: "center",
-              }}
-              className="link"
+              className="items"
             >
               {items.svg}
-              <p className="text-white bg-transparent mt-[10px] text-[11px]">
+              <p className="bg-transparent mt-[10px] text-[11px]">
                 {items.list}
               </p>
             </NavLink>

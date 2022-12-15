@@ -38,7 +38,7 @@ export default function DropDownCompany() {
   return (
     <div className="w-72 ml-auto font-medium text-black absolute right-0">
       <div
-        className="bg-transparent max-w-[20px] ml-auto p-2 flex items-center justify-end rounded"
+        className="bg-transparent max-w-[20px] ml-auto mr-[20px] p-2 flex items-center justify-end rounded"
         onClick={() => setActive(active ? false : true)}
       >
         <MenuList />

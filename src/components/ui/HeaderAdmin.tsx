@@ -18,6 +18,10 @@ export default function HeaderAdmin({
   title,
   arrayList,
 }: IHeaderAdmin) {
+  let activeStyle = {
+    color: "white",
+  };
+
   const menuList = [
     {
       svg: <AdminContactIcon />,
@@ -59,17 +63,14 @@ export default function HeaderAdmin({
           {menuList.map((items, index) => (
             <NavLink
               to={items.link}
+              style={({ isActive }) =>
+                isActive ? activeStyle : { color: "#575757" }
+              }
               key={index}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "end",
-                alignItems: "center",
-              }}
-              className="link"
+              className="items"
             >
               {items.svg}
-              <p className="text-white bg-transparent mt-[10px] text-[11px]">
+              <p className="bg-transparent mt-[10px] text-[11px]">
                 {items.list}
               </p>
             </NavLink>
