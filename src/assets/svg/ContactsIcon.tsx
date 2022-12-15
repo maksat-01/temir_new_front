@@ -1,7 +1,7 @@
 // Local dependencies
 import { IconProps } from "./Types";
 
-export default function ContactsIcon({ width = 35, height = 38 }: IconProps) {
+export default function ContactsIcon({ width = 75, height = 48 }: IconProps) {
   return (
     <svg
       width={width}

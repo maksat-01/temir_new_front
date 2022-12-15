@@ -6,6 +6,7 @@ import ContactsIcon from "../../assets/svg/ContactsIcon";
 import MediaIcon from "../../assets/svg/MediaIcon";
 import QrCodeIcon from "../../assets/svg/QrCodeIcon";
 import SecondaryLogo from "../../assets/svg/SecondaryLogo";
+import ShareIcon from "../../assets/svg/ShareIcon";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getUser } from "./getUser/redux/reducer";
 
@@ -16,24 +17,24 @@ const navs = [
     link: "",
   },
   {
-    title: "media",
-    icon: <MediaIcon />,
-    link: "media",
-  },
-  {
     title: "company",
     icon: <CompanyIcon />,
     link: "company",
   },
   {
-    title: "qr code",
-    icon: <QrCodeIcon />,
-    link: "company",
+    title: "INVENTARY",
+    icon: <MediaIcon />,
+    link: "GALLERY",
   },
   {
-    title: "temir",
-    icon: <SecondaryLogo width={34} height={36} />,
-    link: "company",
+    title: "GALLERY",
+    icon: <QrCodeIcon />,
+    link: "gallery",
+  },
+  {
+    title: "SHARE",
+    icon: <ShareIcon />,
+    link: "SHARE",
   },
 ];
 
@@ -82,7 +83,7 @@ export default function Interface({ children }: any) {
         <div
           className="w-full h-[287px] relative flex justify-center items-center"
           style={{
-            background: `url(https://png.pngtree.com/thumb_back/fh260/background/20211031/pngtree-abstract-bg-image_914283.png) no-repeat center/cover`,
+            background: `url(${user.background}) no-repeat center/cover`,
           }}
         >
           <Link to={`/user/${id}/signin`}>
@@ -96,7 +97,7 @@ export default function Interface({ children }: any) {
             style={{ border: "5px soild #FFFFFF" }}
           >
             <img
-              src="https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png"
+              src={user.avatar}
               alt=""
               className="w-[120px] h-[120px] bg-white rounded-full"
             />
@@ -132,51 +133,27 @@ export default function Interface({ children }: any) {
                     style={{
                       width:
                         index < 1 && index >= 0
-                          ? `${index === selectedTabs.index ? "110px" : "70px"}`
+                          ? `${"70px"}`
                           : index > 0 && index < 2
-                          ? `90px`
+                          ? `${isActive ? "75px" : "90px"}`
                           : index === 2
-                          ? `${
-                              index === selectedTabs.index + 2 && selectedTabs
-                                ? "70px"
-                                : "110px"
-                            }`
+                          ? `${isActive ? "80px" : "110px"}`
                           : index > 2 && index < 4
-                          ? `${
-                              index === selectedTabs.index + 3 && selectedTabs
-                                ? "70px"
-                                : "90px"
-                            }`
+                          ? `${isActive ? "75px" : "90px"}`
                           : index > 3 && index <= 4
-                          ? `${
-                              index === selectedTabs.index + 4 && selectedTabs
-                                ? "90px"
-                                : "70px"
-                            }`
+                          ? `${"70px"}`
                           : "",
                       height:
                         index < 1 && index >= 0
-                          ? `${index === selectedTabs.index ? "110px" : "70px"}`
+                          ? `${"70px"}`
                           : index > 0 && index < 2
-                          ? `90px`
+                          ? `${isActive ? "75px" : "90px"}`
                           : index === 2
-                          ? `${
-                              index === selectedTabs.index + 2 && selectedTabs
-                                ? "70px"
-                                : "110px"
-                            }`
+                          ? `${isActive ? "80px" : "110px"}`
                           : index > 2 && index < 4
-                          ? `${
-                              index === selectedTabs.index + 3 && selectedTabs
-                                ? "70px"
-                                : "90px"
-                            }`
+                          ? `${isActive ? "75px" : "90px"}`
                           : index > 3 && index <= 4
-                          ? `${
-                              index === selectedTabs.index + 4 && selectedTabs
-                                ? "90px"
-                                : "70px"
-                            }`
+                          ? `${"70px"}`
                           : "",
                       zIndex:
                         index < 1 && index >= 0
@@ -197,54 +174,15 @@ export default function Interface({ children }: any) {
 
                       margin:
                         index < 1 && index >= 0
-                          ? `0 0 0 ${
-                              isActive
-                                ? `${
-                                    index === selectedTabs.index && selectedTabs
-                                      ? "0"
-                                      : "-380px"
-                                  }`
-                                : "-130px"
-                            }`
+                          ? `0 0 0 ${isActive ? `${"-320px"}` : "-130px"}`
                           : index > 0 && index < 2
-                          ? `0 0 0 ${
-                              isActive
-                                ? `${
-                                    index === selectedTabs.index + 1 &&
-                                    selectedTabs
-                                      ? "210px"
-                                      : "-210px"
-                                  }`
-                                : "-70px"
-                            }`
+                          ? `0 0 0 ${isActive ? `${"-165px"}` : "-70px"}`
                           : index === 2
-                          ? `${
-                              index === selectedTabs.index + 2 && selectedTabs
-                                ? "0 0 0 380px"
-                                : "0"
-                            }`
+                          ? `${"0"}`
                           : index > 2 && index < 4
-                          ? `0 ${
-                              isActive
-                                ? `${
-                                    index === selectedTabs.index + 3 &&
-                                    selectedTabs
-                                      ? "380px"
-                                      : "-210px"
-                                  }`
-                                : "-70px"
-                            } 0 0`
+                          ? `0 ${isActive ? `${"-165px"}` : "-70px"} 0 0`
                           : index > 3 && index < 5
-                          ? `0 ${
-                              isActive
-                                ? `${
-                                    index === selectedTabs.index + 4 &&
-                                    selectedTabs
-                                      ? "210px"
-                                      : "-380px"
-                                  }`
-                                : "-130px"
-                            } 0 0`
+                          ? `0 ${isActive ? `${"-320px"}` : "-130px"} 0 0`
                           : "",
                       position: "absolute",
                       transition:
@@ -299,10 +237,22 @@ export default function Interface({ children }: any) {
                     }}
                   >
                     {el.icon}
+                    <span
+                      className="absolute"
+                      style={{
+                        opacity: isActive ? "1" : "0",
+                        transition: ".3s",
+                        textTransform: "uppercase",
+                        marginTop: "110px",
+                        fontSize: "11px",
+                      }}
+                    >
+                      {el.title}
+                    </span>
                   </div>
                 ))}
             </div>
-            <div className="pt-[100px]">{children}</div>
+            <div className="pt-[80px] w-full">{children}</div>
           </div>
         </div>
       </div>

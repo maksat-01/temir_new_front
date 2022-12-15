@@ -1,6 +1,6 @@
 import { IconProps } from "./Types";
 
-export default function CompanyIcon({ width = 63, height = 32 }: IconProps) {
+export default function CompanyIcon({ width = 53, height = 32 }: IconProps) {
   return (
     <svg
       width={width}

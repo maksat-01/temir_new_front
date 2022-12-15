@@ -57,7 +57,7 @@ function App() {
   ];
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
@@ -187,7 +187,7 @@ function App() {
         />
 
         <Route
-          path="/user/:id/media"
+          path="/user/:id/gallery"
           element={
             <Interface>
               <Media children={<MediaCardImage />} />
