@@ -1,3 +1,4 @@
+import { title } from "process";
 import React, { useEffect, useRef, useState } from "react";
 import AddPhotoSvg from "../../../assets/svg/AddPhotoSvg";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
@@ -34,13 +35,17 @@ export default function ModalUpdateImage({
   const { video: videoUpdate } = useAppSelector(
     (state) => state.ReducerMediaVideo
   );
-  const [titleUpdate, setTitleUpdate] = useState("");
-  const [updateImage, setUpdateImage] = useState("");
+  const [changeDataImage, setChangeDataImage] = useState({
+    title: ``,
+    image: ``,
+    user: getIdUserParams(),
+  });
   const [dataVideo, setDataVideo] = useState({
     title: "",
     url: "",
     user: getIdUserParams(),
   });
+  const [createImage, setCreateImage] = useState<any>();
 
   const deletePost = (post: any) => {
     API.delete(`image/${post.id}`)
@@ -55,7 +60,7 @@ export default function ModalUpdateImage({
   const uploadToClient = (event: any) => {
     if (event.target.files && event.target.files[0]) {
       const i = event.target.files[0];
-      setUpdateImage(i);
+      setChangeDataImage({ ...changeDataImage, image: i });
     }
   };
 
@@ -63,10 +68,11 @@ export default function ModalUpdateImage({
     e.preventDefault();
     const formData = new FormData();
     formData.append("user", getIdUserParams());
-    formData.append("title", titleUpdate);
-    updateImage?.length === 0
-      ? console.log("error")
-      : formData.append("image", updateImage);
+    formData.append(
+      "title",
+      changeDataImage.title.length > 0 ? changeDataImage.title : photos.title
+    );
+    changeDataImage.image && formData.append("image", changeDataImage.image);
 
     await API.patch(`image/${imageId}`, formData)
       .then(() => {
@@ -80,7 +86,11 @@ export default function ModalUpdateImage({
   };
 
   const updateVideo = () => {
-    API.patch(`video/${videoId}`, dataVideo)
+    API.patch(`video/${videoId}`, {
+      user: dataVideo.user,
+      title: dataVideo.title.length > 0 ? dataVideo.title : videoUpdate.title,
+      url: dataVideo.url.length > 0 ? dataVideo.url : videoUpdate.url,
+    })
       .then(() => {
         alert("Success");
         dispatch(getActionVideo());
@@ -101,6 +111,15 @@ export default function ModalUpdateImage({
         console.log(error);
       });
   };
+
+  const blobToBase64 = (blob: any) =>
+    new Promise((resolve, reject) => {
+      const file = blob.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
 
   useEffect(() => {
     dispatch(getActionMediaImage(imageId));
@@ -124,7 +143,12 @@ export default function ModalUpdateImage({
       {image && (
         <input
           id="file-upload"
-          onChange={(e) => uploadToClient(e)}
+          onChange={(e) => {
+            blobToBase64(e).then((data) => {
+              setCreateImage(data);
+            });
+            uploadToClient(e);
+          }}
           accept="image/png, image/gif, image/jpeg"
           type="file"
           style={{ display: "none" }}
@@ -134,7 +158,7 @@ export default function ModalUpdateImage({
       {image && (
         <img
           onClick={() => ref?.current?.click()}
-          src={photos?.image}
+          src={createImage || photos?.image}
           alt="no img"
           className="w-full h-[222px] object-cover rounded-[16px] mb-[19px] object-cover"
         />
@@ -179,7 +203,9 @@ export default function ModalUpdateImage({
             type="text"
             placeholder="text"
             className="bg-transparent w-[100%] pl-[16px] outline-none"
-            onChange={(e) => setTitleUpdate(e.target.value)}
+            onChange={(e) =>
+              setChangeDataImage({ ...changeDataImage, title: e.target.value })
+            }
           />
         </div>
       )}

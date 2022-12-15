@@ -44,14 +44,12 @@ export default function AdminBanks() {
         ))}
       </div>
 
-      <div className="max-w-[500px]">
-        <div>
-          {tab.map((tab, index) => (
-            <div key={index}>
-              {currentTab === `${tab.id}` && <div>{tab.tabContent}</div>}
-            </div>
-          ))}
-        </div>
+      <div className="max-w-[500px] mx-auto">
+        {tab.map((tab, index) => (
+          <div key={index}>
+            {currentTab === `${tab.id}` && <div>{tab.tabContent}</div>}
+          </div>
+        ))}
       </div>
     </div>
   );

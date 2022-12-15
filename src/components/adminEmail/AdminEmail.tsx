@@ -153,10 +153,10 @@ export default function AdminEmail() {
         </div>
         {workEmail.length === 0 && (
           <span
-            className="bg-[#E7E0EC] ml-[7px] rounded-[4px] max-h-[56px] w-[36px] flex justify-center items-center"
+            className="bg-[#E7E0EC] text-black ml-[7px] rounded-[4px] max-h-[56px] w-[36px] flex justify-center items-center"
             onClick={createPostSpecail}
           >
-            s
+            +
           </span>
         )}
 
@@ -195,10 +195,10 @@ export default function AdminEmail() {
         </div>
         {personalEmail.length === 0 && (
           <span
-            className="bg-[#E7E0EC] ml-[7px] rounded-[4px] max-h-[56px] w-[36px] flex justify-center items-center"
+            className="bg-[#E7E0EC] text-black ml-[7px] rounded-[4px] max-h-[56px] w-[36px] flex justify-center items-center"
             onClick={createPostSpecail}
           >
-            s
+            +
           </span>
         )}
 

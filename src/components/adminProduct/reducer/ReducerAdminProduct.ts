@@ -23,7 +23,7 @@ export const initialState: ProductAdminState = {
 } as ProductAdminState;
 
 export const ProductAdminReducer = createSlice({
-  name: "Image",
+  name: "Product",
   initialState,
   reducers: {
     ProductAdminFetching(state) {

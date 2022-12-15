@@ -24,6 +24,7 @@ import ReducerFollow from "../components/adminFollowMe/reducer/ReducerFollow";
 import ReducerFollows from "../components/adminFollowMe/reducer/ReducerFollows";
 import productSlice from "../pages/productPage/reducer/productSlice";
 import productDetailSlice from "../pages/productDetail/reducer/productDetailSlice";
+import ProductAdminReducer from "../components/adminProduct/reducer/ReducerAdminProduct"
 
 const rootReducer = combineReducers({
   ReducerImage,
@@ -47,6 +48,7 @@ const rootReducer = combineReducers({
   ReducerCompanyInformation,
   ReducerFollow,
   ReducerFollows,
+  ProductAdminReducer,
 });
 
 export const setUpStore = () => {

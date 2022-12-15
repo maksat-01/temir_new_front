@@ -27,3 +27,10 @@
     border-color: transparent transparent #1e1e1e transparent;
   }
 }
+
+.items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

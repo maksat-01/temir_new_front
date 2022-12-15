@@ -3,7 +3,6 @@ import AdminCompanyIcon from "../../assets/svg/AdminCompanyIcon";
 import AdminContactIcon from "../../assets/svg/AdminContactIcon";
 import MediaAdminIcon from "../../assets/svg/MediaAdminIcon";
 import ProductAdminIcon from "../../assets/svg/ProductAdminIcon";
-import DropDownCompany from "./DropDowmCompany";
 import DropDown from "./DropDown";
 interface IListMenu {
   dropdown: any;
@@ -19,6 +18,10 @@ export default function HeaderAdmin({
   title,
   arrayList,
 }: IHeaderAdmin) {
+  let activeStyle = {
+    color: "white",
+  };
+
   const menuList = [
     {
       svg: <AdminContactIcon />,
@@ -54,26 +57,25 @@ export default function HeaderAdmin({
           </div>
         </div>
       </div>
-      <div className="max-w-[500px] mx-auto">{children}</div>
-      <div className="max-w-md px-7 py-2.5 mx-auto flex  justify-between fixed bottom-0 left-0 right-0 rounded border-slate-800 bg-[#1D1D1F]">
-        {menuList.map((items, index) => (
-          <NavLink
-            to={items.link}
-            key={index}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "end",
-              alignItems: "center",
-            }}
-            className="link"
-          >
-            {items.svg}
-            <p className="text-white bg-transparent mt-[10px] text-[11px]">
-              {items.list}
-            </p>
-          </NavLink>
-        ))}
+      {children}
+      <div className="py-2.5 mx-auto flex justify-between fixed bottom-0 left-0 right-0 rounded border-slate-800 bg-[#1D1D1F]">
+        <div className="max-w-[500px] container mx-auto flex justify-between">
+          {menuList.map((items, index) => (
+            <NavLink
+              to={items.link}
+              style={({ isActive }) =>
+                isActive ? activeStyle : { color: "#575757" }
+              }
+              key={index}
+              className="items"
+            >
+              {items.svg}
+              <p className="bg-transparent mt-[10px] text-[11px]">
+                {items.list}
+              </p>
+            </NavLink>
+          ))}
+        </div>
       </div>
     </div>
   );

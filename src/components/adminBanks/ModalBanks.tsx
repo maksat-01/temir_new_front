@@ -61,8 +61,8 @@ export default function ModalBanks({ modal, setModal }: IModalApp) {
       } max-w-[750px] mx-auto flex flex-col p-[10px]`}
     >
       <div className="bg-[#151515] mx-auto px-[24px] rounded-[8px]">
-        <div className="flex justify-between items-center">
-          <p className="text-[24px]">
+        <div className="flex justify-between items-center pt-[13px]">
+          <p className="text-[24px] ">
             {bank.position === "account" ? `Bank account` : `Bank cart`}
           </p>
           <p className="font-[400]" onClick={() => setModal(false)}>

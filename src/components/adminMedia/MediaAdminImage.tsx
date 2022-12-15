@@ -12,7 +12,6 @@ export default function MediaAdminImage() {
   const [update, setUpdate] = useState(false);
   const [imageId, setImageId] = useState("");
   const { photos } = useAppSelector((state) => state.ReducerImage);
-
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getActionImage());
