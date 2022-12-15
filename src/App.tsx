@@ -128,7 +128,7 @@ function App() {
         {/* //Contact */}
 
         <Route
-          path="/contact-phone"
+          path="/admin-contacts"
           element={
             <HeaderAdmin
               title="Contact phones"
