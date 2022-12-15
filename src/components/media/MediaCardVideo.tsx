@@ -4,16 +4,10 @@ import ReactPlayer from "react-player/youtube";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getActionVideo } from "./reducer/ActionVideo";
 
-export default function MediaCardVideos() {
-  const dispatch = useAppDispatch();
-  const { video } = useAppSelector((state) => state.ReducerVideo);
-  useEffect(() => {
-    dispatch(getActionVideo());
-  }, []);
-
+export default function MediaCardVideos({video}: any) {
   return (
     <div className="max-w-[500px]">
-      {video.map((items, index) => (
+      {video.map((items: any, index: number) => (
         <div key={index} className="mb-[33px]">
           <ReactPlayer
             muted={false}

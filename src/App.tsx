@@ -32,6 +32,7 @@ import AdminBanks from "./components/adminBanks/AdminBanks";
 import HeaderLisProducts from "./components/ui/HeaderListProducts";
 import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import ContactUs from "./pages/contactUs/contactUs";
+import Share from "./components/share/Share";
 
 function App() {
   const listContact = [
@@ -66,10 +67,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/productDetail/:idCard" element={<ProductDetailPage />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/image"
-          element={<Media children={<MediaCardImage />} />}
-        />
+        <Route path="/image" element={<Media />} />
 
         <Route path="/basket" element={<Basket />} />
         <Route
@@ -113,8 +111,20 @@ function App() {
         />
 
         <Route
-          path="/user/:id/media"
-          element={<Media children={<MediaCardImage />} />}
+          path="/user/:id/gallery"
+          element={
+            <Interface>
+              <Media />
+            </Interface>
+          }
+        />
+        <Route
+          path="/user/:id/share"
+          element={
+            <Interface>
+              <Share />
+            </Interface>
+          }
         />
         <Route
           path="/bank-details"
@@ -192,7 +202,7 @@ function App() {
           path="/user/:id/gallery"
           element={
             <Interface>
-              <Media children={<MediaCardImage />} />
+              <Media />
             </Interface>
           }
         />
@@ -206,10 +216,7 @@ function App() {
           }
         />
 
-        <Route
-          path="/video"
-          element={<Media children={<MediaCardVideos />} />}
-        />
+        <Route path="/video" element={<Media />} />
 
         <Route
           path="/admin-media"
@@ -219,7 +226,7 @@ function App() {
         />
       </Routes>
     </>
-  )
+  );
 }
 
 export default App;

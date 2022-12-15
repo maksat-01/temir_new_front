@@ -1,18 +1,19 @@
 import axios from "axios";
 import { config } from "process";
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
-
-interface IMedia {
-  children: JSX.Element;
-}
+import { useEffect, useState } from "react";
+import { NavLink, useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import MediaCardImage from "./MediaCardImage";
+import MediaCardVideos from "./MediaCardVideo";
+import { getActionImage } from "./reducer/ActionImage";
+import { getActionVideo } from "./reducer/ActionVideo";
 
 enum MediaTypes {
   PHOTO = "PHOTO",
   VIDEO = "VIDEO",
 }
 
-export default function Media({ children }: IMedia) {
+export default function Media() {
   let activeStyle = {
     textDecoration: "underline",
     textUnderlineOffset: "11px",
@@ -21,10 +22,26 @@ export default function Media({ children }: IMedia) {
     cursor: "pointer",
   };
 
+  const { id } = useParams();
+
   const [isActive, setActive] = useState(MediaTypes.PHOTO);
 
   const isPhoto = isActive === MediaTypes.PHOTO;
   const isVidoe = isActive === MediaTypes.VIDEO;
+
+  const dispatch = useAppDispatch();
+  const { photos } = useAppSelector((state) => state.ReducerImage);
+  const { video } = useAppSelector((state) => state.ReducerVideo);
+
+  useEffect(() => {
+    dispatch(getActionImage());
+    dispatch(getActionVideo());
+  }, []);
+
+  console.log("PHOTOS", photos);
+  console.log("VIDEO", video);
+  const yourPhotos = photos.filter((el) => el.user === id);
+  const yourVideos = video.filter((el) => el.user === id);
 
   return (
     <div className="max-w-[500px] mx-auto px-[22px]">
@@ -42,7 +59,11 @@ export default function Media({ children }: IMedia) {
           Videos
         </h1>
       </div>
-      {children}
+      {isPhoto ? (
+        <MediaCardImage photos={yourPhotos} />
+      ) : (
+        <MediaCardVideos video={yourVideos} />
+      )}
     </div>
   );
 }

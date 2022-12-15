@@ -1,18 +1,7 @@
-import React, { useEffect } from "react";
-
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { getActionImage } from "./reducer/ActionImage";
-
-export default function MediaCardImage() {
-  const dispatch = useAppDispatch();
-  const { photos } = useAppSelector((state) => state.ReducerImage);
-  useEffect(() => {
-    dispatch(getActionImage());
-  }, []);
-
+export default function MediaCardImage({ photos }: any) {
   return (
     <div className="max-w-500px]">
-      {photos.map((items, index) => (
+      {photos.map((items: any, index: number) => (
         <div key={index} className="mb-[33px]">
           <img
             src={items.image}
