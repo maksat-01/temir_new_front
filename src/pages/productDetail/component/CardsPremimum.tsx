@@ -1,35 +1,32 @@
-import React, { useState, FC } from 'react'
+import React, { useState, FC, useEffect } from 'react'
 import { HiUpload } from 'react-icons/hi'
+import { useParams, useNavigate } from 'react-router-dom'
 
 //local
+import { useAppDispatch, useAppSelector } from '../../../hooks'
 import { addToBasket } from '../../basket/ReducerBasket/ActionBasket'
-import Card1 from '../../../assets/img/card1.svg'
-import Card5 from '../../../assets/img/card5.svg'
-import EmptyCard from '../../../assets/img/empty-card.svg'
-import { useAppDispatch } from '../../../hooks'
+import { getProductsPage } from '../../productPage/reducer/actionProductPage'
+import { fetchDetailProduct } from '../reducer/actionDetailPage'
 
 const CardsPremimum: FC = () => {
+  //Класссы тегов
   const classesText =
     'font-[Arial] font-[900] uppercase text-white text-[30px] leading-[42px]'
   const classesBefore =
     "before:content-[''] absolute border border-white rounded-sm top-0 left-0 right-0"
-  const option = [
-    {
-      image: Card1,
-      title: 'Gold Brushed',
-    },
-    {
-      image: Card5,
-      title: 'Silver Brushed',
-    },
-    {
-      image: EmptyCard,
-      title: 'Black Frost',
-    },
-  ]
+
+  //useParams
+  const { idCard } = useParams()
+
+  //Продукты
+  const productAll = useAppSelector((state) => state.productSlice.products_page)
+  const productOne = useAppSelector(
+    (state) => state.productDetailSlice.detail_product
+  )
+
   const dispatch = useAppDispatch()
-  const basket = JSON.parse(localStorage.getItem('basket') as any)
-  const [mainCard, setMainCard] = useState<any>(EmptyCard)
+  const navigate = useNavigate()
+
   const [imageUrl, setImageUrl] = useState<any>('')
   const fileReader = new FileReader()
   fileReader.onloadend = () => setImageUrl(fileReader.result)
@@ -40,10 +37,10 @@ const CardsPremimum: FC = () => {
   const [product, setProduct] = useState<any>({
     title: cardData.title,
     logo: imageUrl,
-    img: EmptyCard,
-    price: '200',
+    img: productOne.image,
+    price: productOne.price,
     type: '',
-    name: 'Premium Smart card',
+    name: productOne.name,
     quantity: 1,
   })
   const handleChange = (e: any) => {
@@ -62,6 +59,10 @@ const CardsPremimum: FC = () => {
           : fileReader.readAsDataURL(e.target.files[0]),
     })
   }
+  useEffect(() => {
+    dispatch(getProductsPage())
+    dispatch(fetchDetailProduct(idCard))
+  }, [dispatch, idCard])
   return (
     <section>
       <div className="container mx-auto pt-10">
@@ -69,26 +70,31 @@ const CardsPremimum: FC = () => {
           <div className={`${classesBefore}`}></div>
           <div className="lg:w-[50%] max-lg:w-full">
             <div>
-              <h1 className={`${classesText}`}>Premium Smart Card</h1>
-              <p className={`${classesText}`}>200 aed</p>
+              <h1 className={`${classesText}`}>{productOne.name}</h1>
+              <p className={`${classesText}`}>{productOne.price} aed</p>
             </div>
             <div className="w-full">
               <p className={`font-[Arial] text-[30px] leading-[42px]`}>
                 Choose in option
               </p>
-              <div className="bg-[#171717] shadow-[inset_-8px_-9px_11px_rgba(30,30,30,0.25),inset_6px_7px_10px_#000000] rounded-[10px] p-2 flex items-center w-full">
-                {option.map((el, idx) => (
-                  <div key={idx}>
+              <div className="bg-[#171717] overflow-x-scroll scroll__webkit shadow-[inset_-8px_-9px_11px_rgba(30,30,30,0.25),inset_6px_7px_10px_#000000] rounded-[10px] flex items-center w-full">
+                {productAll.map((el) => (
+                  <div
+                    key={el.id}
+                    className="p-2"
+                    onClick={() => {
+                      navigate(`/productDetail/${el.id}`)
+                    }}
+                  >
                     <div
                       onClick={() => {
-                        setMainCard(el.image)
                         setProduct({
                           ...product,
-                          type: el.title,
+                          type: el.name,
                           img: el.image,
                         })
                       }}
-                      className="relative flex items-center justify-center m-1"
+                      className="relative flex items-center justify-center w-[200px] m-1"
                     >
                       <img
                         src={el.image}
@@ -99,7 +105,7 @@ const CardsPremimum: FC = () => {
                         TEMIR
                       </h2>
                     </div>
-                    <p>{el.title}</p>
+                    <p>{el.name}</p>
                   </div>
                 ))}
               </div>
@@ -142,7 +148,6 @@ const CardsPremimum: FC = () => {
                 <button
                   onClick={() => {
                     dispatch(addToBasket(product))
-                    console.log(basket)
                   }}
                   className="bg-[#0B0B0B] shadow-[-10.93px_-8.94274px_20.8664px_rgba(72,72,72,0.25),5.96183px_6.95546px_20.8664px_#000000] rounded-[5px] font-[Jura] text-[30px] py-2 px-10 transition active:opacity-50"
                 >
@@ -169,8 +174,8 @@ const CardsPremimum: FC = () => {
                 {cardData.title}
               </h1>
             </div>
-            <div className="">
-              <img src={mainCard} alt="" className="w-full" />
+            <div className="p-2">
+              <img src={productOne.image} alt="" className="w-full" />
             </div>
           </div>
         </div>

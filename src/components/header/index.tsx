@@ -78,19 +78,19 @@ const Header = () => {
               onClick={openMenu}
             >
               <span
-                className={`${classesLine} right-0 ${
+                className={`${classesLine} menu_transition right-0 ${
                   burgerMenu
                     ? 'rotate-[-40deg] w-full bg-black translate-y-0'
                     : 'w-[18px] translate-y-[-11px]'
                 }`}
               ></span>
               <span
-                className={`${classesLine} w-full ${
+                className={`${classesLine} menu_transition w-full ${
                   burgerMenu ? 'opacity-0' : ''
                 }`}
               ></span>
               <span
-                className={`${classesLine} left-0 right-0 ${
+                className={`${classesLine} menu_transition left-0 right-0 ${
                   burgerMenu
                     ? 'rotate-[40deg] w-full bg-black translate-y-0'
                     : 'w-[18px] translate-y-[11px]'

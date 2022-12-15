@@ -12,7 +12,7 @@ export const fetchContactUs =
           ...contact,
         }
       )
-      alert(contactUs.data)
+      if (contactUs.status === 201) alert('Данные успешно отправлены')
       dispatch(contactUsSlice.actions.ContactUsSuccess(contactUs.data))
     } catch (e: any) {
       dispatch(contactUsSlice.actions.ContactUsError(e.message))

@@ -6,7 +6,6 @@ export const fetchDetailProduct =
     try {
       dispatch(productDetailSlice.actions.detailProductFetching)
       const products = await PUBLIC_API.get(`api/v1/productproduct/${id}/`)
-      console.log(products)
       dispatch(productDetailSlice.actions.detailProductSucces(products.data))
     } catch (e: any) {
       dispatch(productDetailSlice.actions.detailProductError(e.message))
