@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Logo from '../../assets/svg/logo'
 import BasketImageSvg from '../../assets/svg/BasketImageSvg'
 import Menu from './Menu'
+import {useAppSelector} from "../../hooks";
 
 const Header = () => {
   //хук состоянии
@@ -33,6 +34,8 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
+  const {basket} = useAppSelector(s => s.ReducerBasket)
+
   return (
     <header
       id="header"
@@ -64,8 +67,9 @@ const Header = () => {
           <div className="absolute right-6 top-7">
             <div>
               <Link to={'/basket'}>
-                <div className="basket">
+                <div className="basket relative pr-5">
                   <BasketImageSvg />
+                  <p className='absolute text-[#8E7A3B] top-1 left-8 text-[20px]'>{basket.length > 0 ? basket.length :""}</p>
                 </div>
               </Link>
             </div>
