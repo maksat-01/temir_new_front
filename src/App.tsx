@@ -33,6 +33,7 @@ import HeaderLisProducts from "./components/ui/HeaderListProducts";
 import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import ContactUs from "./pages/contactUs/contactUs";
 import Share from "./components/share/Share";
+import ProductsAdmin from "./pages/interface/product/ProductsAdmin";
 
 function App() {
   const listContact = [
@@ -59,8 +60,6 @@ function App() {
   ];
   return (
     <>
-       <Header />
-      <Header />
       {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -117,6 +116,14 @@ function App() {
           element={
             <Interface>
               <Media />
+            </Interface>
+          }
+        />
+        <Route
+          path="/user/:id/inventary"
+          element={
+            <Interface>
+              <ProductsAdmin />
             </Interface>
           }
         />

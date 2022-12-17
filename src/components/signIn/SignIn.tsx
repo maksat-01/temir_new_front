@@ -42,7 +42,7 @@ export default function SignIn() {
   paramsUserId(id);
 
   return (
-    <div className="max-w-[419px] mx-auto px-[22px]">
+    <div className="max-w-[419px] mx-auto ">
       <form onSubmit={sigIn}>
         <input
           type="password"
@@ -50,7 +50,7 @@ export default function SignIn() {
           {...register("password", { required: true })}
           name="password"
           onChange={(e) => setAuth({ ...auth, password: e.target.value })}
-          className={`w-full py-[16px] text-black pl-[14px] mb-[10px] rounded-[5px] mt-[150px] ${
+          className={`w-full py-[16px] text-black pl-[14px] mb-[10px] rounded-[5px] ${
             errorValidate && "border-2 border-rose-500"
           } `}
         />
@@ -69,6 +69,16 @@ export default function SignIn() {
           </button>
         </div>
       </form>
+      <div className="flex justify-center mt-5">
+        <button
+          className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[45px]"
+          onClick={() =>
+            navigation  ("/user/dc18f3e4-72db-4983-b0f4-674660c1452e")
+          }
+        >
+          Back
+        </button>
+      </div>
       {modal && <ModalSignIn setModal={setModal} />}
     </div>
   );

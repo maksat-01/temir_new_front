@@ -23,22 +23,46 @@ export default function HeaderLisProducts({
 
   const menuList = [
     {
-      svg: <AdminContactIcon />,
+      svg: (
+        <AdminContactIcon
+          fill={
+            window.location.pathname === "/admin-contacts" ? "red" : "#575757"
+          }
+        />
+      ),
       list: "Contacts",
       link: "/admin-contacts",
     },
     {
-      svg: <MediaAdminIcon />,
+      svg: (
+        <MediaAdminIcon
+          fill={
+            window.location.pathname === "/admin-media" ? "white" : "#575757"
+          }
+        />
+      ),
       list: "Media",
       link: "/admin-media",
     },
     {
-      svg: <ProductAdminIcon />,
+      svg: (
+        <ProductAdminIcon
+          fill={
+            window.location.pathname === "/admin-product" ? "white" : "#575757"
+          }
+        />
+      ),
       list: "Produts",
       link: "/admin-product",
     },
     {
-      svg: <AdminCompanyIcon />,
+      svg: (
+        <AdminCompanyIcon
+          fill={
+            window.location.pathname === "/addcompany" ? "white" : "#575757"
+          }
+        />
+      ),
       list: "Company",
       link: "/addcompany",
     },

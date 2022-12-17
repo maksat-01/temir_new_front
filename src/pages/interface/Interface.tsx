@@ -12,19 +12,20 @@ import { getUser } from "./getUser/redux/reducer";
 
 const navs = [
   {
-    title: "contacts",
-    icon: <ContactsIcon />,
-    link: "",
-  },
-  {
     title: "company",
     icon: <CompanyIcon />,
     link: "company",
   },
+
   {
     title: "INVENTARY",
     icon: <MediaIcon />,
-    link: "GALLERY",
+    link: "inventary",
+  },
+  {
+    title: "contacts",
+    icon: <ContactsIcon />,
+    link: "",
   },
   {
     title: "GALLERY",
