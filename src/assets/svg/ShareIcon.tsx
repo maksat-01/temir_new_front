@@ -7,7 +7,7 @@ export default function ShareIcon() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_702_3445)">
+      <g clipPath="url(#clip0_702_3445)">
         <g filter="url(#filter0_d_702_3445)">
           <path
             d="M9.82396 10.7589C12.1537 12.6512 15.3648 18.0942 9.57198 24.7275C11.2705 22.5249 13.6989 16.6477 9.82396 10.7589Z"
@@ -31,9 +31,9 @@ export default function ShareIcon() {
           width="25.25"
           height="41.9648"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

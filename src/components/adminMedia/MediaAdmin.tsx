@@ -41,7 +41,7 @@ export default function MediaAdmin({ children }: IMediaAdmin) {
   return (
     <div className="max-w-[500px] mx-auto bg-[#151515] relative">
       <div className="bg-[#262627]">
-        <div className="flex justify-evenly bg-[#262627] mb-[31px] pb-[20px]">
+        <div className="fixed left-0 right-0 z-[99] flex justify-evenly bg-[#262627] mb-[31px] pb-[20px]">
           {tab.map((tab, index) => (
             <button
               key={index}
@@ -54,15 +54,13 @@ export default function MediaAdmin({ children }: IMediaAdmin) {
           ))}
         </div>
       </div>
-      <div className="max-w-[500px]">
-        <div>
-          {tab.map((tab, index) => (
-            <div key={index}>
-              {currentTab === `${tab.id}` && <div>{tab.tabContent}</div>}
-            </div>
-          ))}
+      {tab.map((tab, index) => (
+        <div key={index}>
+          {currentTab === `${tab.id}` && (
+            <div className="pt-[76px]">{tab.tabContent}</div>
+          )}
         </div>
-      </div>
+      ))}
     </div>
   );
 }

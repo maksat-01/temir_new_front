@@ -35,6 +35,7 @@ import ContactUs from "./pages/contactUs/contactUs";
 import Share from "./components/share/Share";
 import ProductsAdmin from "./pages/interface/product/ProductsAdmin";
 import Profile from "./components/profile/Profile";
+import ResetPassword from "./components/signIn/ResetPassword";
 
 function App() {
   const listContact = [
@@ -89,6 +90,7 @@ function App() {
           }
         />
         <Route path="/signin/:id" element={<SignIn />} />
+        <Route path="/resetPassword/*" element={<ResetPassword />} />
 
         {/* /// Product /// */}
         <Route
@@ -160,7 +162,7 @@ function App() {
         {/* //Contact */}
 
         <Route
-          path="/admin-contacts"
+          path="/contact-phone"
           element={
             <HeaderAdmin
               title="Contact phones"

@@ -20,7 +20,7 @@ interface CompanyAdminState {
 
 export const initialState: CompanyAdminState = {
   error: "",
-  isLoading: false,
+  isLoading: true,
   company: {},
 } as CompanyAdminState;
 

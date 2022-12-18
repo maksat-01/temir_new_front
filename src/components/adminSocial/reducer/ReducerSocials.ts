@@ -18,7 +18,7 @@ interface SocialState {
 
 export const initialState: SocialState = {
   error: "",
-  isLoading: false,
+  isLoading: true,
   socials: [],
 } as SocialState;
 

@@ -18,7 +18,7 @@ interface FollowsState {
 
 export const initialState: FollowsState = {
   error: "",
-  isLoading: false,
+  isLoading: true,
   folows: [],
 } as FollowsState;
 

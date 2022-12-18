@@ -17,7 +17,7 @@ export default function QrCodeIcon({ width = 37, height = 37 }: IconProps) {
         rx="1.6"
         fill="black"
         stroke="url(#paint0_linear_701_3445)"
-        stroke-width="0.8"
+        strokeWidth="0.8"
       />
       <rect
         x="5.52473"
@@ -28,7 +28,7 @@ export default function QrCodeIcon({ width = 37, height = 37 }: IconProps) {
         transform="rotate(-90.3179 5.52473 22.692)"
         fill="black"
         stroke="url(#paint1_linear_701_3445)"
-        stroke-width="0.8"
+        strokeWidth="0.8"
       />
       <defs>
         <linearGradient
@@ -39,9 +39,9 @@ export default function QrCodeIcon({ width = 37, height = 37 }: IconProps) {
           y2="19"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#ECEAEA" />
-          <stop offset="0.541667" stop-color="#3A3A3A" />
-          <stop offset="1" stop-color="#F5F3F3" stop-opacity="0.91" />
+          <stop stopColor="#ECEAEA" />
+          <stop offset="0.541667" stopColor="#3A3A3A" />
+          <stop offset="1" stopColor="#F5F3F3" stopOpacity="0.91" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_701_3445"
@@ -51,9 +51,9 @@ export default function QrCodeIcon({ width = 37, height = 37 }: IconProps) {
           y2="36.6965"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#ECEAEA" />
-          <stop offset="0.541667" stop-color="#3A3A3A" />
-          <stop offset="1" stop-color="#F5F3F3" stop-opacity="0.91" />
+          <stop stopColor="#ECEAEA" />
+          <stop offset="0.541667" stopColor="#3A3A3A" />
+          <stop offset="1" stopColor="#F5F3F3" stopOpacity="0.91" />
         </linearGradient>
       </defs>
     </svg>

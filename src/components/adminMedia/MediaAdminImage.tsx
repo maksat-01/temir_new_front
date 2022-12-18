@@ -29,15 +29,15 @@ export default function MediaAdminImage() {
   };
 
   return (
-    <div className="max-w-[500px] mx-auto pb-[77px]">
+    <div className="mx-auto pb-[77px]">
       <div
-        className={`flex justify-center items-end relative ${
+        className={`flex justify-center items-end relative  ${
           photos.length > 0 && "min-h-[70vh]"
         }`}
       >
-        <div className="max-w-[500px]">
+        <div className="w-full px-[22px]">
           {photos.map((items, index) => (
-            <div key={index} className="mb-[33px] px-[20px]">
+            <div key={index} className="mb-[33px]">
               <img
                 src={items.image}
                 alt="no img"
@@ -78,7 +78,7 @@ export default function MediaAdminImage() {
         </div>
         <button
           onClick={() => setModal(true)}
-          className="mx-[23px] px-[10px] py-[10px] bg-[#6750A4] font-[500] right-0 rounded-[50px] absolute bottom-0 "
+          className="px-[20px] py-[19px] bg-[#6750A4] font-[500] right-0 rounded-[50px] fixed bottom-[90px] right-[34px]"
         >
           <APlusSvg />
         </button>

@@ -143,14 +143,12 @@ export default function ModalSocial({ modal, setModal }: IModalApp) {
             onChange={(e) => showMessenger(nameSocial, e)}
           />
         </div>
-        <div className="w-full flex justify-center">
-          <button
-            onClick={postSocial}
-            className="bg-white text-black rounded-[50px] px-[35px] py-[10px]"
-          >
-            Add
-          </button>
-        </div>
+        <button
+          onClick={postSocial}
+          className="bg-white text-black rounded-[50px] px-[35px] py-[10px] "
+        >
+          Add
+        </button>
       </div>
     </div>
   );

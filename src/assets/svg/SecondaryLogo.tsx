@@ -10,7 +10,7 @@ export default function SecondaryLogo({ width = 19, height = 20 }: IconProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_406_595)">
+      <g clipPath="url(#clip0_406_595)">
         <path
           d="M18.9146 0V4.15993H12.3557V4.18602H6.62364V4.15993H0.0617676V0H18.9146Z"
           fill="url(#paint0_linear_406_595)"

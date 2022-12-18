@@ -17,7 +17,7 @@ interface PhoneNumbersState {
 
 export const initialState: PhoneNumbersState = {
   error: "",
-  isLoading: false,
+  isLoading: true,
   phone: [],
 } as PhoneNumbersState;
 

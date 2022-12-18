@@ -32,18 +32,18 @@ export default function MediaAdminVideo() {
   }, []);
 
   return (
-    <div className="max-w-[500px] mx-auto pb-[77px]">
+    <div className="mx-auto pb-[77px] ">
       <div
         className={`flex justify-center items-end relative  ${
           video.length <= 1 && "min-h-[70vh]"
         }`}
       >
         {video.map((items, index) => (
-          <div key={index} className="mb-[33px] px-[20px]">
+          <div key={index} className="mb-[33px] w-full px-[22px]">
             <ReactPlayer
               muted={false}
               width={"100%"}
-              height="auto"
+              height="222px"
               url={items?.url}
             />
             <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mt-[17px] mb-[10px]">
@@ -80,7 +80,7 @@ export default function MediaAdminVideo() {
         ))}
         <button
           onClick={() => setModal(true)}
-          className="mx-[23px] px-[10px] py-[10px] bg-[#6750A4] font-[500] right-0 rounded-[50px] absolute bottom-0 "
+          className="px-[20px] py-[19px] bg-[#6750A4] font-[500] right-0 rounded-[50px] fixed bottom-[90px] right-[34px]"
         >
           <APlusSvg />
         </button>

@@ -19,7 +19,7 @@ interface PhotosState {
 
 export const initialState: PhotosState = {
   error: "",
-  isLoading: false,
+  isLoading: true,
   photos: {},
 } as PhotosState;
 

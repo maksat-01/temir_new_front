@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AdminCompanyIcon from "../../assets/svg/AdminCompanyIcon";
 import AdminContactIcon from "../../assets/svg/AdminContactIcon";
 import MediaAdminIcon from "../../assets/svg/MediaAdminIcon";
 import ProductAdminIcon from "../../assets/svg/ProductAdminIcon";
+import { getIdUserParams } from "../helper";
 import DropDown from "./DropDown";
 interface IListMenu {
   dropdown: any;
@@ -26,7 +27,7 @@ export default function HeaderAdmin({
     {
       svg: <AdminContactIcon />,
       list: "Contacts",
-      link: "/admin-contacts",
+      link: "/contact-phone",
     },
     {
       svg: <MediaAdminIcon />,
@@ -49,8 +50,14 @@ export default function HeaderAdmin({
     <div>
       <div className="bg-[#262627] pb-[38px] pt-[73px]">
         <div className="max-w-[500px] mx-auto relative">
-          <div className="flex justify-center items-center">
-            <p className="text-center">{title}</p>
+          <div className="flex justify-center items-center w-full">
+            <Link
+              to={`/user/${getIdUserParams()}}`}
+              className="absolute left-[40px]"
+            >
+              Exit
+            </Link>
+            <p className="w-full text-center">{title}</p>
             {arrayList?.map((item, index: any) => (
               <DropDown items={item.dropdown} key={index} />
             ))}

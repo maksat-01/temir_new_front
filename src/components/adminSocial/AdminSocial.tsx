@@ -32,7 +32,7 @@ export default function AdminSocial() {
   };
 
   return (
-    <div className="mt-[31px] relative">
+    <div className="mt-[31px] relative max-w-[500px] mx-auto px-[22px]">
       {socials.map((items) => (
         <div key={items.id} className="flex justify-between">
           <div className="text-black py-[8px] w-full bg-[#E7E0EC] mb-[22px] rounded-[4px] flex flex-col">
@@ -66,14 +66,12 @@ export default function AdminSocial() {
         </div>
       ))}
 
-      <div className="flex justify-end">
-        <button
-          className="px-[20px] py-[19px] bg-[#6750A4] rounded-[50px]"
-          onClick={() => setModal(true)}
-        >
-          <APlusSvg />
-        </button>
-      </div>
+      <button
+        className="px-[20px] py-[19px] bg-[#6750A4] rounded-[50px] fixed bottom-[90px] right-[34px]"
+        onClick={() => setModal(true)}
+      >
+        <APlusSvg />
+      </button>
       <ModalSocial modal={modal} setModal={setModal} childern={""} />
       <ModalChangeSocial
         postId={messengerId}

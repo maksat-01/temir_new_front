@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import MediaAdminIcon from "../../assets/svg/MediaAdminIcon";
 import AdminCompanyIcon from "../../assets/svg/AdminCompanyIcon";
 import ProductAdminIcon from "../../assets/svg/ProductAdminIcon";
@@ -6,6 +6,7 @@ import AdminContactIcon from "../../assets/svg/AdminContactIcon";
 import DropDownCompany from "./DropDowmCompany";
 import "./style.scss";
 import ProfileIcon from "../../assets/svg/ProfileIcon";
+import { getIdUserParams } from "../helper";
 
 interface IHeaderAdmin {
   children?: JSX.Element;
@@ -27,12 +28,12 @@ export default function HeaderLisProducts({
       svg: (
         <AdminContactIcon
           fill={
-            window.location.pathname === "/admin-contacts" ? "red" : "#575757"
+            window.location.pathname === "/contact-phone" ? "red" : "#575757"
           }
         />
       ),
       list: "Contacts",
-      link: "/admin-contacts",
+      link: "/contact-phone",
     },
     {
       svg: (
@@ -70,9 +71,7 @@ export default function HeaderLisProducts({
     {
       svg: (
         <ProfileIcon
-          fill={
-            window.location.pathname === "/profile" ? "white" : "#575757"
-          }
+          fill={window.location.pathname === "/profile" ? "white" : "#575757"}
         />
       ),
       list: "Profile",
@@ -82,15 +81,21 @@ export default function HeaderLisProducts({
 
   return (
     <div className=" min-h-screen mx-auto">
-      <div className="bg-[#262627] pb-[38px] pt-[73px]">
+      <div className="bg-[#262627] pb-[38px] pt-[73px] fixed top-0 left-0 right-0 z-[100]">
         <div className="max-w-[500px] mx-auto relative">
           <div className="flex justify-center items-center">
+            <Link
+              to={`/user/${getIdUserParams()}}`}
+              className="absolute left-[40px]"
+            >
+              Exit
+            </Link>
             <p className="text-center">{title}</p>
             {listActive && <DropDownCompany />}
           </div>
         </div>
       </div>
-      {children}
+      <div className="mt-[130px]">{children}</div>
       <div className="py-2.5 mx-auto flex justify-between fixed bottom-0 left-0 right-0 rounded border-slate-800 bg-[#1D1D1F]">
         <div className="max-w-[500px] container mx-auto flex justify-between">
           {menuList.map((items, index) => (

@@ -10,7 +10,7 @@ export default function ContactsIcon({ width = 75, height = 48 }: IconProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_280_377)" filter="url(#filter0_d_280_377)">
+      <g clipPath="url(#clip0_280_377)" filter="url(#filter0_d_280_377)">
         <path
           d="M31 3.15226V30L30.6045 23.5144C30.6045 23.5144 30.6369 6.46914 30.5461 3.44856C30.4553 0.477366 28.8797 0.510288 28.1275 0.460905C27.5569 0.427984 7.76081 0.617284 6.30836 0.72428C4.45389 0.864197 4.51873 3.11111 4.51873 3.11111L4.48631 23.9177L4 29.7366V3.15226C4 1.41564 4.99856 0.0740741 6.29539 0H28.7046C30.196 0 30.9805 1.40741 31 3.15226Z"
           fill="white"
@@ -28,9 +28,9 @@ export default function ContactsIcon({ width = 75, height = 48 }: IconProps) {
           width="35"
           height="38"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

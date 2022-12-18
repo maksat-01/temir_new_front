@@ -18,7 +18,7 @@ interface ProductAdminState {
 
 export const initialState: ProductAdminState = {
   error: "",
-  isLoading: false,
+  isLoading: true,
   product: {},
 } as ProductAdminState;
 

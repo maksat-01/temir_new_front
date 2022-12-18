@@ -17,7 +17,7 @@ interface VideoAdminState {
 
 export const initialState: VideoAdminState = {
   error: "",
-  isLoading: false,
+  isLoading: true,
   video: {},
 } as VideoAdminState;
 

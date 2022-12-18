@@ -31,10 +31,8 @@ export default function AdminFollows() {
       });
   };
 
-  console.log(folows, "F");
-
   return (
-    <div className="mt-[31px] relative">
+    <div className="mt-[31px] relative max-w-[500px] mx-auto">
       {folows.map((items) => (
         <div key={items.id} className="flex justify-between">
           <div className="text-black py-[8px] w-full bg-[#E7E0EC] mb-[22px] rounded-[4px] flex flex-col">

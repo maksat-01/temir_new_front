@@ -17,7 +17,7 @@ interface EmailState {
 
 export const initialState: EmailState = {
   error: "",
-  isLoading: false,
+  isLoading: true,
   email: [],
 } as EmailState;
 
