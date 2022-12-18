@@ -34,6 +34,7 @@ import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import ContactUs from "./pages/contactUs/contactUs";
 import Share from "./components/share/Share";
 import ProductsAdmin from "./pages/interface/product/ProductsAdmin";
+import Profile from "./components/profile/Profile";
 
 function App() {
   const listContact = [
@@ -60,7 +61,7 @@ function App() {
   ];
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductPage />} />
@@ -107,6 +108,16 @@ function App() {
               listActive
               title="Add company"
               children={<AddedAdminCompany />}
+            />
+          }
+        />
+        <Route
+          path="/profile/"
+          element={
+            <HeaderLisProducts
+              listActive
+              title="Profile"
+              children={<Profile />}
             />
           }
         />

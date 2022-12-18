@@ -5,6 +5,7 @@ import ProductAdminIcon from "../../assets/svg/ProductAdminIcon";
 import AdminContactIcon from "../../assets/svg/AdminContactIcon";
 import DropDownCompany from "./DropDowmCompany";
 import "./style.scss";
+import ProfileIcon from "../../assets/svg/ProfileIcon";
 
 interface IHeaderAdmin {
   children?: JSX.Element;
@@ -65,6 +66,17 @@ export default function HeaderLisProducts({
       ),
       list: "Company",
       link: "/addcompany",
+    },
+    {
+      svg: (
+        <ProfileIcon
+          fill={
+            window.location.pathname === "/profile" ? "white" : "#575757"
+          }
+        />
+      ),
+      list: "Profile",
+      link: "/profile",
     },
   ];
 
