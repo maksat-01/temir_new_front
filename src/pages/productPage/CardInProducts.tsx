@@ -1,17 +1,15 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 //local
 import '../../style/products/products.scss'
-import { useAppDispatch, useAppSelector } from '../../hooks/index'
-import { getProductsPage } from './reducer/actionProductPage'
+import { IProductPage } from './reducer/productSlice'
 
-const CardInProducts: FC = () => {
-  const dispatch = useAppDispatch()
-  const product = useAppSelector((state) => state.productSlice.products_page)
-  useEffect(() => {
-    dispatch(getProductsPage())
-  }, [dispatch])
+interface IProps {
+  product: IProductPage[]
+}
+
+const CardInProducts: FC<IProps> = ({ product }) => {
   return (
     <section
       id="products"

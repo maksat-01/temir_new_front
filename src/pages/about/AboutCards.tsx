@@ -3,37 +3,20 @@ import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 //local
 import '../../style/about/about.scss'
-import SmartCard from '../../assets/img/smartCardAbout.svg'
-import SmartTags from '../../assets/img/smartCardsAbout.svg'
-import SmartKeychain from '../../assets/img/smartKeychainAbout.svg'
 
-const AboutCards: FC = () => {
-  const cards = [
-    {
-      id: 1,
-      name: 'SMART CARDS',
-      desciption:
-        'Digital business cards are the modern way to share contact information. They are more interactive, cost effective, and sustainable than their physical counterparts. ',
-      code: '01',
-      image: SmartCard,
-    },
-    {
-      id: 2,
-      name: 'SMART TAGS',
-      desciption:
-        'Digital business cards are the modern way to share contact information. They are more interactive, cost effective, and sustainable than their physical counterparts. ',
-      code: '02',
-      image: SmartTags,
-    },
-    {
-      id: 3,
-      name: 'SMART KEYCHAIN',
-      desciption:
-        'Digital business cards are the modern way to share contact information. They are more interactive, cost effective, and sustainable than their physical counterparts. ',
-      code: '03',
-      image: SmartKeychain,
-    },
-  ]
+interface ISmartCards {
+  id: number
+  name: string
+  desciption: string
+  code: string
+  image: string
+}
+
+interface IProps {
+  cardsSmart: ISmartCards[]
+}
+
+const AboutCards: FC<IProps> = ({ cardsSmart }) => {
   const classesText =
     'font-[Arial] lg:text-[28px] max-lg:text-[24px] max-md:text-[30px] max-[375px]:text-[24px] font-[700] uppercase'
   return (
@@ -41,7 +24,7 @@ const AboutCards: FC = () => {
       <div className="lg:container mx-auto max-lg:w-full">
         <div className="bg-black py-2">
           <div className="about flex justify-center max-md:flex-wrap py-6 px-20 max-lg:px-14 max-md:px-10 max-sm:px-2">
-            {cards.map((el) => (
+            {cardsSmart.map((el) => (
               <div
                 key={el.id}
                 className={`${

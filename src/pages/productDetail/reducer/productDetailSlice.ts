@@ -6,7 +6,7 @@ interface IState {
   detail_product: IPropductsDetail
 }
 
-interface IPropductsDetail {
+export interface IPropductsDetail {
   id: number
   name: string
   price: number

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 //local
+import TemirImage from '../../assets/img/temir.png'
+import IphoneBack from '../../assets/img/iphoneBack.png'
+import Ekran from '../../assets/img/EkranAnimation.svg'
+import EkranPhone from '../../assets/img/EkranAnimationPhone.svg'
+import Gold from '../../assets/img/anCard1.png'
+import Silver from '../../assets/img/anCard2.png'
+import Black from '../../assets/img/anCard3.png'
 import Loading from '../../components/loading/Loading'
 import HomeHero from './homeHero'
 import SmartWay from './SmartWay'
@@ -12,8 +19,19 @@ import Faq from './Faq'
 
 const Home = () => {
   const [loading, setLoading] = useState<boolean>(true)
+  const ImagesHero = {
+    TemirImage,
+    IphoneBack,
+    Ekran,
+    EkranPhone,
+    Gold,
+    Silver,
+    Black,
+  }
   useEffect(() => {
-    setLoading(false)
+    setTimeout(() => {
+      setLoading(false)
+    }, 1800)
   }, [])
   return (
     <>
@@ -21,7 +39,7 @@ const Home = () => {
         <Loading />
       ) : (
         <>
-          <HomeHero />
+          <HomeHero ImagesHero={ImagesHero} />
           <SmartWay />
           <Faq />
           <QrCode />

@@ -1,5 +1,7 @@
-.scroll__webkit{
-    &::-webkit-scrollbar {
+@import './media.scss';
+
+.scroll__webkit {
+  &::-webkit-scrollbar {
     height: 6px; /* высота для горизонтального скролла */
     background-color: rgba(0, 0, 0, 0.9);
     border-radius: 4em;

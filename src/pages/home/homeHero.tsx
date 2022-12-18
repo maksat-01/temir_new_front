@@ -1,30 +1,34 @@
-import React from 'react'
+import React, { FC } from 'react'
 
 //local
 import '../../style/home/hero/hero.scss'
-import temir from '../../assets/img/temir.png'
-import iphoneBack from '../../assets/img/iphoneBack.png'
-import ekran from '../../assets/img/EkranAnimation.svg'
-import ekranPhone from '../../assets/img/EkranAnimationPhone.svg'
-import Gold from '../../assets/img/anCard1.png'
-import Silver from '../../assets/img/anCard2.png'
-import Black from '../../assets/img/anCard3.png'
 
-const HomeHero = () => {
+interface IPhotoHero {
+  TemirImage: string
+  IphoneBack: string
+  Ekran: string
+  EkranPhone: string
+  Gold: string
+  Silver: string
+  Black: string
+}
+
+interface IProps {
+  ImagesHero: IPhotoHero
+}
+
+const HomeHero: FC<IProps> = ({ ImagesHero }) => {
   const cards = [
     {
-      id: 1,
-      image: Gold,
+      image: ImagesHero.Gold,
       text: '• Gold Brushed',
     },
     {
-      id: 2,
-      image: Silver,
+      image: ImagesHero.Silver,
       text: '• Silver Brushed',
     },
     {
-      id: 3,
-      image: Black,
+      image: ImagesHero.Black,
       text: '• Black Frost',
     },
   ]
@@ -40,36 +44,32 @@ const HomeHero = () => {
             <p className="text-li-2">• Convenient to use</p>
           </div>
           <img
-            src={temir}
+            src={ImagesHero.TemirImage}
             alt="img"
             className="temir-cart max-md:w-[250px] max-sm:w-[185px]"
           />
           <div className="relative flex justify-center">
             <div className="iphoneBack w-[222px] max-md:w-[180px] max-sm:w-[132px] flex flex-col items-center relative">
-              <img src={iphoneBack} alt="img" className="w-full" />
+              <img src={ImagesHero.IphoneBack} alt="img" className="w-full" />
               <img
-                src={ekranPhone}
+                src={ImagesHero.EkranPhone}
                 alt="img"
                 className="ekran-phone w-[190px] max-md:w-[152px] max-sm:w-[113px] absolute top-[6px] left-[6px] max-sm:top-[3px] max-sm:left-[3px]"
               />
               <img
-                src={ekran}
+                src={ImagesHero.Ekran}
                 alt="img"
                 className="ekran w-[190px] max-md:w-[152px] max-sm:w-[113px] absolute top-[6px] left-[6px] max-sm:top-[3px] max-sm:left-[3px] z-[-2]"
               />
             </div>
             <div className="cards_back absolute top-7 left-1 z-[-5] w-[190px] max-md:w-[160px] max-sm:w-[120px] max-md:top-3 max-sm:top-1">
-              {cards.map((el) => (
-                <div key={el.id} className="flex flex-col my-8 max-md:my-4">
-                  <div className="relative">
-                    <img
-                      src={el.image}
-                      alt="img_card"
-                      className="rounded-[10px] w-full"
-                    />
+              {cards.map((el, idx) => (
+                <div key={idx} className="flex flex-col my-8 max-md:my-4">
+                  <div className="relative rounded-[12px] overflow-hidden">
+                    <img src={el.image} alt="img_card" className="w-full" />
                     <div className="absolute top-0 left-0 bottom-0 right-0 w-[190px] max-md:w-[160px] max-sm:w-[120px] h-[110px] max-md:h-[90px] max-sm:h-[80px] flex justify-center items-center">
                       <h2 className="uppercase text-[18px] max-sm:text-[16px] font-[Arial] text-[#d1d1d1] font-[700] tracking-widest">
-                        {el.id < 3 && 'TEMIR'}
+                        {'TEMIR'}
                       </h2>
                     </div>
                   </div>

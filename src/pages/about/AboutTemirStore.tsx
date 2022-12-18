@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
 
-//local
-import TemirStoreImage from '../../assets/img/AboutImage.svg'
+interface IProps {
+  TemirStoreImage: any
+}
 
-const AboutTemirStore: FC = () => {
+const AboutTemirStore: FC<IProps> = ({ TemirStoreImage }) => {
   return (
     <section className="bg-[#1E1E1E]">
       <div className="lg:container mx-auto max-lg:w-[90%]">

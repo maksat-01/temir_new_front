@@ -6,7 +6,7 @@ interface IState {
   error: string
 }
 
-interface IProductPage {
+export interface IProductPage {
   id: number
   name: string
   price: number
