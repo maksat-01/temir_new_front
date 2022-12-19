@@ -1,8 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import AdminCompanyIcon from "../../assets/svg/AdminCompanyIcon";
 import AdminContactIcon from "../../assets/svg/AdminContactIcon";
+import ExitSvg from "../../assets/svg/ExitSvg";
 import MediaAdminIcon from "../../assets/svg/MediaAdminIcon";
 import ProductAdminIcon from "../../assets/svg/ProductAdminIcon";
+import ProfileIcon from "../../assets/svg/ProfileIcon";
 import { getIdUserParams } from "../helper";
 import DropDown from "./DropDown";
 interface IListMenu {
@@ -25,24 +27,57 @@ export default function HeaderAdmin({
 
   const menuList = [
     {
-      svg: <AdminContactIcon />,
+      svg: (
+        <AdminContactIcon
+          fill={
+            window.location.pathname === "/contact-phone" ? "white" : "#575757"
+          }
+        />
+      ),
       list: "Contacts",
       link: "/contact-phone",
     },
     {
-      svg: <MediaAdminIcon />,
+      svg: (
+        <MediaAdminIcon
+          fill={
+            window.location.pathname === "/admin-media" ? "white" : "#575757"
+          }
+        />
+      ),
       list: "Media",
       link: "/admin-media",
     },
     {
-      svg: <ProductAdminIcon />,
+      svg: (
+        <ProductAdminIcon
+          fill={
+            window.location.pathname === "/admin-product" ? "white" : "#575757"
+          }
+        />
+      ),
       list: "Produts",
       link: "/admin-product",
     },
     {
-      svg: <AdminCompanyIcon />,
+      svg: (
+        <AdminCompanyIcon
+          fill={
+            window.location.pathname === "/addcompany" ? "white" : "#575757"
+          }
+        />
+      ),
       list: "Company",
       link: "/addcompany",
+    },
+    {
+      svg: (
+        <ProfileIcon
+          fill={window.location.pathname === "/profile" ? "white" : "#575757"}
+        />
+      ),
+      list: "Profile",
+      link: "/profile",
     },
   ];
 
@@ -53,9 +88,9 @@ export default function HeaderAdmin({
           <div className="flex justify-center items-center w-full">
             <Link
               to={`/user/${getIdUserParams()}}`}
-              className="absolute left-[40px]"
+              className="absolute left-[50px]"
             >
-              Exit
+              <ExitSvg />
             </Link>
             <p className="w-full text-center">{title}</p>
             {arrayList?.map((item, index: any) => (

@@ -15,7 +15,7 @@ export default function MediaAdmin({ children }: IMediaAdmin) {
     color: "white",
   };
 
-  const [currentTab, setCurrentTab] = useState<any>(0);
+  const [currentTab, setCurrentTab] = useState<any>(1);
 
   const tab = [
     {
@@ -33,10 +33,6 @@ export default function MediaAdmin({ children }: IMediaAdmin) {
   const handleClick = (e: any) => {
     setCurrentTab(e.target?.id);
   };
-
-  useEffect(() => {
-    setCurrentTab("1");
-  }, []);
 
   return (
     <div className="max-w-[500px] mx-auto bg-[#151515] relative">
@@ -56,7 +52,7 @@ export default function MediaAdmin({ children }: IMediaAdmin) {
       </div>
       {tab.map((tab, index) => (
         <div key={index}>
-          {currentTab === `${tab.id}` && (
+          {currentTab === tab.id && (
             <div className="pt-[76px]">{tab.tabContent}</div>
           )}
         </div>

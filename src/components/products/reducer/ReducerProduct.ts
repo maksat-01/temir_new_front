@@ -8,6 +8,8 @@ interface ImageTypes {
   user: string;
   description: string;
   image: string;
+  visit_website_url_name: string;
+  visit_website_url_url: string;
 }
 
 interface PhotosState {

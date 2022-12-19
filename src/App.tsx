@@ -1,21 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import SignIn from "./components/signIn/SignIn";
 import Interface from "./pages/interface/Interface";
-import Header from "./components/header/index";
-import MediaAdminImage from "./components/adminMedia/MediaAdminImage";
-import MediaAdminVideo from "./components/adminMedia/MediaAdminVideo";
 import Home from "./pages/home/home";
 import ProductPage from "./pages/productPage/productPage";
 import About from "./pages/about/about";
 import Basket from "./pages/basket/basket";
 import Media from "./components/media/Media";
-import Products from "./components/products/products";
-import MediaCardImage from "./components/media/MediaCardImage";
-import MediaCardVideos from "./components/media/MediaCardVideo";
 import Company from "./components/compony/Company";
 import ProductDetailPage from "./pages/productDetail/ProductDetailPage";
-import Footer from "./pages/home/Footer";
-import CheckoutPage from "./pages/checkout/CheckoutPage";
 import AdminProduct from "./components/adminProduct/AdminProduct";
 import HeaderAdmin from "./components/ui/HeaderAdmin";
 import ContactAdmin from "./components/adminContact/PhoneNumbersAdmin";
@@ -24,7 +16,6 @@ import AdminFollows from "./components/adminFollowMe/AdminFollow";
 import AdminSocial from "./components/adminSocial/AdminSocial";
 import AdminCompanyInformation from "./components/adminCompanyInformation/AdminCompanyInformation";
 import AddedAdminCompany from "./components/adminCompanyInformation/AddedAdminCompany";
-import MenuListAdmin from "./components/ui/HeaderListProducts";
 // import Contact from "./components/contact/contact";
 // import Contact from "./pages/home/Contact";
 import Contact from "./components/contact/contact";
@@ -36,6 +27,7 @@ import Share from "./components/share/Share";
 import ProductsAdmin from "./pages/interface/product/ProductsAdmin";
 import Profile from "./components/profile/Profile";
 import ResetPassword from "./components/signIn/ResetPassword";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 function App() {
   const listContact = [

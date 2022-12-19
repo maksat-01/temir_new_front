@@ -39,7 +39,7 @@ export default function ModalSignIn({ setModal }: IModalSignIn) {
   return (
     <div
       style={{ background: "rgba(115, 115, 115, 0.32)" }}
-      className=" absolute top-0 left-0 w-full min-h-[100vh] flex  items-center rounded-[4px]  pt-[1rem] pb-[2rem] m-0 cursor-pointer"
+      className=" absolute top-0 left-0 w-full min-h-[100vh] flex  items-start rounded-[4px]  pt-[1rem] pb-[2rem] m-0 cursor-pointer"
       onClick={closeModal}
     >
       <div className="w-full mx-auto px-[10px]">

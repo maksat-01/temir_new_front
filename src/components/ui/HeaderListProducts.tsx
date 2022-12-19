@@ -7,6 +7,7 @@ import DropDownCompany from "./DropDowmCompany";
 import "./style.scss";
 import ProfileIcon from "../../assets/svg/ProfileIcon";
 import { getIdUserParams } from "../helper";
+import ExitSvg from "../../assets/svg/ExitSvg";
 
 interface IHeaderAdmin {
   children?: JSX.Element;
@@ -86,9 +87,9 @@ export default function HeaderLisProducts({
           <div className="flex justify-center items-center">
             <Link
               to={`/user/${getIdUserParams()}}`}
-              className="absolute left-[40px]"
+              className="absolute left-[50px]"
             >
-              Exit
+              <ExitSvg />
             </Link>
             <p className="text-center">{title}</p>
             {listActive && <DropDownCompany />}
