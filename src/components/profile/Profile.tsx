@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { useAppSelector } from "../../hooks";
 import { getUser } from "../../pages/interface/getUser/redux/reducer";
 import API from "../api/Api";
 import { getIdUserParams } from "../helper";
@@ -12,22 +10,16 @@ export default function Profile() {
   const dispatch = useAppDispatch();
   const id = getIdUserParams();
   const { user } = useAppSelector((state) => state.getUser);
-  const [count, setCount] = useState<any>([]);
-  useEffect(() => {
-    API.get(`user-update/` + id)
-  const id = getIdUserParams();
-  const { user } = useAppSelector((state) => state.getUser);
   const [count, setCount] = useState<any>({});
   useEffect(() => {
     // dispatch(getUser.actions.getUser);
-    axios
-      .get(`http://64.227.177.107:8000/user/` + id)
+    API.get(`user-update/` + id)
       .then(({ data }) => {
-        dispatch(getUser.actions.getUserSucceseded(data));
+        dispatch(getUser.actions.getUserSucceseded(data))
       })
       .catch((error) => {
-        dispatch(getUser.actions.getUserError(error));
-      });
+        dispatch(getUser.actions.getUserError(error))
+      })
   }, []);
 
   useEffect(() => {
@@ -55,7 +47,7 @@ export default function Profile() {
         {user.avatar && (
           <img
             src={user.avatar}
-            alt="no image"
+            alt="no_image"
             className="w-[100px] h-[100px] rounded-full object-cover mt-[40px] "
           />
         )}

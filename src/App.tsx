@@ -26,7 +26,6 @@ import ContactUs from "./pages/contactUs/contactUs";
 import Share from "./components/share/Share";
 import Profile from "./components/profile/Profile";
 import ResetPassword from "./components/signIn/ResetPassword";
-import CheckoutPage from "./pages/checkout/CheckoutPage";
 import Products from "./components/products/products";
 import AdminToWelcome from "./components/signIn/AdminToWelcome/AdminToWelcome";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
@@ -191,7 +190,7 @@ function App() {
                     path="/user/:id/inventary"
                     element={
                         <Interface>
-                            <ProductsAdmin/>
+                            <Products/>
                         </Interface>
                     }
                 />
