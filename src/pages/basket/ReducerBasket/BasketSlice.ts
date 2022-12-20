@@ -2,12 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 interface IState {
   basket: any[]
+  defaultCard: any
   error: string
   isLoading: boolean
 }
 
 export const initialState = {
   basket: JSON.parse(localStorage.getItem('basket') as any) || [],
+  defaultCard: JSON.parse(localStorage.getItem('defaultCard') as any) || {},
   error: '',
   isLoading: false,
 } as IState
@@ -40,7 +42,7 @@ export const ReducerBasket = createSlice({
     PlusTheNumber(state, action: PayloadAction<any>) {
       let basket = JSON.parse(localStorage.getItem('basket') as any) || []
       basket = basket.map((el: any, idx: number) =>
-        idx === action.payload ? { ...el, quantity: el.quantity + 1 } : el
+        idx === action.payload ? { ...el, quantityCard: el.quantityCard + 1 } : el
       )
       state.basket = [...basket]
       localStorage.setItem('basket', JSON.stringify(basket) as any)
@@ -50,12 +52,19 @@ export const ReducerBasket = createSlice({
       let basket = JSON.parse(localStorage.getItem('basket') as any) || []
       basket = basket.map((el: any, idx: number) =>
         idx === action.payload
-          ? { ...el, quantity: el.quantity > 1 ? el.quantity - 1 : el.quantity }
+          ? { ...el, quantityCard: el.quantityCard > 1 ? el.quantityCard - 1 : el.quantityCard }
           : el
       )
       state.basket = [...basket]
       localStorage.setItem('basket', JSON.stringify(basket) as any)
     },
+
+    DefaultCard(state, action: PayloadAction<any>){
+      let defCard = JSON.parse(localStorage.getItem("defaultCard") as any) || {}
+      defCard = {...action.payload}
+      state.defaultCard = defCard
+      localStorage.setItem("defaultCard", JSON.stringify(defCard) as any)
+    }
   },
 })
 

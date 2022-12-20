@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { useAppSelector } from '../../hooks/index'
+import { useAppSelector } from '../../hooks'
 import { getTotal } from './ReducerBasket/ActionBasket'
 
 const BasketTotal: FC = () => {

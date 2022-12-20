@@ -35,7 +35,7 @@ const YourOrders: FC<IProps> = ({ register }) => {
                 </div>
                 <div className="w-[30%]">
                   <div className="border-b-[1px] w-[96%] border-solid border-[#1E1E1E] flex justify-between max-md:justify-center max-md:border-none text-[30px] max-lg:text-[24px] max-md:text-[20px] max-md:whitespace-nowrap">
-                    <p className="uppercase text-[#363638]">{el.quantity}x</p>
+                    <p className="uppercase text-[#363638]">{el.quantityCard}x</p>
                     <p className="uppercase max-md:text-[#363638]">
                       {el.price} AED
                     </p>

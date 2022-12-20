@@ -44,6 +44,15 @@ const HeroCheckout: FC<IProps> = ({ register, errors }) => {
                   errors.last_name && 'border-[1px] border-red-700'
                 }`}
               />
+              {/*<input*/}
+              {/*  type="text"*/}
+              {/*  {...register('country', { required: true })}*/}
+              {/*  placeholder="Enter your country"*/}
+              {/*  className={`${classesInput} ${*/}
+              {/*    errors.country && 'border-[1px] border-red-700'*/}
+              {/*  }`}*/}
+              {/*/>*/}
+
               {errors.last_name && (
                 <span className="text-red-500 text-[12px]">
                   Please enter your last name

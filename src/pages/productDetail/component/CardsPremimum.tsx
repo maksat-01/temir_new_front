@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 //local
 import { useAppDispatch, useAppSelector } from '../../../hooks'
-import { addToBasket } from '../../basket/ReducerBasket/ActionBasket'
+import {addToBasket, getDefaultCard} from '../../basket/ReducerBasket/ActionBasket'
 import { getProductsPage } from '../../productPage/reducer/actionProductPage'
 import { IPropductsDetail } from '../reducer/productDetailSlice'
 
@@ -21,10 +21,10 @@ const CardsPremimum: FC<IProps> = ({ productOne }) => {
 
   //Продукты
   const productAll = useAppSelector((state) => state.productSlice.products_page)
-
+  const { defaultCard } = useAppSelector((s) => s.ReducerBasket)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-
+  console.log("defaultCard: ",defaultCard)
   const [imageUrl, setImageUrl] = useState<any>('')
   const fileReader = new FileReader()
   fileReader.onloadend = () => setImageUrl(fileReader.result)
@@ -32,21 +32,24 @@ const CardsPremimum: FC<IProps> = ({ productOne }) => {
     title: 'TEMIR',
     logo: imageUrl,
   })
+  console.log("productOne - ", productAll)
+
   const [product, setProduct] = useState<any>({
     title: cardData.title,
     logo: imageUrl,
-    img: productOne.image,
-    price: productOne.price,
+    image: defaultCard.image,
+    price: defaultCard.price,
     type: '',
-    name: productOne.name,
-    quantity: 1,
+    name: defaultCard.name,
+    quantityCard: 1,
   })
-  const handleChange = (e: any) => {
+
+  const handleChange = (e?: any) => {
     setProduct({
       ...product,
       [e.target.name]:
         e.target.name === 'title'
-          ? e.target.value.toUpperCase()
+          ? e.target.value.toUpperCase().trim()
           : product[e.target.name],
     })
     setCardData({
@@ -57,6 +60,7 @@ const CardsPremimum: FC<IProps> = ({ productOne }) => {
           : fileReader.readAsDataURL(e.target.files[0]),
     })
   }
+  // console.log(product)
   useEffect(() => {
     dispatch(getProductsPage())
   }, [dispatch])
@@ -80,6 +84,8 @@ const CardsPremimum: FC<IProps> = ({ productOne }) => {
                     key={el.id}
                     className="p-2"
                     onClick={() => {
+                      dispatch(getDefaultCard(el))
+                      setProduct({...product, ...el})
                       navigate(`/productDetail/${el.id}`)
                     }}  
                   >
