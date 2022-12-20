@@ -31,7 +31,7 @@ export default function SignIn() {
         console.log(res);
         localStorage.setItem("accessToken", res.data.access);
         localStorage.setItem("refreshToken", res.data.refresh);
-        navigation("/addcompany");
+        navigation("/welcome-to-admin");
       })
       .catch((error) => {
         console.log(error);
