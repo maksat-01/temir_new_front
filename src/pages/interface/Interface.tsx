@@ -49,7 +49,7 @@ export default function Interface({ children }: any) {
 
   useEffect(() => {
     axios
-      .get(`${API_ADDRESS}user-update/${id}`)
+      .get(`${API_ADDRESS}user-retrieve/${id}`)
       .then(({ data }) => {
         dispatch(getUser.actions.getUserSucceseded(data));
       })
@@ -112,6 +112,20 @@ export default function Interface({ children }: any) {
           }}
         >
           <div className="flex flex-col items-center justify-center">
+            {user?.number_of_gold_user && (
+              <h4
+                className="px-4 text-black text-center "
+                style={{
+                  background:
+                    "linear-gradient(180deg, #D0D0D0 0%, #8B8B8B 50%, #FFFFFF 100%)",
+                  borderRadius: "3px",
+                  marginTop: "-20px",
+                  marginBottom: "20px",
+                }}
+              >
+                {user.number_of_gold_user}
+              </h4>
+            )}
             <h1 className="text-base text-[#D1D1D1] font-bold pb-2">
               {user.username}
             </h1>

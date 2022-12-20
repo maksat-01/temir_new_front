@@ -15,11 +15,11 @@ export default function Profile() {
     // dispatch(getUser.actions.getUser);
     API.get(`user-update/` + id)
       .then(({ data }) => {
-        dispatch(getUser.actions.getUserSucceseded(data))
+        dispatch(getUser.actions.getUserSucceseded(data));
       })
       .catch((error) => {
-        dispatch(getUser.actions.getUserError(error))
-      })
+        dispatch(getUser.actions.getUserError(error));
+      });
   }, []);
 
   useEffect(() => {
@@ -84,15 +84,6 @@ export default function Profile() {
               </p>
             </div>
           </div>
-        </div>
-
-        <p className="text-center mb-[92px] text-[#C2C2C2] text-[23px]">
-          Total
-        </p>
-        <div>
-          <p>54</p>
-          <p>People saved you</p>
-          <p>Total</p>
         </div>
       </div>
       {<ProfileModal modal={modal} setModal={setModal} />}
