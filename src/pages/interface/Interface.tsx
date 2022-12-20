@@ -7,6 +7,7 @@ import MediaIcon from "../../assets/svg/MediaIcon";
 import QrCodeIcon from "../../assets/svg/QrCodeIcon";
 import SecondaryLogo from "../../assets/svg/SecondaryLogo";
 import ShareIcon from "../../assets/svg/ShareIcon";
+import { API_ADDRESS } from "../../components/api/Api";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getUser } from "./getUser/redux/reducer";
 
@@ -47,9 +48,8 @@ export default function Interface({ children }: any) {
   const [url, setUrl] = useState("");
 
   useEffect(() => {
-    // dispatch(getUser.actions.getUser);
     axios
-      .get(`http://64.227.177.107:8000/usser/${id}`)
+      .get(`${API_ADDRESS}user/${id}`)
       .then(({ data }) => {
         dispatch(getUser.actions.getUserSucceseded(data));
       })
@@ -99,7 +99,7 @@ export default function Interface({ children }: any) {
           >
             <img
               src={user.avatar}
-              alt=""
+              alt="no image"
               className="w-[120px] h-[120px] bg-white rounded-full"
             />
           </div>
@@ -113,7 +113,7 @@ export default function Interface({ children }: any) {
         >
           <div className="flex flex-col items-center justify-center">
             <h1 className="text-base text-[#D1D1D1] font-bold pb-2">
-              {user.full_name}
+              {user.username}
             </h1>
             <h4
               className="text-base text-[#D1D1D1] font-[300] pb-2"

@@ -14,6 +14,9 @@ interface IAdminProductAdded {
   productId: string;
 }
 
+// visit_website_url_name: string;
+// visit_website_url_url: string;
+
 export default function AdminProductAdded({ productId }: IAdminProductAdded) {
   const {
     register,
@@ -34,6 +37,8 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
     title: "",
     description: "",
     image: "",
+    visit_website_url_name: "",
+    visit_website_url_url: "",
   });
   const [validate, setValidate] = useState({
     title: false,
@@ -123,6 +128,8 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
       title: "",
       description: "",
       image: "",
+      visit_website_url_name: "",
+      visit_website_url_url: "",
     });
   };
 
@@ -181,7 +188,7 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
       </div>
       <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[28px]">
         <label className="pl-[16px] text-[12px] text-[#6750A4]">
-          Theme to product:
+          Product discription:
         </label>
         <textarea
           placeholder="Enter your text..."
@@ -195,14 +202,53 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
           <p className="text-red-500 text-[12px] pl-[16px]">required fields</p>
         )}
       </div>
-      <div className="flex justify-center mb-[74px] ">
+
+      <p className="font-[600] text-center text-[21px]">
+        Add additional button
+      </p>
+      <p className="text-center font-[600] text-[14px] mb-[13px]">(Optional)</p>
+      <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
+        <label className="pl-[16px] text-[12px] text-[#6750A4]">
+          Button name:
+        </label>
+        <input
+          type="text"
+          placeholder="Enter your text..."
+          {...register("visit_website_url_name", { required: true })}
+          value={postDataProduct.visit_website_url_name}
+          name="title"
+          className="bg-transparent w-[100%] pl-[16px]"
+          onChange={(e) => inputChange(e)}
+        />
+        {validate?.title && (
+          <p className="text-red-500 text-[12px] pl-[16px]">required fields</p>
+        )}
+      </div>
+      <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[37px]">
+        <label className="pl-[16px] text-[12px] text-[#6750A4]">
+          Button link:
+        </label>
+        <input
+          type="text"
+          placeholder="Enter your text..."
+          {...register("visit_website_url_url", { required: true })}
+          value={postDataProduct.visit_website_url_url}
+          name="title"
+          className="bg-transparent w-[100%] pl-[16px]"
+          onChange={(e) => inputChange(e)}
+        />
+        {validate?.title && (
+          <p className="text-red-500 text-[12px] pl-[16px]">required fields</p>
+        )}
+      </div>
+      <div className="flex justify-center mb-[74px]">
         <button
           onClick={(e: any) => {
             postToServer(e);
           }}
           className="px-[45px] text-[14px] py-[10px] bg-white text-black font-[500] rounded-[50px]"
         >
-          Add
+          Add product
         </button>
       </div>
 

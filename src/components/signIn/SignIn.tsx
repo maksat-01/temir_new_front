@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -17,7 +17,9 @@ export default function SignIn() {
     register,
     formState: { errors },
   } = useForm<ISignIn>();
+  const [eye, setEye] = useState(false);
   const { id } = useParams();
+  localStorage.setItem("userId", JSON.stringify(id));
   const navigation = useNavigate();
   const [modal, setModal] = useState<boolean>(false);
   const [errorValidate, setErrorValidate] = useState<boolean>(false);
@@ -45,7 +47,7 @@ export default function SignIn() {
     <div className="max-w-[419px] mx-auto ">
       <form onSubmit={sigIn}>
         <input
-          type="password"
+          type={eye ? `text` : `password`}
           placeholder="Enter password"
           {...register("password", { required: true })}
           name="password"
@@ -60,6 +62,7 @@ export default function SignIn() {
         >
           Forgot password ?
         </p>
+        <button onClick={() => setEye(!eye)}>Pas</button>
         <div className="flex justify-center">
           <button
             type="submit"
@@ -73,7 +76,7 @@ export default function SignIn() {
         <button
           className="bg-white text-[21.0484px] text-black rounded-[11px] py-[8px] px-[45px]"
           onClick={() =>
-            navigation  ("/user/dc18f3e4-72db-4983-b0f4-674660c1452e")
+            navigation("/user/dc18f3e4-72db-4983-b0f4-674660c1452e")
           }
         >
           Back

@@ -123,7 +123,7 @@ export default function PhoneNumbersAdmin() {
   );
 
   return (
-    <div className="container mx-auto pt-[38px] pb-[40px]">
+    <div className="container mx-auto pt-[38px] pb-[80px]">
       <div className="flex">
         <div className="w-full text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[17px]">
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
