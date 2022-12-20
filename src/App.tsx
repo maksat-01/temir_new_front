@@ -89,7 +89,7 @@ function App() {
             </Interface>
           }
         />
-        <Route path="/signin/:id" element={<SignIn />} />
+        <Route path="user/:id/signin/" element={<SignIn />} />
         <Route path="/resetPassword/*" element={<ResetPassword />} />
 
         {/* /// Product /// */}
