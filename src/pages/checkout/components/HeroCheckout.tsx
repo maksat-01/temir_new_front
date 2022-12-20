@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
 interface IProps {
   register: any
@@ -6,6 +6,10 @@ interface IProps {
 }
 
 const HeroCheckout: FC<IProps> = ({ register, errors }) => {
+  const [check, setCheck] = useState('')
+  const onChangeChecked = (e: any) => {
+    setCheck(e.target.value)
+  }
   const inputTitle = 'font-[Arial] text-[16px] py-1'
   const classesBlock =
     'bg-[rgba(54,54,56,0.5)] shadow-[0px_2px_10px_rgba(0,0,0,0.25)] rounded-[10px]'
@@ -44,15 +48,6 @@ const HeroCheckout: FC<IProps> = ({ register, errors }) => {
                   errors.last_name && 'border-[1px] border-red-700'
                 }`}
               />
-              {/*<input*/}
-              {/*  type="text"*/}
-              {/*  {...register('country', { required: true })}*/}
-              {/*  placeholder="Enter your country"*/}
-              {/*  className={`${classesInput} ${*/}
-              {/*    errors.country && 'border-[1px] border-red-700'*/}
-              {/*  }`}*/}
-              {/*/>*/}
-
               {errors.last_name && (
                 <span className="text-red-500 text-[12px]">
                   Please enter your last name
@@ -125,15 +120,16 @@ const HeroCheckout: FC<IProps> = ({ register, errors }) => {
               </div>
               <div className="select-wrapper relative w-full mb-5">
                 <select
+                  {...register('country')}
                   name=""
                   id=""
                   className={`${classesBlock} select_option w-full cursor-pointer p-3 outline-none focus:outline-none`}
                 >
-                  <option value="">Abu Dhabi</option>
-                  <option value="">Ajman</option>
-                  <option value="">El Fujairah</option>
-                  <option value="">Dubai</option>
-                  <option value="">Umm al-Kaywain</option>
+                  <option value="Abu Dhabi">Abu Dhabi</option>
+                  <option value="Ajman">Ajman</option>
+                  <option value="El Fujairah">El Fujairah</option>
+                  <option value="Dubai">Dubai</option>
+                  <option value="Umm al-Kaywain">Umm al-Kaywain</option>
                 </select>
               </div>
             </div>
@@ -145,6 +141,7 @@ const HeroCheckout: FC<IProps> = ({ register, errors }) => {
                 <input
                   type="radio"
                   id="villa"
+                  onChange={onChangeChecked}
                   name="pay"
                   value="Villa"
                   className="mx-4"
@@ -158,6 +155,7 @@ const HeroCheckout: FC<IProps> = ({ register, errors }) => {
                 <input
                   type="radio"
                   id="apartment"
+                  onChange={onChangeChecked}
                   name="pay"
                   value="Apartment"
                   className="mx-4"
@@ -181,8 +179,28 @@ const HeroCheckout: FC<IProps> = ({ register, errors }) => {
                 </span>
               )}
             </div>
+            {check === 'Apartment' && (
+              <div className="pb-5">
+                <p className={`${inputTitle}`}>Apartment entrance*</p>
+                <input
+                  type="text"
+                  {...register('apartment_entrance', { required: true })}
+                  placeholder="Enter your apartment entrance"
+                  className={`${classesInput} ${
+                    errors.apartment_entrance && 'border-[1px] border-red-700'
+                  }`}
+                />
+                {errors.apartment_entrance && (
+                  <span className="text-red-500 text-[12px]">
+                    Please enter your apartment entrance
+                  </span>
+                )}
+              </div>
+            )}
             <div className="pb-5">
-              <p className={`${inputTitle}`}>Villa*</p>
+              <p className={`${inputTitle}`}>
+                {check === 'Apartment' ? 'Floor / Number*' : 'Villa*'}
+              </p>
               <input
                 type="number"
                 {...register('house', { required: true })}
@@ -204,15 +222,8 @@ const HeroCheckout: FC<IProps> = ({ register, errors }) => {
           <textarea
             {...register('order_notes', { required: true })}
             placeholder="Notes about your orders"
-            className={`${classesBlock} ${
-              errors.order_notes && 'border-[1px] border-red-700'
-            } w-full min-h-[100px] py-4 px-2 resize-y text-[16px] text-white placeholder:text-[rgba(255,255,255,0.27)] outline-0`}
+            className={`${classesBlock} w-full min-h-[100px] py-4 px-2 resize-y text-[16px] text-white placeholder:text-[rgba(255,255,255,0.27)] outline-0`}
           ></textarea>
-          {errors.order_notes && (
-            <span className="text-red-500 text-[12px]">
-              Please enter your order notes
-            </span>
-          )}
         </div>
       </div>
     </div>

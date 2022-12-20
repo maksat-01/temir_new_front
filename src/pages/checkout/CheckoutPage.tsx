@@ -7,8 +7,8 @@ import { ICheckout } from './reducer/checkoutSlice'
 import HeroCheckout from './components/HeroCheckout'
 import YourOrders from './components/YourOrders'
 import PaymentMethod from './components/PaymentMethod'
-import {postChechout} from "./reducer/actionsCheckout";
-import {useAppDispatch} from "../../hooks";
+import { postChechout } from './reducer/actionsCheckout'
+import { useAppDispatch } from '../../hooks'
 
 const CheckoutPage: FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
@@ -19,10 +19,13 @@ const CheckoutPage: FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ICheckout>()
-  const onSubmit: SubmitHandler<ICheckout> = (data) =>
+  const onSubmit: SubmitHandler<ICheckout> = (data) => {
     dispatch(postChechout(data))
+    reset()
+  }
   return (
     <>
       {loading ? (

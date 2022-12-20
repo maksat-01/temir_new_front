@@ -10,7 +10,7 @@ export const postChechout =
         'api/v1/applicationpost-checkout',
         { ...checkout }
       )
-      console.log("asdf",dataChechout)
+      alert(dataChechout.status + 'Успешно')
       dispatch(checkoutSlice.actions.checkoutSuccess(dataChechout.data))
     } catch (e: any) {
       dispatch(checkoutSlice.actions.checkoutError(e.message))
