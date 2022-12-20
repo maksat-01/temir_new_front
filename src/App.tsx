@@ -24,9 +24,10 @@ import HeaderLisProducts from "./components/ui/HeaderListProducts";
 import MediaAdmin from "./components/adminMedia/MediaAdmin";
 import ContactUs from "./pages/contactUs/contactUs";
 import Share from "./components/share/Share";
-import ProductsAdmin from "./pages/interface/product/ProductsAdmin";
 import Profile from "./components/profile/Profile";
 import ResetPassword from "./components/signIn/ResetPassword";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
+import Products from "./components/products/products";
 import AdminToWelcome from "./components/signIn/AdminToWelcome/AdminToWelcome";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
 
@@ -85,6 +86,66 @@ function App() {
                 <Route path="/signin/:id" element={<SignIn/>}/>
                 <Route path="/resetPassword/*" element={<ResetPassword/>}/>
 
+        {/* /// Product /// */}
+        <Route
+          path="/company-information/:id"
+          element={
+            <HeaderLisProducts
+              title="Company information"
+              listActive
+              children={<AdminCompanyInformation />}
+            />
+          }
+        />
+        <Route
+          path="/addcompany/"
+          element={
+            <HeaderLisProducts
+              listActive
+              title="Add company"
+              children={<AddedAdminCompany />}
+            />
+          }
+        />
+        <Route
+          path="/profile/"
+          element={<HeaderLisProducts title="Profile" children={<Profile />} />}
+        />
+
+        <Route
+          path="/user/:id/gallery"
+          element={
+            <Interface>
+              <Media />
+            </Interface>
+          }
+        />
+        <Route
+          path="/user/:id/inventary"
+          element={
+            <Interface>
+              <Products />
+            </Interface>
+          }
+        />
+        <Route
+          path="/user/:id/share"
+          element={
+            <Interface>
+              <Share />
+            </Interface>
+          }
+        />
+        <Route
+          path="/bank-details"
+          element={
+            <HeaderLisProducts
+              listActive
+              title="Bank details/cards"
+              children={<AdminBanks />}
+            />
+          }
+        />
                 {/* /// Product /// */}
                 <Route
                     path="/company-information/:id"

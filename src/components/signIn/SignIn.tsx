@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { API_ADDRESS } from "../api/Api";
 import { paramsUserId } from "..//helper/index";
 import ModalSignIn from "./ModalSignIn";
+import EyePasswordHide from "../../assets/svg/EyePasswordHide";
 
 interface ISignIn {
   id?: any;
@@ -26,7 +27,6 @@ export default function SignIn() {
   const [auth, setAuth] = useState({ password: "", id: id });
   const sigIn = (e: any) => {
     e.preventDefault();
-
     axios
       .post(`${API_ADDRESS}login/`, auth)
       .then((res) => {
@@ -38,24 +38,37 @@ export default function SignIn() {
       .catch((error) => {
         console.log(error);
         setErrorValidate(true);
+        alert("Invalid password");
       });
   };
 
   paramsUserId(id);
 
+  function eyePasswordHideFn(e: any) {
+    e.preventDefault();
+    setEye(!eye);
+  }
+
   return (
     <div className="max-w-[419px] mx-auto ">
       <form onSubmit={sigIn}>
-        <input
-          type={eye ? `text` : `password`}
-          placeholder="Enter password"
-          {...register("password", { required: true })}
-          name="password"
-          onChange={(e) => setAuth({ ...auth, password: e.target.value })}
-          className={`w-full py-[16px] text-black pl-[14px] mb-[10px] rounded-[5px] ${
+        <div
+          className={`flex items-center text-black bg-white rounded-[4px] mb-[10px] ${
             errorValidate && "border-2 border-rose-500"
-          } `}
-        />
+          }`}
+        >
+          <input
+            type={eye ? `text` : `password`}
+            placeholder="Enter password"
+            {...register("password", { required: true })}
+            name="password"
+            onChange={(e) => setAuth({ ...auth, password: e.target.value })}
+            className={`w-full py-[16px] text-black pl-[14px] outline-none rounded-[4px]`}
+          />
+          <button onClick={eyePasswordHideFn} className="h-[20px] pr-[16px]">
+            <EyePasswordHide />
+          </button>
+        </div>
         <p
           className="text-[#00F0FF] text-[15px] mb-[46px] cursor-pointer"
           onClick={() => setModal(true)}

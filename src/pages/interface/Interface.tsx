@@ -49,7 +49,7 @@ export default function Interface({ children }: any) {
 
   useEffect(() => {
     axios
-      .get(`${API_ADDRESS}user/${id}`)
+      .get(`${API_ADDRESS}user-update/${id}`)
       .then(({ data }) => {
         dispatch(getUser.actions.getUserSucceseded(data));
       })

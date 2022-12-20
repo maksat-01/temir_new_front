@@ -175,6 +175,42 @@ export default function AdminProduct() {
                 }
               ></textarea>
             </div>
+            <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
+              <label className="pl-[16px] text-[12px] text-[#6750A4]">
+                Button name:
+              </label>
+              <input
+                disabled={active || btnDefinition !== items.id}
+                value={items.visit_website_url_name}
+                type="text"
+                placeholder="Enter your text..."
+                className="bg-transparent w-[100%] pl-[16px]"
+                onChange={(e) =>
+                  setChangeProduct({
+                    ...changeProduct,
+                    title: e.target.value,
+                  })
+                }
+              />
+            </div>
+            <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
+              <label className="pl-[16px] text-[12px] text-[#6750A4]">
+                Button link:
+              </label>
+              <input
+                disabled={active || btnDefinition !== items.id}
+                value={items.visit_website_url_url}
+                type="text"
+                placeholder="Enter your text..."
+                className="bg-transparent w-[100%] pl-[16px]"
+                onChange={(e) =>
+                  setChangeProduct({
+                    ...changeProduct,
+                    title: e.target.value,
+                  })
+                }
+              />
+            </div>
             <div className="flex justify-end pt-[30px] pb-[50px]">
               <button
                 onClick={() => deletePost(items)}

@@ -142,6 +142,8 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
     dispatch(getActionProductAdmin(productId));
   }, []);
 
+  console.log(postDataProduct);
+
   return (
     <div>
       <div
@@ -216,7 +218,7 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
           placeholder="Enter your text..."
           {...register("visit_website_url_name", { required: true })}
           value={postDataProduct.visit_website_url_name}
-          name="title"
+          name="visit_website_url_name"
           className="bg-transparent w-[100%] pl-[16px]"
           onChange={(e) => inputChange(e)}
         />
@@ -233,7 +235,7 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
           placeholder="Enter your text..."
           {...register("visit_website_url_url", { required: true })}
           value={postDataProduct.visit_website_url_url}
-          name="title"
+          name="visit_website_url_url"
           className="bg-transparent w-[100%] pl-[16px]"
           onChange={(e) => inputChange(e)}
         />

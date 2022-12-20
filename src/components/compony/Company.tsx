@@ -67,9 +67,31 @@ export default function Company() {
               alt="no img"
               className="w-full rounded-[16px] mb-[19px] h-[222px] object-cover"
             />
-            <p className="text-center text-[#BEBEBE] text-[18px] w-full">
+            <p className="text-center text-[#BEBEBE] text-[18px] w-full mb-[31px]">
               {details?.description}
             </p>
+            <button className="bg-[#0B0B0B] mb-[10px] w-full py-[23px] text-center fony-[700] text-[16px] rounded-[4px]">
+              <a
+                href={
+                  details?.visit_website_url
+                    ? details?.visit_website_url
+                    : defaultPage?.visit_website_url
+                }
+              >
+                Visit website
+              </a>
+            </button>
+            <button className="bg-[#0B0B0B] mb-[10px] w-full py-[23px] text-center fony-[700] text-[16px] rounded-[4px]">
+              <a
+                href={
+                  details?.address_url
+                    ? details?.address_url
+                    : defaultPage?.address_url
+                }
+              >
+                Address
+              </a>
+            </button>
           </div>
         )}
       </div>

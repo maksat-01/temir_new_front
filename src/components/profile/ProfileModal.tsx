@@ -120,7 +120,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
       nameAndPosition.position ? nameAndPosition.position : user.position
     );
 
-    API.patch(`user/${getIdUserParams()}`, data)
+    API.patch(`user-update/${getIdUserParams()}`, data)
       .then(({ data }) => {
         console.log(data);
         dispatch(getUser.actions.getUserSucceseded(data));
@@ -142,7 +142,8 @@ export default function ProfileModal({ modal, setModal }: IModal) {
     const data = new FormData();
     data.append("avatar", "");
 
-    API.patch(`user/${getIdUserParams()}`, data)
+    API.patch(`user-update/${getIdUserParams()}`, data)
+
       .then(({ data }) => {
         console.log(data);
         alert("Success");
@@ -164,7 +165,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
     const data = new FormData();
     data.append("background", "");
 
-    API.patch(`user/${getIdUserParams()}`, data)
+    API.patch(`user-update/${getIdUserParams()}`, data)
       .then(({ data }) => {
         console.log(data);
         alert("Success");
@@ -179,7 +180,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
   useEffect(() => {
     // dispatch(getUser.actions.getUser);
     axios
-      .get(`http://64.227.177.107:8000/user/` + id)
+      .get(`http://64.227.177.107:8000/user-update/` + id)
       .then(({ data }) => {
         dispatch(getUser.actions.getUserSucceseded(data));
       })
@@ -187,18 +188,20 @@ export default function ProfileModal({ modal, setModal }: IModal) {
         dispatch(getUser.actions.getUserError(error));
       });
   }, []);
-
-  // console.log(imageBg, "BG");
-  console.log(user, "user");
-
+  
   return (
     <div
       className={`modal ${
         modal ? "active" : ""
-      } max-w-[500px] mx-auto px-[22px]`}
+      } max-w-[500px] mx-auto px-[22px] z-[100]`}
     >
+      <div className="w-full flex justify-between items-center mt-[100px] mb-[20px]">
+        <p className="font-[400] tetx-[24px]">Edit profile</p>
+        <button onClick={() => setModal(false)}>Close</button>
+      </div>
+
       <div
-        className="w-full h-[250px] bg-red-400 flex items-center justify-center"
+        className="w-full h-[250px] flex items-center justify-center"
         style={{
           background: `url(${user.background}) no-repeat center/cover`,
         }}
@@ -207,14 +210,15 @@ export default function ProfileModal({ modal, setModal }: IModal) {
           <img
             src={user.avatar}
             alt="no image"
-            className="w-[100px] h-[100px] rounded-full object-cover mt-[40px]"
+            className="w-[100px] h-[100px] rounded-full object-cover"
           />
         )}
       </div>
-      <div className="flex flex-col items-center gap-3 pb-[120px] mt-[40px]">
+      <div className="flex flex-col items-center gap-3 pb-[40px] mt-[20px]">
         <button
           className="w-[300px] py-3 px-4 bg-black mb-[10px]"
           style={{
+            background: "#151515",
             border: "1px solid white",
             borderRadius: "100px",
           }}
@@ -226,7 +230,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
           Change profile photo
         </button>
         <button
-          className="w-[300px] py-3 px-4 mb-[25px] "
+          className="w-[300px] py-3 px-4"
           style={{
             border: "1px solid white",
             borderRadius: "100px",
@@ -239,7 +243,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
           Change background
         </button>
 
-        <div className="text-black pb-[8px] w-full bg-[#E7E0EC] rounded-[4px] mb-[10px] ">
+        <div className="text-black pb-[8px] w-full bg-[#E7E0EC] rounded-[4px]">
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
             Full name:
           </label>
@@ -257,7 +261,8 @@ export default function ProfileModal({ modal, setModal }: IModal) {
           />
         </div>
 
-        <div className="text-black w-full pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
+        <div className="text-black w-full pb-[8px] bg-[#E7E0EC] rounded-[4px]">
+
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
             Position:
           </label>
@@ -404,7 +409,6 @@ export default function ProfileModal({ modal, setModal }: IModal) {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
-
       {showModalBg ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
