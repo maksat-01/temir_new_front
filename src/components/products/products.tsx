@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { getActionProduct } from "./reducer/ActionProduct";
+import {useNavigate} from "react-router-dom";
 
 const Products = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate()
   const { products } = useAppSelector((state) => state.ReducerProduct);
   useEffect(() => {
     dispatch(getActionProduct());
@@ -23,6 +25,7 @@ const Products = () => {
           <p className="text-center text-[#BEBEBE] text-[18px]">
             {items.description}
           </p>
+          <button onClick={()=> navigate(items.visit_website_url_url)}>items.visit_website_url_name</button>
         </div>
       ))}
     </div>

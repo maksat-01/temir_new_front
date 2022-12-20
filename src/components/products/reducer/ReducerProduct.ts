@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { To } from "react-router-dom";
 
 interface ImageTypes {
+  [x: string]: To;
   id: string;
   created_at: string;
   updated_at: string;
