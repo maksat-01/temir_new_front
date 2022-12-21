@@ -12,6 +12,11 @@
         text-align: center;
         margin: 50px 0;
         color: #FFFFFF;
+        clip-path: polygon(0 0 , 100% 0 , 100% 100% , 0% 100%);
+        h1 {
+          transform: translateY(115px);
+          transition: transform .4s;
+        }
       }
       &--btn {
         padding: 10px 65px;
@@ -26,3 +31,4 @@
     }
   }
 }
+

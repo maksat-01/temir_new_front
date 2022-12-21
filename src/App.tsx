@@ -69,10 +69,12 @@ function App() {
                 <Route path="/products" element={<ProductPage/>}/>
                 <Route path="/checkout" element={<CheckoutPage/>}/>
                 <Route path="/contact" element={<ContactUs/>}/>
+                <Route path={"/company"} element={<Company/>}/>
                 <Route path="/productDetail/:idCard" element={<ProductDetailPage/>}/>
                 <Route path="/about" element={<About/>}/>
                 <Route path="/image" element={<Media/>}/>
                 <Route path="/welcome-to-admin" element={<AdminToWelcome/>}/>
+                <Route path="/welcome-to-admin/profile" element={<Profile/>}/>
                 <Route path="/basket" element={<Basket/>}/>
                 <Route
                     path="/user/:id"
