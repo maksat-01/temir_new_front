@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom'
 import Logo from '../../assets/svg/logo'
 import BasketImageSvg from '../../assets/svg/BasketImageSvg'
 import Menu from './Menu'
-import {useAppSelector} from "../../hooks";
+import { useAppSelector } from '../../hooks'
 
 const Header = () => {
   //хук состоянии
@@ -16,7 +16,7 @@ const Header = () => {
   const classesNav =
     'nav_page nav_menu uppercase font-[Jura] font-[400] text-[16px] font-light tracking-wider leading-[30px]'
   const classesLine =
-    'absolute bg-white rounded-[3px] transition ease-in-out h-[3px] z-[1500]'
+    'absolute rounded-[3px] transition ease-in-out h-[3px] z-[1500]'
   //функции
   const openMenu = () => {
     setBurgerMenu(!burgerMenu)
@@ -34,7 +34,7 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   })
-  const {basket} = useAppSelector(s => s.ReducerBasket)
+  const { basket } = useAppSelector((s) => s.ReducerBasket)
 
   return (
     <header
@@ -69,7 +69,9 @@ const Header = () => {
               <Link to={'/basket'}>
                 <div className="basket relative pr-5">
                   <BasketImageSvg />
-                  <p className='absolute text-[#8E7A3B] top-1 left-8 text-[20px]'>{basket.length > 0 ? basket.length :""}</p>
+                  <p className="absolute text-[#8E7A3B] top-1 left-8 text-[20px]">
+                    {basket.length > 0 ? basket.length : ''}
+                  </p>
                 </div>
               </Link>
             </div>
@@ -85,19 +87,19 @@ const Header = () => {
                 className={`${classesLine} menu_transition right-0 ${
                   burgerMenu
                     ? 'rotate-[-40deg] w-full bg-black translate-y-0'
-                    : 'w-[18px] translate-y-[-11px]'
+                    : 'w-[18px] translate-y-[-11px] bg-white'
                 }`}
               ></span>
               <span
                 className={`${classesLine} menu_transition w-full ${
-                  burgerMenu ? 'opacity-0' : ''
+                  burgerMenu ? 'opacity-0' : 'bg-white'
                 }`}
               ></span>
               <span
                 className={`${classesLine} menu_transition left-0 right-0 ${
                   burgerMenu
                     ? 'rotate-[40deg] w-full bg-black translate-y-0'
-                    : 'w-[18px] translate-y-[11px]'
+                    : 'w-[18px] translate-y-[11px] bg-white'
                 }`}
               ></span>
             </button>

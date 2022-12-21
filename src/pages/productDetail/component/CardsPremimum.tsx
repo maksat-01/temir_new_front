@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom'
 
 //local
 import { useAppDispatch, useAppSelector } from '../../../hooks'
-import {addToBasket, getDefaultCard} from '../../basket/ReducerBasket/ActionBasket'
+import {
+  addToBasket,
+  getDefaultCard,
+} from '../../basket/ReducerBasket/ActionBasket'
 import { getProductsPage } from '../../productPage/reducer/actionProductPage'
 import { IPropductsDetail } from '../reducer/productDetailSlice'
 
@@ -24,7 +27,7 @@ const CardsPremimum: FC<IProps> = ({ productOne }) => {
   const { defaultCard } = useAppSelector((s) => s.ReducerBasket)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  console.log("defaultCard: ",defaultCard)
+
   const [imageUrl, setImageUrl] = useState<any>('')
   const fileReader = new FileReader()
   fileReader.onloadend = () => setImageUrl(fileReader.result)
@@ -32,7 +35,6 @@ const CardsPremimum: FC<IProps> = ({ productOne }) => {
     title: 'TEMIR',
     logo: imageUrl,
   })
-  console.log("productOne - ", productAll)
 
   const [product, setProduct] = useState<any>({
     title: cardData.title,
@@ -85,9 +87,9 @@ const CardsPremimum: FC<IProps> = ({ productOne }) => {
                     className="p-2"
                     onClick={() => {
                       dispatch(getDefaultCard(el))
-                      setProduct({...product, ...el})
+                      setProduct({ ...product, ...el })
                       navigate(`/productDetail/${el.id}`)
-                    }}  
+                    }}
                   >
                     <div
                       onClick={() => {
