@@ -91,6 +91,15 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
     formData.append("description", postDataProduct.description);
     formData.append("title", postDataProduct.title);
     formData.append("image", img);
+    formData.append(
+      "visit_website_url_name",
+      postDataProduct.visit_website_url_name
+    );
+    formData.append(
+      "visit_website_url_url",
+      postDataProduct.visit_website_url_url
+    );
+
     if (
       !postDataProduct.title &&
       !postDataProduct.description &&
@@ -113,6 +122,8 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
             title: "",
             description: "",
             image: "",
+            visit_website_url_name: "",
+            visit_website_url_url: "",
           });
           setCropData("");
           dispatch(getActionProduct());
@@ -122,15 +133,6 @@ export default function AdminProductAdded({ productId }: IAdminProductAdded) {
           alert("Error");
         });
     }
-
-    setPostDataProduct({
-      user: getIdUserParams(),
-      title: "",
-      description: "",
-      image: "",
-      visit_website_url_name: "",
-      visit_website_url_url: "",
-    });
   };
 
   const inputChange = (e: any) => {

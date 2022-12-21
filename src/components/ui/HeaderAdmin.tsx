@@ -87,7 +87,7 @@ export default function HeaderAdmin({
         <div className="max-w-[500px] mx-auto relative">
           <div className="flex justify-center items-center w-full">
             <Link
-              to={`/user/${getIdUserParams()}}`}
+              to={`/user/${getIdUserParams()}`}
               className="absolute left-[50px]"
             >
               <ExitSvg />

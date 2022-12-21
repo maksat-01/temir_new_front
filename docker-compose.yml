@@ -12,8 +12,8 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Asia/Bishkek
-      - URL=http://64.227.177.107:8000/
+      - TZ=Asia/Dubai
+      - URL=temir-businesscard.com
       - VALIDATION=http
       - ONLY_SUBDOMAINS=false
       - STAGING=false

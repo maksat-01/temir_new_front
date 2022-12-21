@@ -29,7 +29,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
   const [showModalTitle, setShowModalTitle] = React.useState("");
 
   const [image, setImage] = useState("");
-  const [cropData, setCropData] = useState("#");
+  const [cropData, setCropData] = useState("");
   const [cropper, setCropper] = useState<any>();
 
   const onChange = (e: any) => {
@@ -67,6 +67,20 @@ export default function ProfileModal({ modal, setModal }: IModal) {
     return new File([u8arr], filename, { type: mime });
   }
 
+  function dataURLtoFileBg(dataurl: any, filename: any) {
+    var arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, { type: mime });
+  }
+
   /// bg ////
 
   const [showModalBg, setShowModalBg] = React.useState(false);
@@ -74,7 +88,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
   const [showModalTitleBg, setShowModalTitleBg] = React.useState("");
 
   const [imageBg, setImageBg] = useState("");
-  const [cropDataBg, setCropDataBg] = useState("#");
+  const [cropDataBg, setCropDataBg] = useState("");
   const [cropperBg, setCropperBg] = useState<any>();
 
   const onChangeBg = (e: any) => {
@@ -104,13 +118,20 @@ export default function ProfileModal({ modal, setModal }: IModal) {
 
     setShowModalBg(false);
     setShowModalConfigmBg(false);
-    const img = dataURLtoFile(cropData, "newImage.png");
-    const imgBg = dataURLtoFile(cropDataBg, "image.png");
+    const img: any = cropData
+      ? dataURLtoFile(cropData, "newImage.png")
+      : console.log("Error avatar");
+    const imgBg: any = cropDataBg
+      ? dataURLtoFileBg(cropDataBg, "image.png")
+      : console.log("ERROR BG");
+    console.log(img);
 
     const data = new FormData();
     data.append("user", getIdUserParams());
-    data.append("avatar", img ? img : user.avatar);
-    data.append("background", imgBg ? imgBg : user.background);
+    img ? data.append("avatar", img) : console.log("Error avatar");
+
+    imageBg ? data.append("background", imgBg) : console.log("Error bacground");
+
     data.append(
       "username",
       nameAndPosition.username ? nameAndPosition.username : user.username
@@ -188,7 +209,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
         dispatch(getUser.actions.getUserError(error));
       });
   }, []);
-  
+
   return (
     <div
       className={`modal ${
@@ -203,10 +224,18 @@ export default function ProfileModal({ modal, setModal }: IModal) {
       <div
         className="w-full h-[250px] flex items-center justify-center"
         style={{
-          background: `url(${user.background}) no-repeat center/cover`,
+          background: `url(${
+            cropDataBg ? cropDataBg : user.background
+          }) no-repeat center/cover`,
         }}
       >
-        {user.avatar && (
+        {cropData ? (
+          <img
+            src={cropData}
+            alt="no image"
+            className="w-[100px] h-[100px] rounded-full object-cover"
+          />
+        ) : (
           <img
             src={user.avatar}
             alt="no image"
@@ -249,7 +278,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
           </label>
           <input
             type="text"
-            defaultValue={user.username}
+            value={user.username}
             placeholder="Full name"
             className="bg-transparent w-[100%] pl-[16px]"
             onChange={(e) =>
@@ -262,13 +291,12 @@ export default function ProfileModal({ modal, setModal }: IModal) {
         </div>
 
         <div className="text-black w-full pb-[8px] bg-[#E7E0EC] rounded-[4px]">
-
           <label className="pl-[16px] text-[12px] text-[#6750A4]">
             Position:
           </label>
           <input
             type="text"
-            defaultValue={user.position}
+            value={user.position}
             placeholder="position"
             className="bg-transparent w-[100%] pl-[16px]"
             onChange={(e) =>
@@ -336,7 +364,6 @@ export default function ProfileModal({ modal, setModal }: IModal) {
                   )}
                 </div>
                 {/*footer*/}
-
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button
                     className="text-white px-6 py-3 rounded bg-red-500 font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -378,7 +405,7 @@ export default function ProfileModal({ modal, setModal }: IModal) {
                   <div className="border-0 rounded-lg shadow-lg relative flex flex-col max-w-[500px] w-full bg-[#262627] outline-none focus:outline-none">
                     {/*body*/}
                     <div className="relative p-6 flex-auto">
-                      <img src={cropData} alt="" className="w-full" />
+                      <img src={cropData} alt="no_img" className="w-full" />
                     </div>
                     {/*footer*/}
                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

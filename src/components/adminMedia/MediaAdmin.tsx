@@ -7,15 +7,8 @@ interface IMediaAdmin {
   children?: JSX.Element;
 }
 
-export default function MediaAdmin({ children }: IMediaAdmin) {
-  let activeStyle = {
-    textDecoration: "underline",
-    textUnderlineOffset: "11px",
-    textDecorationThickness: "2px",
-    color: "white",
-  };
-
-  const [currentTab, setCurrentTab] = useState<any>(1);
+export default function MediaAdmin() {
+  const [currentTab, setCurrentTab] = useState<any>("1");
 
   const tab = [
     {
@@ -52,7 +45,7 @@ export default function MediaAdmin({ children }: IMediaAdmin) {
       </div>
       {tab.map((tab, index) => (
         <div key={index}>
-          {currentTab === tab.id && (
+          {currentTab === `${tab.id}` && (
             <div className="pt-[76px]">{tab.tabContent}</div>
           )}
         </div>

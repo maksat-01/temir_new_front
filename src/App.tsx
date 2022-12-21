@@ -36,6 +36,7 @@ import Share from "./components/share/Share";
 import ProductsAdmin from "./pages/interface/product/ProductsAdmin";
 import Profile from "./components/profile/Profile";
 import ResetPassword from "./components/signIn/ResetPassword";
+import AdminToWelcome from "./components/signIn/AdminToWelcome/AdminToWelcome";
 
 function App() {
   const listContact = [
@@ -90,6 +91,8 @@ function App() {
           }
         />
         <Route path="user/:id/signin/" element={<SignIn />} />
+        <Route path="welcome-to-admin/" element={<AdminToWelcome />} />
+
         <Route path="/resetPassword/*" element={<ResetPassword />} />
 
         {/* /// Product /// */}
@@ -114,13 +117,19 @@ function App() {
           }
         />
         <Route
-          path="/profile/"
+          path="/admin-media/"
           element={
-            <HeaderLisProducts
-              listActive
-              title="Profile"
-              children={<Profile />}
-            />
+            <HeaderLisProducts title="Add Media" children={<MediaAdmin />} />
+          }
+        />
+        <Route
+          path="/profile/"
+          element={<HeaderLisProducts title="Profile" children={<Profile />} />}
+        />
+        <Route
+          path="/admin-product/"
+          element={
+            <HeaderLisProducts title="Product" children={<AdminProduct />} />
           }
         />
 

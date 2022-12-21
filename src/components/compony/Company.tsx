@@ -1,8 +1,10 @@
 import axios from "axios";
+import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../hooks";
+import ModalBankDetails from "./ModalBankDetails";
 import { CompanyReducer } from "./reducer/ReducerCompany";
 import "./style.scss";
 
@@ -10,6 +12,7 @@ export default function Company() {
   const dispatch = useAppDispatch();
   const { company } = useAppSelector((state) => state.ReducerCompany);
   const [details, setDetails] = useState<any>();
+  const [modal, setModal] = React.useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -92,9 +95,16 @@ export default function Company() {
                 Address
               </a>
             </button>
+            <button
+              onClick={() => setModal(!modal)}
+              className="bg-[#0B0B0B] mb-[10px] w-full py-[23px] text-center fony-[700] text-[16px] rounded-[4px]"
+            >
+              Bank details
+            </button>
           </div>
         )}
       </div>
+      {modal && <ModalBankDetails modal={modal} setModal={setModal} />}
     </div>
   );
 }

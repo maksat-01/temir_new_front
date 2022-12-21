@@ -18,23 +18,23 @@ export default function ModalBanks({ modal, setModal }: IModalApp) {
     user: getIdUserParams(),
     back_account: "",
     back_cart: "",
-    position: "account",
+    position: "bank_details",
   });
 
   const handleClick = () => {
-    if (bank.position === "cart") {
+    if (bank.position === "crypto") {
       return API.post("bank-cart/", {
         title: bank.title,
         user: bank.user,
         back_cart: bank.back_cart,
       })
         .then(() => {
-          alert("SUC CART");
+          alert("Success crypto");
           dispatch(getActionBankAccount());
           dispatch(getActionBankCard());
         })
         .catch(() => {
-          alert("ERR CART");
+          alert("Error crypto");
         });
     } else {
       return API.post("bank-account/", {
@@ -43,12 +43,12 @@ export default function ModalBanks({ modal, setModal }: IModalApp) {
         back_account: bank.back_account,
       })
         .then(() => {
-          alert("SUC ACC");
+          alert("Success bank details");
           dispatch(getActionBankAccount());
           dispatch(getActionBankCard());
         })
         .catch(() => {
-          alert("ERR ACC");
+          alert("Error bank details");
         });
     }
   };
@@ -58,16 +58,16 @@ export default function ModalBanks({ modal, setModal }: IModalApp) {
       style={{ background: "rgba(115, 115, 115, 0.32)" }}
       className={`modal ${
         modal ? "active" : ""
-      } max-w-[750px] mx-auto flex flex-col p-[10px]`}
+      } max-w-[750px] mx-auto flex flex-col p-[10px] z-[100]`}
     >
       <div className="bg-[#151515] mx-auto px-[24px] rounded-[8px]">
         <div className="flex justify-between items-center pt-[13px]">
           <p className="text-[24px] ">
-            {bank.position === "account" ? `Bank account` : `Bank cart`}
+            {bank.position === "crypto" ? `Crypto information` : `Bank details`}
           </p>
-          <p className="font-[400]" onClick={() => setModal(false)}>
+          <button className="font-[400]" onClick={() => setModal(false)}>
             Close
-          </p>
+          </button>
         </div>
         <div className="flex py-[44px]">
           <input
@@ -75,9 +75,9 @@ export default function ModalBanks({ modal, setModal }: IModalApp) {
             className="w-[20px] bg-[#D0BCFF]"
             name="tabs"
             id="2"
-            onClick={() => setBank({ ...bank, position: "account" })}
+            onClick={() => setBank({ ...bank, position: "bank_details" })}
           />
-          <p className="font-[500] pl-[14px]">Bank account</p>
+          <p className="font-[500] pl-[14px]">Bank details</p>
         </div>
         <div className="flex pb-[44px]">
           <input
@@ -85,14 +85,12 @@ export default function ModalBanks({ modal, setModal }: IModalApp) {
             name="tabs"
             id="1"
             className="w-[20px]"
-            onClick={() => setBank({ ...bank, position: "cart" })}
+            onClick={() => setBank({ ...bank, position: "crypto" })}
           />
-          <p className="font-[500] pl-[14px]">Bank card</p>
+          <p className="font-[500] pl-[14px]">Crypto details</p>
         </div>
         <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
-          <label className="pl-[16px] text-[12px] text-[#6750A4]">
-            Bank name:
-          </label>
+          <label className="pl-[16px] text-[12px] text-[#6750A4]">Name:</label>
           <input
             type="text"
             placeholder="Enter your nickname..."
@@ -101,10 +99,10 @@ export default function ModalBanks({ modal, setModal }: IModalApp) {
             onChange={(e) => setBank({ ...bank, title: e.target.value })}
           />
         </div>
-        {bank.position === "cart" && (
+        {bank.position === "crypto" && (
           <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
             <label className="pl-[16px] text-[12px] text-[#6750A4]">
-              Enter your bank cart:
+              Account:
             </label>
             <input
               type="text"
@@ -115,10 +113,10 @@ export default function ModalBanks({ modal, setModal }: IModalApp) {
             />
           </div>
         )}
-        {bank.position === "account" && (
+        {bank.position === "bank_details" && (
           <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
             <label className="pl-[16px] text-[12px] text-[#6750A4]">
-              Enter your bank account:
+              Account/IBAN number:
             </label>
             <input
               type="text"

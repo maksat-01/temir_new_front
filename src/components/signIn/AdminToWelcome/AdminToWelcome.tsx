@@ -1,11 +1,17 @@
 import React, { useEffect } from "react";
 import logo from "../../../assets/img/logo.svg";
 import gsap from "gsap";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../../hooks";
+import API from "../../api/Api";
+import { getIdUserParams } from "../../helper";
+import { getUser } from "../../../pages/interface/getUser/redux/reducer";
 
 const percent = "60%";
-const navigate = useNavigate();
+
 const AdminToWelcome = () => {
+  const { user } = useAppSelector((state) => state.getUser);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     gsap.to(".admin--general__title", {
       y: `${percent}`,
@@ -14,6 +20,17 @@ const AdminToWelcome = () => {
       scrub: 5,
     });
   }, []);
+
+  useEffect(() => {
+    API.get(`user-update/` + getIdUserParams())
+      .then(({ data }) => {
+        dispatch(getUser.actions.getUserSucceseded(data));
+      })
+      .catch((error) => {
+        dispatch(getUser.actions.getUserError(error));
+      });
+  }, []);
+
   return (
     <div id="admin">
       <div className="admin--general">
@@ -23,12 +40,14 @@ const AdminToWelcome = () => {
           </div>
           <div className="admin--general__title--h1">
             <h1>
-              User Name, welcome to <br />
+              {user.username}, welcome to <br />
               your personal account!
             </h1>
           </div>
           <div className="admin--general__title--btn">
-            <button onClick={() => navigate("addcomponent")}>Continue</button>
+            <button>
+              <NavLink to="/profile/">Continue</NavLink>
+            </button>
           </div>
         </div>
       </div>

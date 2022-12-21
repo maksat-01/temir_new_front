@@ -86,7 +86,7 @@ export default function HeaderLisProducts({
         <div className="max-w-[500px] mx-auto relative">
           <div className="flex justify-center items-center">
             <Link
-              to={`/user/${getIdUserParams()}}`}
+              to={`/user/${getIdUserParams()}`}
               className="absolute left-[50px]"
             >
               <ExitSvg />

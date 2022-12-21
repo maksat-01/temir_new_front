@@ -6,7 +6,7 @@ import ModalBanks from "./ModalBanks";
 import "./style.scss";
 
 export default function AdminBanks() {
-  const [currentTab, setCurrentTab] = useState<any>(0);
+  const [currentTab, setCurrentTab] = useState<any>("1");
 
   const tab = [
     {
@@ -25,13 +25,9 @@ export default function AdminBanks() {
     setCurrentTab(e.target?.id);
   };
 
-  useEffect(() => {
-    setCurrentTab("1");
-  }, []);
-
   return (
     <div>
-      <div className="flex justify-evenly bg-[#262627] mb-[31px] pb-[20px]">
+      <div className="flex justify-evenly bg-[#262627] fixed right-0 left-0 mb-[31px] pb-[20px] z-[100]">
         {tab.map((tab, index) => (
           <button
             key={index}
@@ -44,7 +40,7 @@ export default function AdminBanks() {
         ))}
       </div>
 
-      <div className="max-w-[500px] mx-auto">
+      <div className="max-w-[500px] mx-auto pt-[70px]">
         {tab.map((tab, index) => (
           <div key={index}>
             {currentTab === `${tab.id}` && <div>{tab.tabContent}</div>}

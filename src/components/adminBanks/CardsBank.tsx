@@ -30,7 +30,7 @@ export default function CardsBank() {
   }, []);
 
   return (
-    <div className="relative min-h-[70vh]">
+    <div className="relative min-h-[70vh] px-[30px]">
       {bankCart.map((item) => (
         <div className="text-black pb-[8px] bg-[#E7E0EC] rounded-[4px] mb-[10px]">
           <div key={item.id} className="flex justify-between">
@@ -60,7 +60,7 @@ export default function CardsBank() {
 
       <button
         onClick={() => setModal(true)}
-        className="bg-[#6750A4] p-[17px] rounded-[50%] absolute right-0 bottom-0 mb-[77px]"
+        className="bg-[#6750A4] p-[17px] rounded-[50%] fixed right-0 bottom-0 mb-[77px]"
       >
         <APlusSvg />
       </button>

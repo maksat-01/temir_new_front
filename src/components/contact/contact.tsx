@@ -22,14 +22,10 @@ const Contact = () => {
 
   useEffect(() => {
     dispatch(getActionFollows());
-    dispatch(getActionBankAccount());
     dispatch(getActionEmail());
-    dispatch(getActionBankCard());
     dispatch(getActionCall());
   }, []);
 
-  const filterBankCart = bankCart.filter((el) => el.user === getIdUserParams());
-  const filterBankAcc = bankAcc.filter((el) => el.user === getIdUserParams());
   const filterFollows = folows.filter((el) => el.user === getIdUserParams());
   const filterSocials = socials.filter((el) => el.user === getIdUserParams());
   const filterEmail = email.filter((el) => el.user === getIdUserParams());
@@ -55,9 +51,7 @@ const Contact = () => {
       <Accordion title="Call" array={filterPhone} />
       <Accordion title="Connect" array={filterFollows} />
       <Accordion title="Follow" array={filterSocials} />
-      <Accordion title="Bank cart" array={filterBankCart} />
       <Accordion title="E-amil" array={filterEmail} />
-      <Accordion title="Bank details" array={filterBankAcc} />
       <button
         onClick={saveContact}
         className="w-full py-[10px] text-center rounded-[7px] border-2 border-[rgba(190, 190, 190, 0.17)] mt-[10px]"

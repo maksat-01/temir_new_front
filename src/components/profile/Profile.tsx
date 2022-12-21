@@ -10,9 +10,9 @@ export default function Profile() {
   const dispatch = useAppDispatch();
   const id = getIdUserParams();
   const { user } = useAppSelector((state) => state.getUser);
-  const [count, setCount] = useState<any>({});
+  const [count, setCount] = useState<any>([]);
+
   useEffect(() => {
-    // dispatch(getUser.actions.getUser);
     API.get(`user-update/` + id)
       .then(({ data }) => {
         dispatch(getUser.actions.getUserSucceseded(data));
@@ -21,6 +21,10 @@ export default function Profile() {
         dispatch(getUser.actions.getUserError(error));
       });
   }, []);
+
+  const userCount = count?.filter(
+    (items: any) => items.id === getIdUserParams()
+  );
 
   useEffect(() => {
     API.get(`save-contact/counts/`)
@@ -31,10 +35,6 @@ export default function Profile() {
         console.log(e, "c");
       });
   }, []);
-
-  const userCount = count.filter(
-    (items: any) => items.id === getIdUserParams()
-  );
 
   return (
     <div className="bg-[#151515] max-w-[500px] mx-auto px-[22px]">
@@ -73,7 +73,7 @@ export default function Profile() {
           <div style={{ borderRadius: "50%" }} className="bg-[#262626] ">
             <div className="px-[30px] py-[30px] flex flex-col items-center justify-center">
               <p className="font-[500] text-[29px]">
-                {userCount[0]?.total_count || "0"}
+                {userCount[0]?.total_count || 0}
               </p>
               <p className="font-[300] text-[18px] mx-auto">
                 People saved <br />
@@ -85,6 +85,7 @@ export default function Profile() {
             </div>
           </div>
         </div>
+        <p className="mb-[91px] text-[#C2C2C2] font-[400] text-[21px]">Total</p>
       </div>
       {<ProfileModal modal={modal} setModal={setModal} />}
     </div>
