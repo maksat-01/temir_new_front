@@ -24,6 +24,7 @@ const Basket: FC = () => {
   useEffect(() => {
     setLoading(false)
   }, [])
+  console.log("basket",basket)
   return (
     <>
       {loading ? (

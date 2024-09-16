@@ -36,6 +36,7 @@ import Share from "./components/share/Share";
 import ProductsAdmin from "./pages/interface/product/ProductsAdmin";
 import Profile from "./components/profile/Profile";
 import ResetPassword from "./components/signIn/ResetPassword";
+import AdminToWelcome from "./components/signIn/AdminToWelcome/AdminToWelcome";
 
 function App() {
   const listContact = [
@@ -89,7 +90,9 @@ function App() {
             </Interface>
           }
         />
-        <Route path="/signin/:id" element={<SignIn />} />
+        <Route path="user/:id/signin/" element={<SignIn />} />
+        <Route path="welcome-to-admin/" element={<AdminToWelcome />} />
+
         <Route path="/resetPassword/*" element={<ResetPassword />} />
 
         {/* /// Product /// */}
@@ -114,13 +117,19 @@ function App() {
           }
         />
         <Route
-          path="/profile/"
+          path="/admin-media/"
           element={
-            <HeaderLisProducts
-              listActive
-              title="Profile"
-              children={<Profile />}
-            />
+            <HeaderLisProducts title="Add Media" children={<MediaAdmin />} />
+          }
+        />
+        <Route
+          path="/profile/"
+          element={<HeaderLisProducts title="Profile" children={<Profile />} />}
+        />
+        <Route
+          path="/admin-product/"
+          element={
+            <HeaderLisProducts title="Product" children={<AdminProduct />} />
           }
         />
 
@@ -136,7 +145,7 @@ function App() {
           path="/user/:id/inventary"
           element={
             <Interface>
-              <ProductsAdmin />
+              <Products />
             </Interface>
           }
         />
@@ -199,51 +208,6 @@ function App() {
               arrayList={listContact}
               children={<AdminFollows />}
             />
-          }
-        />
-
-        {/* Product */}
-        <Route
-          path="/admin-product"
-          element={
-            <HeaderLisProducts title="Products" children={<AdminProduct />} />
-          }
-        />
-        <Route
-          path="/addcompany/"
-          element={
-            <HeaderAdmin
-              title="Add company"
-              // listCompany
-              children={<AddedAdminCompany />}
-            />
-          }
-        />
-
-        <Route
-          path="/user/:id/gallery"
-          element={
-            <Interface>
-              <Media />
-            </Interface>
-          }
-        />
-
-        <Route
-          path="/user/:id/signin"
-          element={
-            <Interface>
-              <SignIn />
-            </Interface>
-          }
-        />
-
-        <Route path="/video" element={<Media />} />
-
-        <Route
-          path="/admin-media"
-          element={
-            <HeaderLisProducts title="Products" children={<MediaAdmin />} />
           }
         />
       </Routes>

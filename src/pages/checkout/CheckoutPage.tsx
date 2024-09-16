@@ -7,19 +7,25 @@ import { ICheckout } from './reducer/checkoutSlice'
 import HeroCheckout from './components/HeroCheckout'
 import YourOrders from './components/YourOrders'
 import PaymentMethod from './components/PaymentMethod'
+import { postChechout } from './reducer/actionsCheckout'
+import { useAppDispatch } from '../../hooks'
 
 const CheckoutPage: FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
+  const dispatch = useAppDispatch()
   useEffect(() => {
     setLoading(false)
   }, [])
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<ICheckout>()
-  const onSubmit: SubmitHandler<ICheckout> = (data) =>
-    alert(JSON.stringify(data))
+  const onSubmit: SubmitHandler<ICheckout> = (data) => {
+    dispatch(postChechout(data))
+    reset()
+  }
   return (
     <>
       {loading ? (

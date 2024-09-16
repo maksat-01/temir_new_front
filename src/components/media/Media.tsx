@@ -38,8 +38,6 @@ export default function Media() {
     dispatch(getActionVideo());
   }, []);
 
-  console.log("PHOTOS", photos);
-  console.log("VIDEO", video);
   const yourPhotos = photos.filter((el) => el.user === id);
   const yourVideos = video.filter((el) => el.user === id);
 

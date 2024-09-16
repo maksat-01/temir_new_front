@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom'
 //local
 import '../../style/products/products.scss'
 import { IProductPage } from './reducer/productSlice'
+import {useAppDispatch} from "../../hooks";
+import {getDefaultCard} from "../basket/ReducerBasket/ActionBasket";
 
 interface IProps {
   product: IProductPage[]
 }
 
 const CardInProducts: FC<IProps> = ({ product }) => {
+  const dispatch = useAppDispatch()
   return (
     <section
       id="products"
@@ -39,7 +42,7 @@ const CardInProducts: FC<IProps> = ({ product }) => {
                   </p>
                   <div className="flex justify-center items-center">
                     <Link to={`/productDetail/${el.id}`}>
-                      <button className="bg-[#0B0B0B] px-8 py-3 font-[Jura] hover:bg-transparent hover:scale-[1.1] transition ease-linear text-[24px] xl:text-[22px] leading-[28px] rounded-[4.9px] shadow-[-10.93px_-8.94274px_20.8664px_rgba(72,72,72,0.25),5.96183px_6.95546px_20.8664px_#000000]">
+                      <button onClick={() => dispatch(getDefaultCard(el))} className="bg-[#0B0B0B] px-8 py-3 font-[Jura] hover:bg-transparent hover:scale-[1.1] transition ease-linear text-[24px] xl:text-[22px] leading-[28px] rounded-[4.9px] shadow-[-10.93px_-8.94274px_20.8664px_rgba(72,72,72,0.25),5.96183px_6.95546px_20.8664px_#000000]">
                         Add to cart
                       </button>
                     </Link>

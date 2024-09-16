@@ -25,7 +25,7 @@ export const initialState = {
 } as IState
 
 export const checkoutSlice = createSlice({
-  name: '',
+  name: 'checkout',
   initialState,
   reducers: {
     checkoutFetching(state) {

@@ -20,9 +20,13 @@ export const reduceTheQuantity = (idx: any) =>async (dispatch: AppDispatch) => {
 export const getTotal = (arr: any) => {
   let result = 0
   for (const el of arr) {
-    result += +el.price * +el.quantity
+    result += +el.price * +el.quantityCard
   }
   return result
+}
+
+export const getDefaultCard = (card: any) => async (dispatch: AppDispatch) => {
+  await dispatch(ReducerBasket.actions.DefaultCard(card))
 }
 
 

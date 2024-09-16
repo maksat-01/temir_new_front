@@ -59,7 +59,7 @@ export default function AccountsBank() {
 
       <button
         onClick={() => setModal(true)}
-        className="bg-[#6750A4] p-[17px] rounded-[50%] absolute right-0 bottom-0 mb-[77px]"
+        className="bg-[#6750A4] p-[17px] rounded-[50%] fixed right-0 bottom-0 mb-[77px]"
       >
         <APlusSvg />
       </button>

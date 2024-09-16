@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { To } from "react-router-dom";
 
 interface ImageTypes {
+  [x: string]: To;
   id: string;
   created_at: string;
   updated_at: string;
@@ -8,6 +10,8 @@ interface ImageTypes {
   user: string;
   description: string;
   image: string;
+  visit_website_url_name: string;
+  visit_website_url_url: string;
 }
 
 interface PhotosState {

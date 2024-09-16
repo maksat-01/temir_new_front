@@ -7,15 +7,8 @@ interface IMediaAdmin {
   children?: JSX.Element;
 }
 
-export default function MediaAdmin({ children }: IMediaAdmin) {
-  let activeStyle = {
-    textDecoration: "underline",
-    textUnderlineOffset: "11px",
-    textDecorationThickness: "2px",
-    color: "white",
-  };
-
-  const [currentTab, setCurrentTab] = useState<any>(0);
+export default function MediaAdmin() {
+  const [currentTab, setCurrentTab] = useState<any>("1");
 
   const tab = [
     {
@@ -33,10 +26,6 @@ export default function MediaAdmin({ children }: IMediaAdmin) {
   const handleClick = (e: any) => {
     setCurrentTab(e.target?.id);
   };
-
-  useEffect(() => {
-    setCurrentTab("1");
-  }, []);
 
   return (
     <div className="max-w-[500px] mx-auto bg-[#151515] relative">

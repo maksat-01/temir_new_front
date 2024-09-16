@@ -8,6 +8,7 @@ import API from "../api/Api";
 import { getActionVideo } from "../media/reducer/ActionVideo";
 import ModalAdminImage from "./modal/ModalAdminVideo";
 import ModalUpdateImage from "./modal/ModalUpdateImage";
+import { getActionMediaVideo } from "./reducer/ActionMediaVideo";
 
 export default function MediaAdminVideo() {
   const dispatch = useAppDispatch();
@@ -85,7 +86,6 @@ export default function MediaAdminVideo() {
           <APlusSvg />
         </button>
       </div>
-
       <ModalUpdateImage
         modal={update}
         setModal={setUpdate}
